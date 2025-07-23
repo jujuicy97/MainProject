@@ -1,0 +1,51 @@
+
+@mixin desktop {
+    @media screen and (min-width: 1440px) {
+        @content;
+    }
+}
+
+//플렉스
+@mixin flex-layout($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+  }
+
+//버튼 2종
+@mixin btn1 {
+    margin-top: 1.5rem;
+    width: 380px;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    background-color: var(--color-primary);
+    color: var(--color-lightgraytxt); 
+    font-size: $font-size-h3;
+    font-weight: 600;
+    &:hover {
+      filter: brightness(85%);
+    }
+  }
+  @mixin btn2 {
+    width: 380px;
+    padding: 1rem;
+    border: 1px solid var(--color-sub);
+    border-radius: 1rem;
+    background-color: #fff;
+    color: var(--color-maintxt); 
+    font-size: $font-size-h3 ;
+    font-weight: 600;
+    &:hover {
+      filter: brightness(90%);
+    }
+  }
+
+//보더 박스
+  @mixin border {
+    width: 380px;
+    border: 1px solid var(--color-sub);
+    border-radius: 1rem;
+    padding: 20px 30px;
+  }

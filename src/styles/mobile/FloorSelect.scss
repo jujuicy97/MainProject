@@ -1,6 +1,48 @@
-.floor-select{
-  .header-zone{
-    height: 70px;
-    border: 1px solid #222;
+.floor-select {
+  max-width: $small-size;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 70px 16px;
+
+  .top-benner {
+    .top-wrap {
+      @include flex-layout(column);
+      height: 120px;
+      border: 1px solid #222;
+      .top1,
+      .top2 {
+        @include flex-layout(flex-start);
+      }
+      svg {
+        font-size: 1.6rem;
+      }
+      h2 {
+        @include font-h2();
+      }
+    }
+    .zone-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+      .zone-select {
+        border: 1px solid var(--color-sub);
+        padding: 2rem;
+        text-align: center;
+        div:nth-child(1) {
+          margin-bottom: 1rem;
+          @include font-body-bold();
+          span{
+            @include font-h1();
+          }
+        }
+        div:nth-child(2) {
+          @include flex-layout(space-between);
+          gap: 1rem;
+          span {
+            @include font-body-bold();
+          }
+        }
+      }
+    }
   }
 }

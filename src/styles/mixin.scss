@@ -13,6 +13,37 @@
     align-items: $align;
   }
 
+//폰트 믹스인(사이즈, 굵기)
+@mixin font-h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+@mixin font-h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+@mixin font-h3 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+@mixin font-body {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+@mixin font-body-bold {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+@mixin font-caption {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+@mixin font-overline {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+
 //버튼 2종
 @mixin btn1 {
     margin-bottom: 2.5rem;
@@ -49,3 +80,4 @@
     border-radius: 1rem;
     padding: 20px 30px;
   }
+

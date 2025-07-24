@@ -15,13 +15,13 @@
 
 //버튼 2종
 @mixin btn1 {
-    margin-top: 1.5rem;
-    width: 380px;
-    padding: 16px;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    height: 60px;
     border: none;
     border-radius: 16px;
     background-color: var(--color-primary);
-    color: var(--color-lightgraytxt); 
+    color: var(--color-lightgraytxt);
     font-size: $font-size-h3;
     font-weight: 600;
     &:hover {
@@ -29,12 +29,12 @@
     }
   }
   @mixin btn2 {
-    width: 380px;
-    padding: 1rem;
-    border: 1px solid var(--color-sub);
-    border-radius: 1rem;
-    background-color: #fff;
-    color: var(--color-maintxt); 
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 16px;
+    background-color: var(--color-sub);   // sub컬러
+    color: var(--color-maintxt);   // main 텍스트 색
     font-size: $font-size-h3 ;
     font-weight: 600;
     &:hover {

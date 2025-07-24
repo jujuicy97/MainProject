@@ -11,11 +11,13 @@
     --color-lightgraytxt: #EFEFEF;
 }
 
-//폰트 크기 변수
-$font-size-h1: 2rem;
-$font-size-h2: 1.5rem;
-$font-size-h3: 1.25rem;
-$font-size-caption: 0.875rem;
+//폰트 크기 변수 (기본 10px)
+$font-size-h1: 3.2rem;
+$font-size-h2: 2.4rem;
+$font-size-h3: 2rem;
+$font-body : 1.6rem;
+$font-caption: 1.4rem;
+$font-overline: 1rem;
 
 //반응형 브레이크포인트
 $small-size: 600px;

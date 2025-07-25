@@ -1,6 +1,6 @@
+import "../styles/mobile/IconTitle.scss";
+import IconTitle from "./IconTitle";
 import { useEffect, useState } from "react";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { FaMapMarkerAlt } from "react-icons/fa";
 import { fetchAllZoneStatus, fetchParkArea } from "../utils/ParkingAPI";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -51,7 +51,7 @@ const FloorSelect = () => {
 
       <div className="top-benner">
 
-        <div className="top-wrap">
+        {/* <div className="top-wrap">
           <div className="top1">
             <FaRegCalendarAlt />
             <p>^날짜기능^2025년 7월 24일 목요일</p>
@@ -60,7 +60,8 @@ const FloorSelect = () => {
             <FaMapMarkerAlt />
             <h2>이용 구역 선택</h2>
           </div>
-        </div>
+        </div> */}
+        <IconTitle title="이용 구역 선택"/>
 
         <p>사전 결제 ZONE</p>
 

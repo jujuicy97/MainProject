@@ -4,7 +4,14 @@ import { useEffect, useState } from "react";
 import { fetchAllZoneStatus, fetchParkArea } from "../utils/ParkingAPI";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const FloorSelect = ({  selectedDate, selectedZone, setSelectedZone, selectedZoneSeats, setSelectedZoneSeats}) => {
+const FloorSelect = ({ reservation }) => {
+    const {
+    selectedDate,
+    selectedZone,
+    setSelectedZone,
+    setSelectedZoneSeats,
+  } = reservation;
+  
   const [zoneStatus, setZoneStatus] = useState({});
   // const [selectedZone, setSelectedZone] = useState(""); //구역 정보 관리(A,B,C,D)
   // const [selectedZoneSeats, setSelectedZoneSeats] = useState([]); //해당 구역 자리 정보 배열
@@ -49,16 +56,6 @@ const FloorSelect = ({  selectedDate, selectedZone, setSelectedZone, selectedZon
 
       <div className="top-benner">
 
-        {/* <div className="top-wrap">
-          <div className="top1">
-            <FaRegCalendarAlt />
-            <p>^날짜기능^2025년 7월 24일 목요일</p>
-          </div>
-          <div className="top2">
-            <FaMapMarkerAlt />
-            <h2>이용 구역 선택</h2>
-          </div>
-        </div> */}
         <IconTitle title="이용 구역 선택"/>
 
         <p>사전 결제 ZONE</p>

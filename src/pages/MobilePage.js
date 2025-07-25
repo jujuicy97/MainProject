@@ -5,28 +5,28 @@ import ScheduleSelect from "../mobile/ScheduleSelect";
 import { useState } from "react";
 
 const MobilePage = () => {
-  //날짜, 구역, 좌석 상태 관리
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedZone, setSelectedZone] = useState("");
+  const [selectedZone, setSelectedZone] = useState(null);
   const [selectedZoneSeats, setSelectedZoneSeats] = useState([]);
+  const [selectSeatID, setSelectSeatID] = useState(null);
+  //날짜, 구역, 좌석 상태 관리
+  const reservationState = {
+    selectedDate,
+    setSelectedDate,
+    selectedZone,
+    setSelectedZone,
+    selectedZoneSeats,
+    setSelectedZoneSeats,
+    selectSeatID,
+    setSelectSeatID    
+  };
   
   return (
     <div className="mobile-page">
       <Routes>
         <Route path="/" element={<ScheduleSelect selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>}/>
-        <Route path="/floorSelect" element={<FloorSelect 
-                                    selectedDate={selectedDate}
-                                    selectedZone={selectedZone}
-                                    setSelectedZone={setSelectedZone}
-                                    selectedZoneSeats={selectedZoneSeats}
-                                    setSelectedZoneSeats={setSelectedZoneSeats}
-                                  />}/>
-        <Route path="/parkingSelect" element={<ParkingSelect 
-                                      selectedZone={selectedZone}
-                                      selectedZoneSeats={selectedZoneSeats}
-                                  />
-                                }
-                              />
+        <Route path="/floorSelect" element={<FloorSelect reservation={reservationState} />} />  
+        <Route path="/parkingSelect" element={<ParkingSelect reservation={reservationState} />}/>
       </Routes>
     </div>
   );

@@ -1,0 +1,53 @@
+.ScheduleSelect {
+  max-width: $small-size;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 70px 16px;
+  @include flex-layout(column, space-between);
+  .title{
+    @include flex-layout();
+    @include font-h2;
+    margin: 2rem 0;
+    gap: 5px;
+    svg{
+      path{
+        color: var(--color-primary);
+      }
+    }
+  }
+  // 달력 설정
+  .react-calendar{
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid var(--color-sub);
+    
+  }
+  .state {
+    @include flex-layout(row, space-around);
+    width: 100%;
+    li {
+      @include font-body;
+      @include flex-layout();
+      gap: 4px;
+      &:nth-child(1){
+        color: var(--color-primary);
+      }
+      &:nth-child(2){
+        color: var(--color-maintxt);
+      }
+      &:nth-child(3){
+        color: var(--color-graytxt);
+      }
+      span {
+        width: 14px;
+        height: 14px;
+        border: 2px solid;
+        border-radius: 50%; /* 원 모양 */
+        display: inline-block;
+      }
+    }
+  }
+  .reserve-btn{
+    @include btn1;
+  }
+}

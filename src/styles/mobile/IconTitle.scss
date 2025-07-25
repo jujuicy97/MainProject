@@ -1,0 +1,17 @@
+@import "../../styles/mixin.scss";
+
+.top-wrapper {
+    @include flex-layout(column);
+    height: 120px;
+    // border: 1px solid #222;
+    .top1,
+    .top2 {
+      @include flex-layout(flex-start);
+    }
+    svg {
+      font-size: 1.6rem;
+    }
+    h2 {
+      @include font-h2();
+    }
+  }

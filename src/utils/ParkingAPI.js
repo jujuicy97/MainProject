@@ -3,7 +3,7 @@ import { supabase } from "./supabaseClient";
 //혹시라도 이해안되시면 설명해드릴테니 편히 말씀주세요!
 // 페이지별로 필요한 것들을 나눠두었습니다! 작업하실때 페이지별로 보고 사용하시면 될 것 같습니다 :) - 정우
 
-{/** 회원가입 페이지 */} 
+/** 회원가입 페이지 */
 /** 1. 로그인 **/ //체크완
 export const fetchLogin = async (userID,password)=>{
     const { data, error } = await supabase
@@ -59,7 +59,7 @@ export const findPassword = async (username,phone,userID,newpass)=>{
     return {data,error};
 }
 
-{/** 메인페이지 */}
+/** 메인페이지 */
 /** 1. 구역의 잔여석 가져오기 **/
 export const fetchAllZoneStatus = async ()=>{
     const zones = ['A','B','C','D'];
@@ -87,7 +87,7 @@ export const fetchAllZoneStatus = async ()=>{
 }
 
 
-{/** 예약페이지 */}
+/** 예약페이지 */
 /** 1. 해당 구역의 정보 전부 불러오기 **/
 export const fetchParkArea = async (selectZone)=>{
     const { data, error } = await supabase
@@ -145,7 +145,7 @@ export const reserveAndPay = async ({
     return {data:reserveID,error:false};
 }
 
-{/** 마이페이지 */}
+/** 마이페이지 */
 /** 1. 예약내역확인 **/
 export const fetchMyReserve = async (userID)=>{
     const { data, error } = await supabase
@@ -160,11 +160,19 @@ export const fetchMyReserve = async (userID)=>{
                 num
             )
         `)
-        .eq('userID',userID);
+        .eq('user_id',userID);
     return {data,error};
 }
 
-/** 2. 예약취소 **/
+/** 2. 금액 가져오기 **/
+export const fetchAmount = async ()=>{
+    const { data, error } = await supabase
+        .from('payments')
+        .select('reserve_id','amount')
+    return {data,error};
+}
+
+/** 3. 예약취소 **/
 export const cancelReserve = async (reserveID,parkareaID)=>{
     //reservations 상태변경
     const { error } = await supabase
@@ -185,7 +193,7 @@ export const cancelReserve = async (reserveID,parkareaID)=>{
     return {data:true,error};
 }
 
-/** 3. 비밀번호 변경 **/
+/** 4. 비밀번호 변경 **/
 //비밀번호 확인에서 일치하는거
 export const changePassword = async (oldpass,newpass)=>{
     const { error } = await supabase
@@ -195,7 +203,7 @@ export const changePassword = async (oldpass,newpass)=>{
     return {error};
 }
 
-/** 4. 연간이용권 등록 **/
+/** 5. 연간이용권 등록 **/
 export const yearlyPass = async (ID)=>{
     const { error } = await supabase
         .from('users')

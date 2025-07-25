@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { fetchAllZoneStatus, fetchParkArea } from "../utils/ParkingAPI";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const FloorSelect = () => {
+const FloorSelect = ({  selectedDate, selectedZone, setSelectedZone, selectedZoneSeats, setSelectedZoneSeats}) => {
   const [zoneStatus, setZoneStatus] = useState({});
-  const [selectedZone, setSelectedZone] = useState(""); //구역 정보 관리(A,B,C,D)
-  const [selectedZoneSeats, setSelectedZoneSeats] = useState([]); //해당 구역 자리 정보 배열
+  // const [selectedZone, setSelectedZone] = useState(""); //구역 정보 관리(A,B,C,D)
+  // const [selectedZoneSeats, setSelectedZoneSeats] = useState([]); //해당 구역 자리 정보 배열
   const zones = ["A", "B", "C", "D"]; //구역 선택용 배열
   const navigate = useNavigate();
 
   //1. 구역별 정보를 가져오는 함수(자리보여주기)
-  const listArea = async (zone) => {
+  const listArea = async (zone) => { 
     setSelectedZone(zone);
-    const { data, error } = await fetchParkArea(zone);
+    const { data, error } = await fetchParkArea(zone, selectedDate);
     if (error) {
       alert("주차 자리 정보 불러오기 실패");
       setSelectedZoneSeats([]);
@@ -39,9 +39,7 @@ const FloorSelect = () => {
       alert("구역을 선택해주세요");
       return;
     }
-    navigate("/parkingSelect", {
-      state: { selectedZone, selectedZoneSeats }, //현재 지정된 상태로 넘기기
-    });
+    navigate("/parkingSelect");
   };
 
   //4. 구역 선택 후 다음 버튼을 누르면 ParkingSelect에 정보를 넘기기

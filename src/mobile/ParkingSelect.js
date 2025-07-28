@@ -38,7 +38,7 @@ const ParkingSelect = ({ reservation }) => {
       alert("주차 자리를 선택해주세요");
       return;
     }
-    navigate("/reserveTime")
+    navigate("/MobileReservation/Time")
   }
 
 // console.log(oneRow);

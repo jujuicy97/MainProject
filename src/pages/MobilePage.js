@@ -1,20 +1,39 @@
 import { Route, Routes } from "react-router-dom";
 import ReservesTime from "../components/ReservesTime";
-import LoginTest from "../utils/LoginTest";
 import ReservesAllDay from "../components/ReservesAllDay";
 import MainPageMobile from "../components/MainPageMobile";
 import HeaderMobile from "../components/HeaderMobile";
+import MainPageMobile from "../mobile/MainPageMobile";
+import MobileReservation from "../mobile/MobileReservation";
+import { useState } from "react";
+import HeaderMobile from "../mobile/HeaderMobile";
 
 
 const MobilePage = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedZone, setSelectedZone] = useState(null);
+  const [selectedZoneSeats, setSelectedZoneSeats] = useState([]);
+  const [selectSeatID, setSelectSeatID] = useState(null);
+  //날짜, 구역, 좌석 상태 관리
+  const reservationState = {
+    selectedDate,
+    setSelectedDate,
+    selectedZone,
+    setSelectedZone,
+    selectedZoneSeats,
+    setSelectedZoneSeats,
+    selectSeatID,
+    setSelectSeatID    
+  };
+  //메인페이지 -> 예약페이지
   return (
     <div className="mobile-page">
-      <HeaderMobile/>
+      <HeaderMobile />
       <Routes>
-        <Route path="/" element={<LoginTest/>}/>
+        <Route path="/" element={<MainPageMobile />}/>
+        <Route path="MobileReservation/*" element={<MobileReservation />}/>
         <Route path="/reservesTime" element={<ReservesTime/>}/>
         <Route path="/reservesAllDay" element={<ReservesAllDay/>}/>
-        {/* <Route path="/" element={<MainPageMobile/>}/> */}
       </Routes>
     </div>
   );

@@ -177,7 +177,7 @@
         border-top: 1px solid var(--color-graytxt);
         color: var(--color-maintxt);
         p{
-            margin: 2rem 0;
+            margin-top: 2rem;
             @include font-body;
             span{
                 color: var(--color-primary);
@@ -185,12 +185,22 @@
             }
         }
         h5{
+            margin-top: 2rem;
             color: var(--color-primary);
             @include font-h2;
         }
     }
+    .time-max{
+        width: 90%;
+        @include font-caption;
+        text-align: right;
+        margin-bottom: 2rem;
+        color: var(--color-primary);
+        font-weight: bold;
+    }
     .time-nextBtn{
         @include btn1;
         width: 95%;
+        margin-top: 1rem;
     }
 }

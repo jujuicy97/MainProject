@@ -194,8 +194,8 @@ const ReservesTime = () => {
       <div className="time-price">
         <p><span>{hourAndMinutes}</span> 이용 금액</p>
         <h5>{total.toLocaleString("ko-KR")}원</h5>
-        {total === maxPrice && <p>일 최대 요금이 적용되었습니다.</p>}
       </div>
+      {total === maxPrice && <p className="time-max">일 최대 요금이 적용되었습니다.</p>}
       <button 
       onClick={handleClick}
       disabled={total<= 0}

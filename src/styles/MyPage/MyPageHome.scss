@@ -67,7 +67,7 @@
       @include flex-layout();
       gap: 15px;
       .edit-card {
-        padding: 16px;
+        padding: 10px;
         background-color: var(--color-white);
         border: 1px solid var(--color-sub);
         border-radius: 16px;
@@ -75,6 +75,7 @@
         cursor: pointer;
         svg {
           font-size: 50px;
+          padding-left: 5px;
           path {
             color: var(--color-sub);
           }

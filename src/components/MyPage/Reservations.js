@@ -34,15 +34,33 @@ const Reservations = ({ onCancel }) => {
       fetchPrice();
     }
   }, []);
-  
 
-  // 내 예약 정보 중 예약 id 받아서 (전체 결제 내역 중 id) == (내 예약 id)가 일치하면 사물함 정보 반환
-  const getReseveAmount = (reserveID) => {
-    const matched = price.find((item) => {
-      return item.reserve_id === reserveID;
-    });
-    return matched ? matched.amount.toLocaleString() : ""; // 첫 로드 시 matched 값이 없으면 오류나지 않도록 방지
-  };
+// 내 예약 정보 중 예약 id 받아서 '전체 결제 내역 중 id' == '내 예약 id'가 일치하면 예약 정보 반환
+// 가격 숫자 그대로 반환
+const getReserveAmountValue = (reserveID) => {
+  const matched = price.find((item) => item.reserve_id === reserveID);
+  return matched ? matched.amount : 0;
+};
+// 가격 문자열로 반환
+const formatAmount = (amount) => amount.toLocaleString();
+
+
+// 현재 시간 불러오기
+const now = new Date();
+const sortedReserve = [...myreserve]
+  .sort((a, b) => {
+    // 취소된 예약은 가장 마지막에 오도록 정렬 우선순위 설정
+    if (a.status === "canceled" && b.status !== "canceled") return 1;
+    if (a.status !== "canceled" && b.status === "canceled") return -1;
+
+    // 취소되지 않은 예약은 날짜 + 시작 시간 기준으로 현재시간과의 거리 비교
+    const aTime = new Date(`${a.selected_date}T${a.start_time}`);
+    const bTime = new Date(`${b.selected_date}T${b.start_time}`);
+    const aDiff = Math.abs(aTime - now);
+    const bDiff = Math.abs(bTime - now);
+
+    return aDiff - bDiff; // 현재와 가까운 시간순 정렬
+  });
 
   return (
     <>
@@ -69,7 +87,9 @@ const Reservations = ({ onCancel }) => {
         </div>
 
         <div className="reserve-wrap">
-          {myreserve.map((item) => {
+
+          {sortedReserve.map((item) => {
+            const amountValue = getReserveAmountValue(item.id);
             return (
               <div
                 className={
@@ -94,22 +114,24 @@ const Reservations = ({ onCancel }) => {
                         month: "long",
                         day: "numeric",
                         weekday: "long",
-                      })} &nbsp;
-                      {item.start_time.slice(0,5)}~{item.end_time.slice(0,5)}
+                      })}{" "}
+                      &nbsp;
+                      {item.start_time.slice(0, 5)}~{item.end_time.slice(0, 5)}
                     </h2>
                   </div>
                   <div className="right-bottom">
-                    <h3>{getReseveAmount(item.id)}원 결제 완료</h3>
-                    {item.status === "active" ? (
+                    <h3>{formatAmount(amountValue)}원 결제 완료</h3>
+                    {item.status === "active" && (
                       <button
-                        onClick={() => {
-                          onCancel(item);
-                        }}
+                        onClick={() =>
+                          onCancel({
+                            item,
+                            amount: amountValue,
+                          })
+                        }
                       >
                         예약 취소
                       </button>
-                    ) : (
-                      ""
                     )}
                   </div>
                 </div>

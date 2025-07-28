@@ -174,7 +174,7 @@ export const fetchAmount = async ()=>{
 }
 
 /** 3. 예약취소 **/
-export const cancelReserve = async (reserveID,parkareaID)=>{
+export const cancelReserve = async (reserveID,parkareaZone,parkareaNum)=>{
     //reservations 상태변경
     const { error } = await supabase
         .from('reservations')
@@ -187,7 +187,8 @@ export const cancelReserve = async (reserveID,parkareaID)=>{
     const { error:parkareaError } = await supabase
         .from('parkarea')
         .update({is_reserved:false})
-        .eq('id',parkareaID);
+        .eq('zone',parkareaZone)
+        .eq('num',parkareaNum);
     if( parkareaError ){
         return {data:false,error:parkareaError}
     }
@@ -196,11 +197,22 @@ export const cancelReserve = async (reserveID,parkareaID)=>{
 
 /** 4. 비밀번호 변경 **/
 //비밀번호 확인에서 일치하는거
-export const changePassword = async (oldpass,newpass)=>{
+export const changePassword = async ({
+    id,
+    newPass,
+    newName,
+    newCar,
+    newPhone
+})=>{
     const { error } = await supabase
         .from('users')
-        .update({password:newpass})
-        .eq('password',oldpass);
+        .update({
+            password:newPass,
+            name:newName,
+            phone:newPhone,
+            car:newCar
+            })
+        .eq('id',id);
     return {error};
 }
 

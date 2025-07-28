@@ -7,13 +7,14 @@ const HeaderMobile = () => {
   return (
     <nav id="top-navbar">
       <div className="navbar-container">
-        <div className="arrow-icon" onClick={() => navigate('/')}>
+        <div className="arrow-icon" onClick={() => navigate('/')}>   {/* 뒤로가기 네비게이터 설정 */}
           <FaCaretLeft />
         </div>
         <p className="page-name">
           예약하기
         </p>
       </div>
+
     </nav>
   );
 };

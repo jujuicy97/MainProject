@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import FloorSelect from "../mobile/FloorSelect";
-import ParkingSelect from "../mobile/ParkingSelect";
-import ScheduleSelect from "../mobile/ScheduleSelect";
+import MainPageMobile from "../mobile/MainPageMobile";
+import MobileReservation from "../mobile/MobileReservation";
 import { useState } from "react";
+import HeaderMobile from "../mobile/HeaderMobile";
 
 const MobilePage = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedZone, setSelectedZone] = useState(null);
   const [selectedZoneSeats, setSelectedZoneSeats] = useState([]);
   const [selectSeatID, setSelectSeatID] = useState(null);
@@ -20,13 +20,13 @@ const MobilePage = () => {
     selectSeatID,
     setSelectSeatID    
   };
-  
+  //메인페이지 -> 예약페이지
   return (
     <div className="mobile-page">
+      <HeaderMobile />
       <Routes>
-        <Route path="/" element={<ScheduleSelect selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>}/>
-        <Route path="/floorSelect" element={<FloorSelect reservation={reservationState} />} />  
-        <Route path="/parkingSelect" element={<ParkingSelect reservation={reservationState} />}/>
+        <Route path="/" element={<MainPageMobile />}/>
+        <Route path="MobileReservation/*" element={<MobileReservation />}/>
       </Routes>
     </div>
   );

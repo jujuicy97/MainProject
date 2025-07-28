@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-//오늘의 날짜 구하는 함수
+//날짜 정보 불러오기
 const IconTitle = ({title, selectedDate}) => {
+  if( !selectedDate ) return null;
   const propDate = selectedDate ? new Date(selectedDate) : new Date();
   const year = propDate.getFullYear();
   const month = propDate.getMonth() +1;

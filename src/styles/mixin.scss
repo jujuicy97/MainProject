@@ -67,6 +67,7 @@
     background-color: var(--color-sub);   // sub컬러 
     color: var(--color-maintxt);   // main 텍스트 색
     @include font-h3();
+    font-weight: 600;
     &:hover {
       filter: brightness(90%);
     }

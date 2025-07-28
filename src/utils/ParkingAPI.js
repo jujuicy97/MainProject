@@ -1,6 +1,7 @@
 import { supabase } from "./supabaseClient";
 
 //혹시라도 이해안되시면 설명해드릴테니 편히 말씀주세요!
+//test
 
 
 /** 회원가입 페이지 - 정우 */ 

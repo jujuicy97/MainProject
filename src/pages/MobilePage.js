@@ -1,8 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import ReservesTime from "../components/ReservesTime";
-import ReservesAllDay from "../components/ReservesAllDay";
-import MainPageMobile from "../components/MainPageMobile";
-import HeaderMobile from "../components/HeaderMobile";
 import MainPageMobile from "../mobile/MainPageMobile";
 import MobileReservation from "../mobile/MobileReservation";
 import { useState } from "react";
@@ -32,8 +28,6 @@ const MobilePage = () => {
       <Routes>
         <Route path="/" element={<MainPageMobile />}/>
         <Route path="MobileReservation/*" element={<MobileReservation />}/>
-        <Route path="/reservesTime" element={<ReservesTime/>}/>
-        <Route path="/reservesAllDay" element={<ReservesAllDay/>}/>
       </Routes>
     </div>
   );

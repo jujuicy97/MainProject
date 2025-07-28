@@ -3,40 +3,23 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { GoClockFill } from "react-icons/go";
 import { PiWarningFill } from "react-icons/pi";
 import { getUserInfo } from "../utils/LocalStorage";
-import { reserveAndPay } from "../utils/ParkingAPI";
 import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
 
-const ReservesTime = () => {
-  const [date, setDate] = useState(''); // 현재 날짜 관리
+
+const ReservesTime = ({reservation}) => {
   const [startTime, setStartTime] = useState(''); // 시작 시간관리
   const [endTime, setEndTime] = useState(''); // 종료 시간관리
   const [hours, setHours] = useState(0); // 선택한 시간 관리
-  const [hourAndMinutes, setHourAndMinutes] = useState('0시간');
+  const [hourAndMinutes, setHourAndMinutes] = useState('0시간'); // 총 시간 관리
   const [firstPrice, setFirstPrice] = useState(2000); // 최초 1시간 요금
   const [halfPrice, setHalfPrice] = useState(1000); // 이후 30분당 요금
   const [maxPrice, setMaxPrice] = useState(15000); // 일 최대 요금
   const [total, setTotal] = useState(0); // 총 금액 관리
-  const [user, setUser] = useState(''); // 유저 정보 관리
-  // const [selectArea , setSelectArea] = useState(''); // 선택한 자리 관리
+  const [selectArea , setSelectArea] = useState(''); // 선택한 자리 관리
    const [popUp1, setPopUp1] = useState(false); // 팝업 상태 관리 1
    const [popUp2, setPopUp2] = useState(false); // 팝업 상태 관리 2
   const navigate = useNavigate('');
-
-  //↓↓ 유저 정보 불러오기
-  useEffect(() => { 
-    const saved = getUserInfo();
-    setUser(saved);
-  }, []);
-
-  useEffect(() => {  // 현재 날짜 불러오기
-    const today = new Date(); //현재 날짜 불러오기
-    const year = today.getFullYear(); // 현재 연도 불러오기
-    const month = today.getMonth() + 1; // 현재 월 불러오기 0부터 시작함으로 +1주기
-    const date = today.getDate(); // 현재 일 불러오기
-    const day = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'][today.getDay()];
-    setDate(`${year}년 ${month}월 ${date}일 ${day}`);
-  }, [])
 
   //↓↓ 소수점으로 된 시간 값을 넘겨 받아 "시간 분" 형식으로 변환하는 함수
   const formatTime = (totalHours) => {  // 시간을 받아오기
@@ -88,24 +71,16 @@ const ReservesTime = () => {
     }
   }, [startTime, endTime, firstPrice, halfPrice, maxPrice]); //← 안에 있는 값중에 하나라도 바뀌면 다시 계산해라
 
+
   //↓↓ 다음 버튼을 클릭했을 때 처리
-  const handleClick = async()=>{  
-      const {date,error} = await reserveAndPay({ // 데이터와 에러값을 받아오기
-        userID : user,
-        // parkareaID : SelectArea, // 자리정보 받아와서 저장하기
-        startTime : startTime,
-        endTime :  endTime,
-        amount :  total
-      });
-      if( error ){
-        setPopUp1(true); // 에러 팝업 창 열어주기
-        return
-      }
-      if(date){
-        navigate('/'); // 다음페이지로 넘겨주기
-      }
-      console.log(user,startTime,endTime,total) // 정보 받아온 후 제대로 값이 나오는지 확인
+  const handleClick = ()=>{
+    reservation.setSelectStartTime(startTime);
+    reservation.setSelectEndTime(endTime);
+    reservation.setSelectTotal(total);
+    reservation.setSelectTime(hourAndMinutes);
+    navigate('/') //다음페이지로 넘겨주기
   }
+  console.log(startTime,endTime,total,hourAndMinutes);
 
   return (
     <div className="reserves-time">
@@ -121,21 +96,30 @@ const ReservesTime = () => {
       <div className={`pop ${popUp2 ? "active" : ''}`}>
         <div className="pop-up">
         <p><PiWarningCircleFill /></p>
-        <p>종료 시간은<br/>시작 시간 이후로 설정해주세요</p>
+      <p>종료 시간은<br/>시작 시간 이후로 설정해주세요!</p>
         <button onClick={()=>{setPopUp2(false)}}>닫기</button>
          </div>
       </div>
-      <p><FaRegCalendarAlt /> {date}</p>
+      <p className="time-date">
+        <FaRegCalendarAlt />  {reservation.selectedDate ? 
+        reservation.selectedDate.toLocaleDateString("ko-KR",{
+           year: 'numeric', 
+           month: 'long', 
+          day: 'numeric',
+          weekday: 'long'
+        })
+         : "날짜를 선택해주세요"}
+      </p>
       <h2><span><GoClockFill /></span> 이용시간 선택</h2>
       <div className="time-seat">
         <p>선택한자리</p>
         {/* <h1>{selectArea}</h1>   // 정보 받아오면 적용해보기  */}
-        <h1>A-20</h1>
+        <h1>{reservation.selectedZone} - {reservation.selectSeatID}</h1>
       </div>
       <div className="time-btn">
         <button><GoClockFill /> 시간제</button>
         <button
-        onClick={()=>{navigate('/reservesAllDay')}}
+        onClick={()=>{navigate('/MobileReservation/AllDay')}}
         ><FaRegCalendarAlt /> 일일권</button>
       </div>
       <h3>주차 시간 선택</h3>

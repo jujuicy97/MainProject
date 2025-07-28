@@ -1,10 +1,12 @@
 import { supabase } from "./supabaseClient";
 
 //혹시라도 이해안되시면 설명해드릴테니 편히 말씀주세요!
-// 페이지별로 필요한 것들을 나눠두었습니다! 작업하실때 페이지별로 보고 사용하시면 될 것 같습니다 :) - 정우
+//test
 
-{/** 회원가입 페이지 */} 
-/** 1. 로그인 **/ //체크완
+
+/** 회원가입 페이지 - 정우 */ 
+/** 1. 로그인 **/
+//필요한 정보 : input에 입력된 userID와 password
 export const fetchLogin = async (userID,password)=>{
     const { data, error } = await supabase
         .from('users')
@@ -15,7 +17,17 @@ export const fetchLogin = async (userID,password)=>{
     return {data,error};
 }
 
-/** 2. 회원가입 **/ //체크완
+/** 2. 회원가입 **/
+
+//중복된 아이디 확인을 위한 users테이블의  user_id 정보 가져오기
+export const fetchAllUserId = async ()=>{
+    const { data, error } = await supabase
+        .from('users')
+        .select('user_id')
+    return {data,error};
+}
+
+//필요한 정보 : 이름, 아이디, 비밀번호, 차량번호, 휴대폰번호 전부 input value
 export const fetchSignUp = async (
     username,
     userID,
@@ -36,7 +48,8 @@ export const fetchSignUp = async (
     return {success:!error,error};
 }
 
-/** 3. 아이디 찾기 **/ //체크완
+/** 3. 아이디 찾기 **/
+//필요한 정보 : 이름, 휴대폰번호 입력후 일치하는 users정보에서 user_id만 가져오기
 export const findUserId = async (username,phone)=>{
     const { data, error } = await supabase
         .from('users')
@@ -48,6 +61,7 @@ export const findUserId = async (username,phone)=>{
 }
 
 /** 4. 비밀번호 찾기-변경 **/
+//필요한 정보 : 이름,휴대폰,아이디로 해당되는 users정보를 찾아서 새로 입력한 비밀번호로 변경하기
 export const findPassword = async (username,phone,userID,newpass)=>{
     const { data, error } = await supabase
         .from('users')
@@ -58,6 +72,12 @@ export const findPassword = async (username,phone,userID,newpass)=>{
         .single();
     return {data,error};
 }
+
+/** 메인페이지 */
+// 예약하기 구역선택 쪽 참고 //
+// 날짜만 오늘 날짜로 설정해서 실시간 업데이트되게 바꾸면 될것같습니다
+
+
 
 /** 마이페이지 */
 /** 1. 예약내역확인 **/

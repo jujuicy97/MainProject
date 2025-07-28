@@ -13,7 +13,6 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     @keyframes spin {
       from {
         transform: rotate(0deg);
@@ -24,7 +23,6 @@
     }
     .top-info {
       @include flex-layout(row, space-between);
-
       .left {
         @include flex-layout();
         gap: 7px;
@@ -110,6 +108,7 @@
               span {
                 width: 12px;
                 height: 12px;
+                background-color: #ff8080;
                 border-radius: 50%;
                 display: inline-block;
                 margin-right: 5px;

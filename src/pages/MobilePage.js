@@ -5,6 +5,7 @@ import { useState } from "react";
 import HeaderMobile from "../mobile/HeaderMobile";
 import BottomNavBarMobile from "../mobile/BottomNavBarMobile";
 
+
 const MobilePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedZone, setSelectedZone] = useState(null);

@@ -63,7 +63,7 @@ const MobilePage = () => {
         <Route path="/findpw/changedpw" element={<ChangedPw/>}/>
         <Route path="MobileReservation/*" element={<MobileReservation />}/>
       </Routes>
-      <BottomNavBarMobile/>
+      {/* <BottomNavBarMobile/> */}
     </div>
   );
 };

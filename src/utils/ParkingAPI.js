@@ -295,11 +295,11 @@ export const loadZoneSeats = async (selectZone,selectDate,userID)=>{
 // id는 localStorage에서 가지고오기
 
 // 연간회원권 할인
-export const fetchYearlyPass = async (id)=>{
+export const fetchYearlyPass = async (uid)=>{
     const { data, error } = await supabase
         .from('users')
         .select('yearly_pass')
-        .eq('id',id)
+        .eq('id',uid)
     return {data,error};
 }
 

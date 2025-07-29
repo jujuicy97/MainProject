@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import BottomNavBarMobile from "./BottomNavBarMobile";
-import MainHeaderMobile from "./MainHeaderMobile";
-
 import { FaCar, FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import { HiTicket, HiInformationCircle } from "react-icons/hi";
 import { FaCaretRight } from "react-icons/fa";
-// import { ReactComponent as Parking } from "..icons/Parking.svg";
+import { BsStars } from "react-icons/bs";
 
 import { getAllseatsByDate } from "../utils/ParkingAPI";
-import Footer from "./Footer";
 
 // 잔여석에 따른 혼잡도 상태 반환
 const getParkingStatus = (remaining) => {
@@ -32,7 +28,7 @@ const getParkingStatus = (remaining) => {
   };
 };
 
-const MainPageMobile = () => {
+const MainPageD = () => {
   const navigate = useNavigate();
   const [zoneData, setZoneData] = useState({}); // A,B,C,D 데이터 저장
   const [isSpinning, setIsSpinning] = useState(false); // 아이콘 회전 상태
@@ -71,14 +67,15 @@ const MainPageMobile = () => {
   }, []);
 
   return (
-    <div id="main-page">
-      <MainHeaderMobile />
-
+    <div id="main-pageD">
       <div className="zone-map">
         {/* 상단 날짜 및 새로고침 */}
         <div className="top-info">
           <div className="left">
-            <img src={`${process.env.PUBLIC_URL}/images/Parking.svg`} alt="icon" />
+            <img
+              src={`${process.env.PUBLIC_URL}/images/Parking.svg`}
+              alt="icon"
+            />
             <div className="date-info">
               <p>{formatted}</p>
               <h3>드림랜드 실시간 주차 현황</h3>
@@ -179,15 +176,51 @@ const MainPageMobile = () => {
             <HiTicket className="icon" />내 예약 내역
           </button>
         </div>
+      </div>
 
-        <div className="more-info" onClick={() => navigate("/")}>
-          더 많은 정보 보기
-          <FaCaretRight className="icon" />
+      {/* 드림랜드 파크가 처음이신가요?  */}
+      <div className="welcome-section">
+        <div className="welcome-wrap">
+          <div className="welcome-text">
+            <div className="top">
+              <h2>드림랜드 파크가<br/>처음이신가요?</h2>
+              <p>처음 방문자를 위한 가이드를 확인하세요!</p>
+            </div>
+
+            <p className="btn">가이드 보기</p>
+          </div>
         </div>
       </div>
-      <Footer/>
+
+      {/* 운영시설 안내 */}
+      <div className="facility-section">
+        <div className="facility-wrap">
+          <div className="facility-title">
+            <BsStars className="icon" />
+            <h2>운영시설 안내</h2>
+          </div>
+          <ul className="facility-btn-list">
+            <li className="facility-item">
+
+              <p>어트랙션</p>
+            </li>
+            <li className="facility-item">
+
+              <p>공연</p>
+            </li>
+            <li className="facility-item">
+
+              <p>레스토랑</p>
+            </li>
+            <li className="facility-item">
+
+              <p>기프트샵</p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default MainPageMobile;
+export default MainPageD;

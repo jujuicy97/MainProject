@@ -1,12 +1,12 @@
 .complete {
   max-width: $small-size;
   height: 100%;
-  margin: 70px auto;
+  margin: 0 auto;
   padding: 0 16px;
   @include flex-layout(column, space-between, center);
   .complete-contents {
     text-align: center;
-    margin: 150px 0;
+    margin: 220px 0;
     svg {
       margin-bottom: 20px;
       font-size: 7rem;

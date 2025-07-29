@@ -9,6 +9,7 @@ import ReservationPayment from "./ReservationPayment";
 import { getPaymentInfo, savePaymentInfo } from "../utils/LocalStorage";
 
 const MobileReservation = () => {
+  const [finalAmount,setFinalAmount] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedZone, setSelectedZone] = useState(null);
   const [selectedZoneSeats, setSelectedZoneSeats] = useState([]);
@@ -89,6 +90,7 @@ const MobileReservation = () => {
         element={
           <ReservationPayment
             reservation={reservationState}
+            setFinalAmount={setFinalAmount}
           />
         }
       />

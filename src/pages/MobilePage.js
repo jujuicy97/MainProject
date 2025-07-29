@@ -1,3 +1,5 @@
+
+import MyPage from "../components/MyPage/MyPage";
 import { Route, Routes } from "react-router-dom";
 import MainPageMobile from "../mobile/MainPageMobile";
 import MobileReservation from "../mobile/MobileReservation";
@@ -25,6 +27,7 @@ const MobilePage = () => {
   //메인페이지 -> 예약페이지
   return (
     <div className="mobile-page">
+      <MyPage />
       <HeaderMobile />
       <Routes>
         <Route path="/" element={<MainPageMobile />}/>

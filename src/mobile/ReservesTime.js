@@ -78,7 +78,7 @@ const ReservesTime = ({reservation}) => {
     reservation.setSelectEndTime(endTime);
     reservation.setSelectTotal(total);
     reservation.setSelectTime(hourAndMinutes);
-    navigate('/') //다음페이지로 넘겨주기
+    navigate('/MobileReservation/payment') //다음페이지로 넘겨주기
   }
   console.log(startTime,endTime,total,hourAndMinutes);
 

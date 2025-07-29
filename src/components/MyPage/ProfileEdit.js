@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getUserInfo } from "../../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
 import { changePassword } from "../../utils/ParkingAPI";
@@ -7,26 +7,21 @@ const ProfileEdit = () => {
   const user = getUserInfo();
   const navigate = useNavigate();
   const [name, setName] = useState(user.name);
-  const [password, setPassword] = useState(user.password);
-  const [passwordCheck, setPasswordCheck] = useState(user.password);
+  const [password, setPassword] = useState('');
+  const [passwordCheck, setPasswordCheck] = useState('');
   const [passwordChecked, setPasswordChecked] = useState(false);
   const [phone, setPhone] = useState(user.phone);
   const [carNum, setCarNum] = useState(user.car);
 
-  const handlePasswordInput = (e) => {
-    setPassword(e.target.value)
-    setPasswordCheck('')
-    if( password === passwordCheck ){
-        setPasswordChecked(true);
-    }
-  }
-
+  useEffect(() => {
+    setPasswordChecked(password !== '' && password === passwordCheck);
+  }, [password, passwordCheck]);
 
 
   const handleupdateUser = async ( e ) => {
     e.preventDefault(); // 폼 제출 방지
 
-    if (password !== passwordCheck) {
+    if (!passwordChecked) {
       alert("비밀번호가 일치하지 않아요!");
       return;
     }
@@ -51,7 +46,6 @@ const ProfileEdit = () => {
       phone: phone,
     };
     localStorage.setItem("park_user", JSON.stringify(updatedUser));
-
     navigate("/profile-complete");
   }
 
@@ -79,15 +73,13 @@ const ProfileEdit = () => {
               value={password}
               type="password"
               placeholder="비밀번호를 입력해 주세요 (영문+숫자 조합 8자리 이상)"
-              onChange={(e)=>{handlePasswordInput(e)}}
+              onChange={(e)=>{setPassword(e.target.value)}}
             />
           </div>
           <div className="input-box">
             <div className="input-title">
               <p>비밀번호 재확인</p>
-              {
-                passwordChecked ? '':<p className="success-ment">비밀번호가 일치해요!</p>
-              }
+              { passwordChecked && <p className="success-ment">비밀번호가 일치해요!</p> }
               
             </div>
             <input

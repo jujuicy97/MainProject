@@ -30,7 +30,7 @@ const Membership = () => {
             회원 번호를 입력해 주세요</h2>
         <input 
           value={memNum}
-          type="number" 
+          type="text" 
           placeholder="회원 번호를 입력해 주세요  ex) 0000-0000-0000"
           onChange={(e)=>{setMemNum(e.target.value)}}
           onKeyDown={(e)=>{

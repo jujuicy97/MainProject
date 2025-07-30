@@ -28,10 +28,10 @@ const MyPageHome = () => {
       }
   }, [])
 
-  const handleLogout = () => {  // 로그아웃 함수
+  const handleLogout = () => {
     deleteUserInfo();
-    navigate("/");
-  }
+    window.location.href = "/"; // ✅ 강제 새로고침
+};
 
 
   return (

@@ -1,24 +1,41 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import MainHeaderMobile from "./MainHeaderMobile";
-
-import { ReactComponent as Parking } from "../icons/Parking.svg";
 import { FaCar, FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import { HiTicket, HiInformationCircle } from "react-icons/hi";
-import { FaCaretRight } from "react-icons/fa";
+import { BsStars } from "react-icons/bs";
+import { GoClockFill } from "react-icons/go";
+import { PiMicrophoneStageFill } from "react-icons/pi";
+import { MdAttractions } from "react-icons/md";
+import { ImSpoonKnife } from "react-icons/im";
+import { FaGift } from "react-icons/fa6";
 import { PiWarningCircleFill } from "react-icons/pi";
+
+import { ReactComponent as Parking } from "../icons/Parking.svg";
+import { ReactComponent as CarBody } from "../icons/Car_ani.svg";
+import { ReactComponent as CarSmoke } from "../icons/Smoke_ani.svg";
+import { ReactComponent as CarShadow } from "../icons/Shadow_ani.svg";
+
+import attractionsData from "../data/attractions.json";
 
 import { getAllseatsByDate } from "../utils/ParkingAPI";
 import { getUserInfo } from "../utils/LocalStorage"; // 로그인 확인
-import Footer from "./Footer";
 
-const MainPageMobile = () => {
+const MainPageD = () => {
   const navigate = useNavigate();
   const [zoneData, setZoneData] = useState({}); // A,B,C,D 데이터 저장
   const [isSpinning, setIsSpinning] = useState(false); // 아이콘 회전 상태
+  const [activeCategory, setActiveCategory] = useState("attraction");
+  const [items, setItems] = useState([]);
   const [loginCheck, setLoginCheck] = useState(null); // 로그인 체크
   const [showAlert, setShowAlert] = useState(false); // 알림 모달 상태
+
+  const categories = [
+    { id: "attraction", label: "어트랙션", icon: <MdAttractions /> },
+    { id: "show", label: "공연", icon: <PiMicrophoneStageFill /> },
+    { id: "restaurant", label: "레스토랑", icon: <ImSpoonKnife /> },
+    { id: "gift", label: "기프트샵", icon: <FaGift /> },
+  ];
 
   const now = new Date();
   const formatted = now.toLocaleString("ko-KR", {
@@ -64,6 +81,14 @@ const MainPageMobile = () => {
     }
   };
 
+  useEffect(() => {
+    // 카테고리 필터링 (현재는 어트랙션만)
+    const filtered = attractionsData.filter(
+      (item) => activeCategory === "attraction"
+    );
+    setItems(filtered);
+  }, [activeCategory]);
+
   const handleRedo = () => {
     // 새로고침 데이터
     fetchData();
@@ -75,7 +100,6 @@ const MainPageMobile = () => {
 
   useEffect(() => {
     fetchData();
-    window.scrollTo(0,0);
   }, []);
 
   const handleProtectedNav = (path) => {
@@ -90,9 +114,10 @@ const MainPageMobile = () => {
     setLoginCheck(getUserInfo()); // 로그인 상태 체크
   }, []);
 
+  // ************** //
+
   return (
-    <div id="main-page">
-      <MainHeaderMobile />
+    <div id="main-pageD">
       {showAlert && (
         <div className="alert-overlay">
           <div className="alert-box">
@@ -102,6 +127,7 @@ const MainPageMobile = () => {
           </div>
         </div>
       )}
+
       <div className="zone-map">
         {/* 상단 날짜 및 새로고침 */}
         <div className="top-info">
@@ -194,12 +220,14 @@ const MainPageMobile = () => {
           className="reserve-btn"
           onClick={() => handleProtectedNav("MobileReservation/schedule")}
         >
-          <FaCar className="car-icon" />
+          <FaCar
+            className="car-icon"
+          />
           주차 예약하기
         </button>
 
         <div className="info-buttons">
-          <button className="info-btn" onClick={() => navigate("/information")}>
+          <button className="info-btn" onClick={() => navigate("/")}>
             <HiInformationCircle className="icon" />
             주차 안내
           </button>
@@ -210,15 +238,74 @@ const MainPageMobile = () => {
             <HiTicket className="icon" />내 예약 내역
           </button>
         </div>
+      </div>
 
-        <div className="more-info" onClick={() => navigate("/information")}>
-          더 많은 정보 보기
-          <FaCaretRight className="icon" />
+      {/* 드림랜드 파크가 처음이신가요?  */}
+      <div className="welcome-section">
+        <div className="welcome-wrap">
+          <div className="text-area">
+            <div className="top">
+              <h2>
+                드림랜드 파크가
+                <br />
+                처음이신가요?
+              </h2>
+              <p>처음 방문자를 위한 가이드를 확인하세요!</p>
+            </div>
+            <p className="btn">가이드 보기</p>
+          </div>
+          <div className="car-wrapper">
+            <CarShadow className="shadow" />
+            <CarSmoke className="smoke" />
+            <CarBody className="car" />
+          </div>
         </div>
       </div>
-      <Footer />
+
+      {/* 운영시설 안내 */}
+      <div className="facility-section">
+        <div className="facilities">
+          <h2 className="title">
+            <BsStars />
+            운영 시설
+          </h2>
+          <div className="categories">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`category-btn ${
+                  activeCategory === cat.id ? "active" : ""
+                }`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {cat.icon}
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="attraction-list">
+            {items.map((item) => (
+              <div key={item.id} className="attraction-item">
+                <div className="img-wrap">
+                  <img src={item.img} alt={item.title} />
+                </div>
+                <div className="info">
+                  <span className="tag">{item.category}</span>
+                  <p>{item.title}</p>
+                  <div className="time">
+                    <GoClockFill /> <p>{item.time}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="more">더보기</div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default MainPageMobile;
+export default MainPageD;

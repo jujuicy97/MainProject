@@ -27,6 +27,8 @@ const BottomNavBarMobile = () => {
         <div
           className={`icon ${isActive('/mypage/reservation') ? 'active' : ''}`}
           onClick={() => navigate('/mypage/reservation')}
+          className={`icon ${isActive('mypage/reservation') ? 'active' : ''}`}
+          onClick={() => navigate('mypage/reservation')}
         >
           <HiTicket />
         </div>

@@ -25,3 +25,8 @@ export const getPaymentInfo = ()=>{
     const saved = JSON.parse(localStorage.getItem("payment"));
     return saved;
 }
+
+export const getFinalAmountInfo = ()=>{
+    const saved = JSON.parse(localStorage.getItem("payment"));
+    return saved;
+}

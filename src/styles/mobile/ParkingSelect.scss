@@ -1,6 +1,6 @@
 .parking-select{
     max-width: $small-size;
-    // height: 100vh;
+    height: 100%;
     margin: 0 auto;
     padding: 70px 16px;
     .reserve-notice{
@@ -14,7 +14,8 @@
                 width: 30px;           
                 height: 30px;
                 border-radius: 50%;     
-                display: flex;          
+                display: flex; 
+                @include flex-layout();         
                 justify-content: center;
                 align-items: center;
                 gap: 0.5rem;
@@ -53,7 +54,7 @@
     .top-wrapper {
     @include flex-layout(column);
     height: 90px;
-    gap: 1.5rem;
+    gap: 6px;
     margin: 1.5rem 0;
     // border: 1px solid #222;
     .top1 {

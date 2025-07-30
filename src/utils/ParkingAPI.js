@@ -89,11 +89,7 @@ export const findPassword = async (id,newPass)=>{
 
 
 
-<<<<<<< HEAD
-
-=======
 /** 마이페이지 */
->>>>>>> upstream/master
 /** 1. 예약내역확인 **/
 export const fetchMyReserve = async (userID)=>{
     const { data, error } = await supabase

@@ -25,8 +25,8 @@ const BottomNavBarMobile = () => {
           <FaCar />
         </div>
         <div
-          className={`icon ${isActive('/ticket') ? 'active' : ''}`}
-          onClick={() => navigate('/ticket')}
+          className={`icon ${isActive('mypage/reservation') ? 'active' : ''}`}
+          onClick={() => navigate('mypage/reservation')}
         >
           <HiTicket />
         </div>

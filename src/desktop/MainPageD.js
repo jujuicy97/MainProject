@@ -9,6 +9,7 @@ import { PiMicrophoneStageFill } from "react-icons/pi";
 import { MdAttractions } from "react-icons/md";
 import { ImSpoonKnife } from "react-icons/im";
 import { FaGift } from "react-icons/fa6";
+import { PiWarningCircleFill } from "react-icons/pi";
 
 import { ReactComponent as Parking } from "../icons/Parking.svg";
 import { ReactComponent as CarBody } from "../icons/Car_ani.svg";
@@ -18,6 +19,7 @@ import { ReactComponent as CarShadow } from "../icons/Shadow_ani.svg";
 import attractionsData from "../data/attractions.json";
 
 import { getAllseatsByDate } from "../utils/ParkingAPI";
+import { getUserInfo } from "../utils/LocalStorage"; // 로그인 확인
 
 const MainPageD = () => {
   const navigate = useNavigate();
@@ -25,12 +27,14 @@ const MainPageD = () => {
   const [isSpinning, setIsSpinning] = useState(false); // 아이콘 회전 상태
   const [activeCategory, setActiveCategory] = useState("attraction");
   const [items, setItems] = useState([]);
+  const [loginCheck, setLoginCheck] = useState(null); // 로그인 체크
+  const [showAlert, setShowAlert] = useState(false); // 알림 모달 상태
 
   const categories = [
     { id: "attraction", label: "어트랙션", icon: <MdAttractions /> },
     { id: "show", label: "공연", icon: <PiMicrophoneStageFill /> },
     { id: "restaurant", label: "레스토랑", icon: <ImSpoonKnife /> },
-    { id: "gift", label: "기프트샵", icon: <FaGift/> },
+    { id: "gift", label: "기프트샵", icon: <FaGift /> },
   ];
 
   const now = new Date();
@@ -98,10 +102,32 @@ const MainPageD = () => {
     fetchData();
   }, []);
 
+  const handleProtectedNav = (path) => {
+    if (loginCheck) {
+      navigate(path);
+    } else {
+      setShowAlert(true); // 로그인 안 되어 있으면 알림창 띄움
+    }
+  };
+
+  useEffect(() => {
+    setLoginCheck(getUserInfo()); // 로그인 상태 체크
+  }, []);
+
   // ************** //
 
   return (
     <div id="main-pageD">
+      {showAlert && (
+        <div className="alert-overlay">
+          <div className="alert-box">
+            <PiWarningCircleFill />
+            <p>로그인을 먼저 해주세요.</p>
+            <button onClick={() => setShowAlert(false)}>확인</button>
+          </div>
+        </div>
+      )}
+
       <div className="zone-map">
         {/* 상단 날짜 및 새로고침 */}
         <div className="top-info">
@@ -192,9 +218,11 @@ const MainPageD = () => {
       <div className="reservation-section">
         <button
           className="reserve-btn"
-          onClick={() => navigate("MobileReservation/schedule")}
+          onClick={() => handleProtectedNav("MobileReservation/schedule")}
         >
-          <FaCar className="car-icon" />
+          <FaCar
+            className="car-icon"
+          />
           주차 예약하기
         </button>
 
@@ -203,7 +231,10 @@ const MainPageD = () => {
             <HiInformationCircle className="icon" />
             주차 안내
           </button>
-          <button className="info-btn" onClick={() => navigate("/")}>
+          <button
+            className="info-btn"
+            onClick={() => handleProtectedNav("mypage/reservation")}
+          >
             <HiTicket className="icon" />내 예약 내역
           </button>
         </div>
@@ -234,7 +265,10 @@ const MainPageD = () => {
       {/* 운영시설 안내 */}
       <div className="facility-section">
         <div className="facilities">
-          <h2 className="title"><BsStars/>운영 시설</h2>
+          <h2 className="title">
+            <BsStars />
+            운영 시설
+          </h2>
           <div className="categories">
             {categories.map((cat) => (
               <button
@@ -259,7 +293,9 @@ const MainPageD = () => {
                 <div className="info">
                   <span className="tag">{item.category}</span>
                   <p>{item.title}</p>
-                  <div className="time"><GoClockFill/> <p>{item.time}</p></div>
+                  <div className="time">
+                    <GoClockFill /> <p>{item.time}</p>
+                  </div>
                 </div>
               </div>
             ))}

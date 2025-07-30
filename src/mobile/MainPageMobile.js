@@ -75,6 +75,7 @@ const MainPageMobile = () => {
 
   useEffect(() => {
     fetchData();
+    window.scrollTo(0,0);
   }, []);
 
   const handleProtectedNav = (path) => {
@@ -198,7 +199,7 @@ const MainPageMobile = () => {
         </button>
 
         <div className="info-buttons">
-          <button className="info-btn" onClick={() => navigate("/")}>
+          <button className="info-btn" onClick={() => navigate("/information")}>
             <HiInformationCircle className="icon" />
             주차 안내
           </button>

@@ -1,0 +1,221 @@
+<<<<<<< HEAD
+.information-page {
+  max-width: $small-size;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 70px 0;
+  .slider-container {
+    width: 100%;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .information-section {
+    margin-top: 30px;
+    .title {
+      display: flex;
+      padding: 16px;
+      h2 {
+        @include font-h2;
+        color: var(--color-maintxt);
+      }
+      svg {
+        font-size: 2rem;
+        path {
+          color: var(--color-secondary);
+        }
+      }
+    }
+    .items-wrap {
+      padding: 0 30px;
+      width: 100%;
+      @include flex-layout(column, wrap, center);
+      gap: 8px;
+      .item {
+        width: 100%;
+        height: 110px;
+        @include flex-layout(row, space-between);
+        border: 1px solid var(--color-sub);
+        border-radius: 16px;
+        box-shadow: 0px 0px 15px rgba(220, 213, 232, 0.5);
+        padding: 10px 30px;
+        p {
+          @include font-body;
+          color: var(--color-maintxt);
+          span {
+            @include font-body-bold;
+          }
+        }
+        img {
+          width: 100px;
+        }
+      }
+    }
+
+    .dicount-wrap {
+      padding: 0 30px;
+      width: 100%;
+      @include flex-layout(column, wrap, center);
+      gap: 8px;
+      .item {
+        width: 100%;
+        height: 110px;
+        @include flex-layout(row, space-between);
+        border: 1px solid var(--color-sub);
+        border-radius: 16px;
+        box-shadow: 0px 0px 15px rgba(220, 213, 232, 0.5);
+        padding: 30px 20px;
+        .txt {
+          p {
+            @include font-body-bold;
+            color: var(--color-maintxt);
+            text-align: right;
+          }
+          .wrap {
+            @include flex-layout(row, center, center);
+            gap: 5px;
+            p {
+              @include font-body-bold;
+              color: var(--color-maintxt);
+            }
+            span {
+              @include font-h1;
+              color: var(--color-primary);
+            }
+          }
+        }
+        img {
+          width: 100px;
+        }
+      }
+    }
+    .content {
+      width: 100%;
+      height: auto; // 높이 자동 조절
+  min-height: 300px; // 최소 높이 지정 가능
+      .parking-img {
+        margin: 10px auto;
+        display: block;
+        img {
+          width: 100%;
+          object-fit: cover;
+          padding: 0 16px;
+=======
+#information {
+  max-width: $small-size;
+  margin: 0 auto;
+  height: 100%;
+  padding: 70px 0;
+  ul {
+    @include flex-layout(row, flex-start, center);
+    gap: 25px;
+    padding: 0 25px;
+    margin-top: 30px;
+    // border-bottom: 2px solid var(--color-lightgraytxt);
+    li {
+      @include font-h3();
+      height: 40px;
+      cursor: pointer;
+      &.active {
+        color: var(--color-primary);
+        border-bottom: 3px solid var(--color-primary);
+      }
+    }
+  }
+  // ----- map -----
+  .info-map {
+    background-color: #F8F7FA;
+    padding: 28px;
+    padding-bottom: 87px;
+    .map-content {
+      border-radius: 16px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  // ----- price -----
+  .info-price {
+    padding: 35px 25px;
+    padding-bottom: 150px;
+    .price-content {
+      @include flex-layout(column, center, flex-start);
+      gap: 20px;
+      .content-title {
+        @include font-h3();
+        @include flex-layout();
+        gap: 11px;
+        padding: 0 10px;
+      }
+      > img {
+        width: 100%;
+      }
+      .content-ment {
+        padding: 15px 20px;
+        color: var(--color-graytxt);
+        @include font-caption();
+        span {
+          @include font-body-bold();
+        }
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+  // ----- how -----
+  .info-how {
+    background-color: #F8F7FA;
+    padding: 35px 0;
+    padding-bottom: 100px;
+    .how-title {
+      @include font-h3();
+      @include flex-layout(row, flex-start, center);
+      gap: 10px;
+      padding-left: 35px; 
+      svg {
+        font-size: 4rem;
+        color: var(--color-primary);
+      }
+    }
+    ul {
+      @include flex-layout(column, center, center);
+      gap: 15px;
+      li {
+        width: 100%;
+        height: 65px;
+        padding: 0 30px;
+        @include flex-layout(row, flex-start, center);
+        gap: 15px;
+        background-color: var(--color-white);
+        border-radius: 16px;
+        @include font-body-bold();
+        p {
+          color: var(--color-graytxt);
+        }
+        &:nth-last-of-type(1) {
+          box-shadow: 0 0 20px 0 rgba(220, 213, 232, 0.70);
+          h3 {
+            @include font-h3();
+            color: #6E3D84;
+          }
+>>>>>>> upstream/master
+        }
+      }
+    }
+  }
+<<<<<<< HEAD
+}
+=======
+  .info-map, .info-price, .info-how {
+    background-color: #F8F7FA;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+  }
+}
+
+
+>>>>>>> upstream/master

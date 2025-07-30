@@ -32,7 +32,7 @@ const BottomNavBarMobile = () => {
         </div>
         <div
           className={`icon ${isActive('/info') ? 'active' : ''}`}
-          onClick={() => navigate('/info')}
+          onClick={() => navigate('/information')}
         >
           <HiInformationCircle />
         </div>

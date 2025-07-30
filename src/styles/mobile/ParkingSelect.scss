@@ -48,6 +48,29 @@
             .seat svg{ width: 100%; }
         }
     }
+
+//날짜 + 페이지 타이틀
+    .top-wrapper {
+    @include flex-layout(column);
+    height: 90px;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    // border: 1px solid #222;
+    .top1 {
+      @include flex-layout(flex-start);
+      @include font-caption();
+      color: var(--color-graytxt);
+      gap: 0.5rem;
+    }
+    .top2 {
+      @include flex-layout(flex-start);
+      gap: 0.5rem;
+    }
+    .calendar-icon{ font-size: 1.5rem; }
+    .map-icon { font-size: 2rem; color: var(--color-primary) }
+    h2 { @include font-h2(); }
+}
+
         button:nth-child(1){
             @include btn1();
             background-color: var(--color-secondary);

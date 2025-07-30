@@ -68,6 +68,7 @@ const MainPageMobile = () => {
 
   useEffect(() => {
     fetchData();
+    window.scrollTo(0,0);
   }, []);
 
   return (
@@ -171,11 +172,11 @@ const MainPageMobile = () => {
         </button>
 
         <div className="info-buttons">
-          <button className="info-btn" onClick={() => navigate("/")}>
+          <button className="info-btn" onClick={() => navigate("/information")}>
             <HiInformationCircle className="icon" />
             주차 안내
           </button>
-          <button className="info-btn" onClick={() => navigate("/")}>
+          <button className="info-btn" onClick={() => navigate("/mypage/reservation")}>
             <HiTicket className="icon" />내 예약 내역
           </button>
         </div>

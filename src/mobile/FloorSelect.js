@@ -40,7 +40,6 @@ const FloorSelect = ({ userID }) => {
     return `${year}년 ${month}월 ${day}일 ${weekday}`;
   };
 
-
   //2. 저장된 날짜가 없으면 alert창 띄우고, 날짜 선택 페이지로 이동
   useEffect(() => {
     if (!selectedDate) {
@@ -164,6 +163,10 @@ const FloorSelect = ({ userID }) => {
     }
     navigate("/MobileReservation/parking");
   };
+
+  //팝업
+  const [errorMsg, setErrorMsg] = useState("");
+  const [showMsg, setShowMsg] = useState(false);
 
 
   return (

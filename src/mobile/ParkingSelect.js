@@ -21,7 +21,7 @@ import HeaderMobile from "./HeaderMobile";
 
 
 const ParkingSelect = ({  }) => {
-  
+
   // 2. 상태 선언
   const [selectedZone, setSelectedZone] = useState("");
   const [selectedZoneSeats, setSelectedZoneSeats] = useState([]);

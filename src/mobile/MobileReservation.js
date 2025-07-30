@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import ScheduleSelect from "./ScheduleSelect";
 import FloorSelect from "./FloorSelect";
 import ParkingSelect from "./ParkingSelect";
 import ReservesTime from "./ReservesTime";
 import ReservesAllDay from "./ReservesAllDay";
+import ReservationPayment from "./ReservationPayment";
+import { getPaymentInfo, savePaymentInfo } from "../utils/LocalStorage";
+import CompleteReservation from "./CompleteReservation";
 
 const MobileReservation = () => {
+  const [finalAmount,setFinalAmount] = useState(0);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedZone, setSelectedZone] = useState(null);
   const [selectedZoneSeats, setSelectedZoneSeats] = useState([]);
@@ -36,6 +40,9 @@ const MobileReservation = () => {
     setSelectTotal  
   };
 
+  useEffect(()=>{
+    savePaymentInfo(reservationState);
+  },[reservationState])
 
   return (
     <Routes>
@@ -76,6 +83,24 @@ const MobileReservation = () => {
         element={
           <ReservesAllDay
             reservation={reservationState}
+          />
+        }
+      />
+      <Route
+        path="payment"
+        element={
+          <ReservationPayment
+            reservation={reservationState}
+            setFinalAmount={setFinalAmount}
+          />
+        }
+      />
+      <Route
+        path="complete"
+        element={
+          <CompleteReservation
+            reservation={reservationState}
+            finalAmount={finalAmount}
           />
         }
       />

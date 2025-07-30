@@ -15,6 +15,7 @@ import FindIDNo1 from "../mobile/FindIDNo1";
 import FindPW from "../mobile/FindPW";
 import ResetPw from "../mobile/ResetPw";
 import ChangedPw from "../mobile/ChangedPw";
+import Information from "../mobile/Information";
 
 
 const MobilePage = () => {
@@ -62,6 +63,8 @@ const MobilePage = () => {
         <Route path="/findpw/resetpw" element={<ResetPw ID={id}/>}/>
         <Route path="/findpw/changedpw" element={<ChangedPw/>}/>
         <Route path="MobileReservation/*" element={<MobileReservation />}/>
+
+        <Route path="/information" element={<Information />} />
       </Routes>
       <BottomNavBarMobile/>
     </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPaymentInfo, getUserInfo } from "../utils/LocalStorage";
-import { fetchYearlyPass } from "../utils/ParkingAPI";
+import { fetchParkID, fetchReserveID, fetchYearlyPass, payReserve, registerReservation, reservedAreaUpdate } from "../utils/ParkingAPI";
 import { FaCreditCard, FaDotCircle, FaRegCalendarAlt, FaRegCircle } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { IoIosArrowForward } from "react-icons/io";
@@ -15,26 +15,48 @@ const ReservationPayment = ({setFinalAmount}) => {
     const [yearlyPass,setYearlyPass] = useState(false);
     const [date,setDate] = useState(null);
     const [selected,setSelected] = useState('card');
+    const [zone,setZone] = useState(null);
+    const [num,setNum] = useState(null);
+    const [parkID,setParkID] = useState(null);
+    const [startTime,setStartTime] = useState(null);
+    const [endTime,setEndTime] = useState(null);
+    const [saveDate,setSaveDate] = useState(null);
 
 
     //시작하자마자 불러올 값들
     useEffect(()=>{
         const id = getUserInfo().id;
         setLoginID(id);
-        const payment = getPaymentInfo();
-        const krDate = new Date(payment.selectedDate).toLocaleDateString("ko-KR",{
+        const total = localStorage.getItem("total");
+        const oriDate = new Date(localStorage.getItem("selectedDate"));
+        const krDate = new Date(localStorage.getItem("selectedDate")).toLocaleDateString("ko-KR",{
             year: 'numeric',
             month: 'long',
             day: 'numeric',
             weekday: 'long'
         })
-        if(payment && payment.selectedTotal){
-            setAmount(payment.selectedTotal);
+        const user = getUserInfo();
+        const userID = user.user_id;
+        const zone = localStorage.getItem("selectedZone");
+        const fetchSt = localStorage.getItem("start_time");
+        const startTime = JSON.parse(fetchSt);
+        const fetchEt = localStorage.getItem("end_time");
+        const endTime = JSON.parse(fetchEt);
+        const seatID = localStorage.getItem("selectedSeatID");
+        if(total){
+            setAmount(total);
+        }
+        if(krDate){
             setDate(krDate);
-
+        }
+        if(zone){
+            setZone(zone);
+            setStartTime(startTime);
+            setEndTime(endTime);
+            setNum(seatID);
+            setSaveDate(oriDate);
         }
     },[])
-
     //연간회원권 보유여부
     useEffect(()=>{
         if(!loginID) return; //id값이 없을때 진행X
@@ -49,7 +71,23 @@ const ReservationPayment = ({setFinalAmount}) => {
         }
         fetchYearInfo();
     },[loginID])
-
+    
+    //id가져오기
+    useEffect(()=>{
+        if(!zone && !num) return;
+        const fetchID = async ()=>{
+            const { data, error } = await fetchParkID(zone,num);
+            if(data){
+                setParkID(data[0].id);
+                localStorage.setItem("parkID",data[0].id);
+            }
+            if(error){
+                console.log("id없음")
+            }
+        }
+        fetchID();
+    },[zone,num])
+    
     //클릭된 결제방법 저장하기
     const handleSelect = (way)=>{
         setSelected(way)
@@ -57,17 +95,56 @@ const ReservationPayment = ({setFinalAmount}) => {
 
     //연간회원권 할인
     useEffect(()=>{
-        if(!amount || !yearlyPass) return; //둘다 값이 없을때 진행X
-        const finalAmount = yearlyPass ? amount*0.8 : amount;
+        if(!amount && !yearlyPass) return; //둘다 값이 없을때 진행X
+        const finalAmount = yearlyPass ? Number(amount)*0.8 : Number(amount);
         setTotal(finalAmount);
     },[amount,yearlyPass])
     
+    // 모든 정보 reservation 테이블로 올리기
+    const saveReservation = async ()=>{
+        const { error } = await registerReservation({
+            userID:loginID,
+            parkareaID:parkID,
+            selectDate:saveDate,
+            startTime:startTime,
+            endTime:endTime
+        });
+        if(!error){
+            saveFinalPayments();
+
+        }
+        if(error){
+            console.log("완료되지않았습니다")
+        }
+    }
+
+    // 결제 테이블 등록하기
+    const saveFinalPayments = async ()=>{
+        const { data, error } = await payReserve(loginID,parkID,total);
+        if(!error){
+            reserveSeat();
+        }
+        if(error){
+            console.log("저장실패");
+        }
+    }
+
+    //차량구역 예약완료 표시
+    const reserveSeat = async ()=>{
+        const { error } = await reservedAreaUpdate(parkID);
+        if(!error){
+            navigate("/MobileReservation/complete")
+        }
+        if(error){
+            console.log("완료실패")
+        }
+    }
     //최종금액 옮겨주기
     const handlePayment = ()=>{
         setFinalAmount(total);
         const saved = JSON.stringify(total);
         localStorage.setItem("final_amount",saved);
-        navigate("/MobileReservation/complete")
+        saveReservation();
     }
     return (
         <div id="reservation-payment">

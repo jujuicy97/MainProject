@@ -102,6 +102,7 @@ button, input{
                     input{
                         width: 15px;
                         height: 15px;
+                        accent-color: var(--color-primary);
                         &:checked{
                             background-color: var(--color-primary);
                         }
@@ -175,6 +176,7 @@ button, input{
             width: 15px;
             height: 15px;
             border: 1px solid var(--color-primary);
+            accent-color: var(--color-primary);
         }
     }
     .agree-popup{
@@ -299,7 +301,7 @@ button, input{
     height: 100vh;
     @include font-body();
     @include flex-layout(column,flex-end);
-    .signup-complete{
+    .complete-ment{
         text-align: center;
         margin-bottom: 18rem;
         .check-sign{

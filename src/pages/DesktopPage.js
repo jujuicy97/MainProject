@@ -12,7 +12,7 @@ import FindIDNo1 from "../mobile/FindIDNo1";
 import FindID from "../mobile/FindID";
 import SignUpComplete from "../mobile/SignUpComplete";
 import AgreeMent from "../mobile/AgreeMent";
-import Information from "../mobile/Information";
+import IntroMobile from "../mobile/IntroMobile";
 
 const DesktopPage = () => {
   const [userID, setUserID] = useState("");
@@ -33,7 +33,7 @@ const DesktopPage = () => {
           <Route path="/findpw/resetpw" element={<ResetPw ID={id} />} />
           <Route path="/findpw/changedpw" element={<ChangedPw />} />
           <Route path="MobileReservation/*" element={<MobileReservation />} />
-          <Route path="/information" element={<Information />} />
+          <Route path="/intro" element={<IntroMobile />} />
         </Route>
       </Routes>
     </div>

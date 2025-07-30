@@ -5,7 +5,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import BottomNavBarMobile from "./BottomNavBarMobile";
 import { FaRegCalendarAlt } from "react-icons/fa";
-// import "../styles//mobile/CalendarStyle.scss";
+import "../styles//mobile/CalendarStyle.scss";
 
 const ScheduleSelect = () => {
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ const ScheduleSelect = () => {
 
   return (
     <div className="ScheduleSelect">
-      <HeaderMobile pageName="예약하기" />
       <h2 className="title">
         <FaRegCalendarAlt />
         예약 날짜 선택

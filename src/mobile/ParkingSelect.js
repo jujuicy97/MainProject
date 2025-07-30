@@ -4,6 +4,8 @@ from "react-router-dom";
 import { FaCarSide } from "react-icons/fa6";
 import SeatIcon from "./SeatIcon";
 import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { PiWarningCircleFill } from "react-icons/pi";
+import HeaderMobile from "./HeaderMobile";
 
 // 전체 구성 순서 요약
 // 1. 로컬스토리지에서 selectedZone, selectedZoneSeats, selectedSeatID 불러오기
@@ -19,6 +21,7 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 
 
 const ParkingSelect = ({  }) => {
+
   // 2. 상태 선언
   const [selectedZone, setSelectedZone] = useState("");
   const [selectedZoneSeats, setSelectedZoneSeats] = useState([]);
@@ -112,10 +115,22 @@ const ParkingSelect = ({  }) => {
   // 9. reserveTime페이지로 넘어가는 다음으로 버튼
   const nextbtn = () => {
     if (!selectSeatID) {
-      alert("주차 자리를 선택해주세요");
+      setErrorMsg("주차 자리를 선택해주세요");
+      setShowMsg(true);
       return;
     }
     navigate("/MobileReservation/Time")
+  }
+
+  //팝업
+  const [errorMsg, setErrorMsg] = useState("");
+  const [showMsg, setShowMsg] = useState(false);
+  
+  const handleBackConfirm =()=>{
+    const confirm = window.confirm("예매를 취소하고 나가시겠습니까?")
+    if( confirm ){
+      navigate("/MobileReservation/floor")
+    }
   }
 
 // 10. 선택된 자리 버튼
@@ -156,31 +171,44 @@ const ParkingSelect = ({  }) => {
       </div>
 
 {/* 3개 구간 나눈 변수를 map으로 뿌려주기 */}
-    <div className="seat-wrapper">
-      {[oneRow, twoRow, threeRow].map((row, idx) => {
-        return (
-          <div className="seat-grid" key={idx}>
-            {row.map((seat) => {
-// console.log(seat.num, getSeatBackgroundColor(seat));
-              return (
-                <div
-                  key={seat.id}
-                  className={`seat ${getSeatBackgroundColor(seat)}`}
-                  onClick={() => { handleSeatClick(seat)}}
-                  >
-                  <SeatIcon color={getSeatColor(seat)}/>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
-    </div>
-
+      <div className="seat-wrapper">
+        {[oneRow, twoRow, threeRow].map((row, idx) => {
+          return (
+            <div className="seat-grid" key={idx}>
+              {row.map((seat) => {
+    // console.log(seat.num, getSeatBackgroundColor(seat));
+                return (
+                  <div
+                    key={seat.id}
+                    className={`seat ${getSeatBackgroundColor(seat)}`}
+                    onClick={() => { handleSeatClick(seat)}}
+                    >
+                    <SeatIcon color={getSeatColor(seat)}/>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
       <div>
-        <button> <span>선택한 자리</span> {selectedZone}-{displayNum}</button>
+        <button className="select-btn"> <span>선택한 자리</span> {selectedZone}-{displayNum}</button>
         <button className="next-btn" onClick={nextbtn}> 다음으로 </button>
       </div>
+
+{/* 팝업 메시지 창 */}
+      {showMsg && (
+        <div className="pop active">
+          <div className="pop-up">
+            <p className="pop-icon">
+              <PiWarningCircleFill size={48} color="#DCD5E8" />
+            </p>
+            <p>{errorMsg}</p>
+            <h4>좌석을 선택하고 진행해주세요</h4>
+            <button onClick={() => setShowMsg(false)}>확인</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

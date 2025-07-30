@@ -22,6 +22,10 @@ import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
 const FloorSelect = ({ userID }) => {
   const navigate = useNavigate();
 
+  //팝업
+  const [errorMsg, setErrorMsg] = useState("");
+  const [showMsg, setShowMsg] = useState(false);
+
   //1. selectedDate를 localStorage에서 가져와서 selectedDate로 저장
   const storedDate = localStorage.getItem("selectedDate");
   const selectedDate = storedDate ? new Date(storedDate) : null;  
@@ -65,6 +69,14 @@ const FloorSelect = ({ userID }) => {
   const [zoneStatus, setZoneStatus] = useState({});
   // const [selectedZone, setSelectedZone] = useState(""); //구역 정보 관리(A,B,C,D)
   const zones = ["A", "B", "C", "D"]; //구역 선택용 배열
+
+  // 컴포넌트가 처음 마운트될 때 로컬스토리지에서 이전 값 가져오기
+  useEffect(() => {
+    const storedZone = localStorage.getItem("selectedZone");
+    if (storedZone) {
+      setSelectedZone(storedZone); // 이전에 선택한 구역을 다시 설정
+    }
+  }, []);
 
   // 컴포넌트가 처음 마운트될 때 로컬스토리지에서 이전 값 가져오기
   useEffect(() => {

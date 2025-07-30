@@ -1,0 +1,30 @@
+.complete {
+  max-width: $small-size;
+  height: 100vh;
+  padding: 70px 16px;
+  padding-top: 60%;
+  @include flex-layout(column, space-between, center);
+  .complete-contents {
+    text-align: center;
+    svg {
+      margin-bottom: 20px;
+      font-size: 7rem;
+      path {
+        color: var(--color-primary);
+      }
+    }
+    h2 {
+      @include font-h2();
+    }
+  }
+  .complete-btn {
+    width: 100%;
+    .btn-1 {
+      @include btn2();
+      margin-bottom: 24px;
+    }
+    .btn-2 {
+      @include btn1();
+    }
+  }
+}

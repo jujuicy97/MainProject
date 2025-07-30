@@ -67,7 +67,7 @@ const ReservationPayment = ({setFinalAmount}) => {
         setFinalAmount(total);
         const saved = JSON.stringify(total);
         localStorage.setItem("final_amount",saved);
-        navigate("/")
+        navigate("/MobileReservation/complete")
     }
     return (
         <div id="reservation-payment">

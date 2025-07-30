@@ -7,6 +7,7 @@ import ReservesTime from "./ReservesTime";
 import ReservesAllDay from "./ReservesAllDay";
 import ReservationPayment from "./ReservationPayment";
 import { getPaymentInfo, savePaymentInfo } from "../utils/LocalStorage";
+import CompleteReservation from "./CompleteReservation";
 
 const MobileReservation = () => {
   const [finalAmount,setFinalAmount] = useState(0);
@@ -91,6 +92,15 @@ const MobileReservation = () => {
           <ReservationPayment
             reservation={reservationState}
             setFinalAmount={setFinalAmount}
+          />
+        }
+      />
+      <Route
+        path="complete"
+        element={
+          <CompleteReservation
+            reservation={reservationState}
+            finalAmount={finalAmount}
           />
         }
       />

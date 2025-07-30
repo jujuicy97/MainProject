@@ -60,16 +60,20 @@
     p{
        @include font-caption();
     }
-    h2{
-        @include font-h2;
-        span{
-            svg{
-                color: var(--color-primary);
+    .time-title {
+        @include flex-layout(column, center, center);
+        gap: 6px;
+        .time-date{
+            color: var(--color-graytxt);
+        }
+        h2{
+            @include font-h2;
+            span{
+                svg{
+                    color: var(--color-primary);
+                }
             }
         }
-    }
-    .time-date{
-        color: var(--color-graytxt);
     }
     .time-seat{
         width: 100%;
@@ -130,12 +134,17 @@
             @include font-caption();
             select{
                 width: 100%;
-                height: 4rem;
-                border-radius: 0.5rem;
-                padding-left: 0.5rem;
-                margin-top: 1rem;
+                border-color: var(--color-lightgraytxt);
+                border-radius: 8px;
+                padding: 12px;
+                margin-top: 0.8rem;
                 color: var(--color-maintxt);
+                font-family: inherit;
+                @include font-body();
                 cursor: pointer;
+                &:focus {
+                    border-color: var(--color-primary);
+                }
             }
         }
     }

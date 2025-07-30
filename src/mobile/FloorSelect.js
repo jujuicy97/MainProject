@@ -168,64 +168,66 @@ const FloorSelect = ({ userID }) => {
 
   return (
     <div className="floor-select">
+      <div className="floor-wrap-top">
+        <div className="top-zone">
+          <div className="top-wrapper">
+            <div className="top1">
+              <FaRegCalendarAlt className="calendar-icon" />
+              <p>{selectedDate ? getDate(selectedDate) : "날짜를 선택해주세요"}</p>
+            </div>
+            <div className="top2">
+              <FaMapMarkerAlt className="map-icon" />
+              <h2>이용 구역 선택</h2>
+            </div>
+          </div>
 
-      <div className="top-zone">
-        <div className="top-wrapper">
-          <div className="top1">
-            <FaRegCalendarAlt className="calendar-icon" />
-            <p>{selectedDate ? getDate(selectedDate) : "날짜를 선택해주세요"}</p>
-          </div>
-          <div className="top2">
-            <FaMapMarkerAlt className="map-icon" />
-            <h2>이용 구역 선택</h2>
-          </div>
+          <p className="zone-name">사전 결제 ZONE</p>
+
+          {/* //zones 배열 abcd를 순회하며 list로 받아옴*/}
+          <div className="zone-wrap">
+            <ul>     
+              {zones.map((list) => {
+                const status = zoneStatus[list] || { total: 0, reserved: 0, available: 0 };
+                return (
+                  <li
+                    key={list}
+                    className={`zone-select ${selectedZone === list ? "on" : ""}`}
+                    onClick={() => listArea(list, realDate, userID)}
+                  >
+                    <div><span>{list}</span>구역</div> 
+                    <div>
+                      <p>잔여석<span>{status.available}</span>/25</p>
+                      <p>
+                        <span className={`status-dot ${getZoneStateLabel(list)}`}></span>
+                        {getZoneStateLabel(list)}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
         </div>
 
-        <p className="zone-name">사전 결제 ZONE</p>
-
-        {/* //zones 배열 abcd를 순회하며 list로 받아옴*/}
-        <div className="zone-wrap">
-          <ul>     
-            {zones.map((list) => {
-              const status = zoneStatus[list] || { total: 0, reserved: 0, available: 0 };
-              return (
-                <li
-                  key={list}
-                  className={`zone-select ${selectedZone === list ? "on" : ""}`}
-                  onClick={() => listArea(list, realDate, userID)}
-                >
-                  <div><span>{list}</span>구역</div> 
-                  <div>
-                    <p>잔여석<span>{status.available}</span>/25</p>
-                    <p>
-                      <span className={`status-dot ${getZoneStateLabel(list)}`}></span>
-                      {getZoneStateLabel(list)}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="price-info">
+            <p className="price-title">요금 안내</p>
+            <ul className="price-detail">
+              <li>
+                <span>최소 1시간</span>
+                <span>2,000원</span>
+              </li>
+              <li>
+                <span>이후 30분당</span>
+                <span>1,000원</span>
+              </li>
+              <li>
+                <span>일 최대 요금</span>
+                <span>15,000원</span>
+              </li>  
+            </ul>
+          </div>  
+        </div>
       </div>
-
-        <div className="price-info">
-          <p className="price-title">요금 안내</p>
-          <ul className="price-detail">
-            <li>
-              <span>최소 1시간</span>
-              <span>2,000원</span>
-            </li>
-            <li>
-              <span>이후 30분당</span>
-              <span>1,000원</span>
-            </li>
-            <li>
-              <span>일 최대 요금</span>
-              <span>15,000원</span>
-            </li>  
-          </ul>
-        </div>  
-
+      <div className="floor-wrap-bottom">
         <button className="next-btn" onClick={nextbtn}>
           다음으로
         </button>

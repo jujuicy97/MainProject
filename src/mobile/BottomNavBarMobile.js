@@ -19,19 +19,21 @@ const BottomNavBarMobile = () => {
           <TiHome />
         </div>
         <div
-          className={`icon ${isActive('/reservation/schedule') ? 'active' : ''}`}
-          onClick={() => navigate('/reservation/schedule')}
+          className={`icon ${isActive('/MobileReservation/schedule') ? 'active' : ''}`}
+          onClick={() => navigate('/MobileReservation/schedule')}
         >
           <FaCar />
         </div>
         <div
+          className={`icon ${isActive('/mypage/reservation') ? 'active' : ''}`}
+          onClick={() => navigate('/mypage/reservation')}
           className={`icon ${isActive('mypage/reservation') ? 'active' : ''}`}
           onClick={() => navigate('mypage/reservation')}
         >
           <HiTicket />
         </div>
         <div
-          className={`icon ${isActive('/info') ? 'active' : ''}`}
+          className={`icon ${isActive('/information') ? 'active' : ''}`}
           onClick={() => navigate('/information')}
         >
           <HiInformationCircle />

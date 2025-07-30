@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import BottomNavBarMobile from "./BottomNavBarMobile";
 import MainHeaderMobile from "./MainHeaderMobile";
 
+import { ReactComponent as Parking } from "../icons/Parking.svg";
 import { FaCar, FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import { HiTicket, HiInformationCircle } from "react-icons/hi";
 import { FaCaretRight } from "react-icons/fa";
-// import { ReactComponent as Parking } from "..icons/Parking.svg";
 
 import { getAllseatsByDate } from "../utils/ParkingAPI";
 import Footer from "./Footer";
@@ -78,7 +77,7 @@ const MainPageMobile = () => {
         {/* 상단 날짜 및 새로고침 */}
         <div className="top-info">
           <div className="left">
-            <img src={`${process.env.PUBLIC_URL}/images/Parking.svg`} alt="icon" />
+            <Parking className="parking-icon" />
             <div className="date-info">
               <p>{formatted}</p>
               <h3>드림랜드 실시간 주차 현황</h3>

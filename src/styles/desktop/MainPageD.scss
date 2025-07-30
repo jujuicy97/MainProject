@@ -2,7 +2,6 @@
   max-width: $small-size;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 70px 0;
   // padding-top: 35px;
 
   // 지도 부분
@@ -268,8 +267,22 @@
       background-color: #c6acff;
       border-radius: 16px;
       padding: 16px;
+      width: 100%;
       height: 200px;
-      .welcome-text {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .shadow {
+          animation: shadowStretch 1s ease-in-out;
+        }
+        .smoke {
+          animation: smokeFade 1s ease-in-out;
+        }
+        .car {
+          animation: carDrive 1s ease-in-out;
+        }
+      }
+      .text-area {
         @include flex-layout(column, space-between, flex-start);
         width: 100%;
         height: 100%;
@@ -283,7 +296,7 @@
             color: var(--color-secondary);
           }
         }
-        .btn{
+        .btn {
           @include font-body-bold;
           width: fit-content;
           background-color: var(--color-primary);
@@ -291,6 +304,179 @@
           padding: 10px 16px;
           border-radius: 20px;
         }
+      }
+      @keyframes carDrive {
+        0% {
+          transform: rotate(0) translateY(0) scale(1, 1);
+        }
+        50% {
+          transform: rotate(-10deg) translateY(-20px) scale(1, 1);
+        }
+
+        100% {
+          transform: rotate(0) translateY(0) scale(1, 1); /* 원래 상태로 복귀 */
+        }
+      }
+
+      /* 연기 효과 */
+      @keyframes smokeFade {
+        0% {
+          opacity: 0;
+          transform: translateX(0) scaleX(1);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-80px) scaleX(2);
+        }
+      }
+
+      /* 그림자 늘어남 */
+      @keyframes shadowStretch {
+        0% {
+          transform: scaleX(1.8);
+        }
+        50% {
+          transform: scaleX(1);
+        }
+        100% {
+          transform: scaleX(1.8);
+        }
+      }
+      // 차량 애니메이션
+      .car-wrapper {
+        position: absolute;
+        width: 270px;
+        height: 150px;
+        top: 30px;
+        right: -20px;
+        .shadow {
+          position: absolute;
+          bottom: 10px;
+          right: 120px;
+          transform: scaleX(1.8);
+        }
+        .smoke {
+          position: absolute;
+          bottom: 30px;
+          left: -100px;
+          opacity: 0;
+        }
+        .car {
+          position: absolute;
+        }
+      }
+    }
+  }
+  .facility-section {
+    padding: 16px;
+    margin: 1rem auto;
+    width: 100%;
+    .facilities {
+      .title {
+        @include font-h2;
+        color: var(--color-maintxt);
+        svg {
+          margin-right: 5px;
+          path {
+            color: var(--color-secondary);
+          }
+        }
+      }
+
+      .categories {
+        display: flex;
+        gap: 10px;
+        padding: 16px 0;
+
+        .category-btn {
+          @include font-body;
+          flex: 1;
+          padding: 8px 16px;
+          border: 1px solid var(--color-sub);
+          border-radius: 30px;
+          background: var(--color-white);
+          cursor: pointer;
+          @include flex-layout();
+          gap: 6px;
+          svg{
+            font-size: 2rem;
+            path{
+              color: var(--color-primary)
+            }
+          }
+          &.active {
+            @include font-body-bold;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            svg{
+            path{
+              color: var(--color-white)
+            }
+          }
+          }
+        }
+      }
+
+      .attraction-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+
+        .attraction-item {
+          @include flex-layout(row, flex-start);
+          border-radius: 10px;
+          overflow: hidden;
+          .img-wrap {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 70px;
+              object-fit: cover;
+            }
+          }
+
+          .info {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .tag {
+              @include font-overline;
+            }
+
+            p {
+              @include font-body-bold;
+            }
+
+            .time {
+              @include flex-layout(row, flex-start);
+              gap: 3px;
+              p {
+                @include font-overline;
+              }
+              svg {
+                path {
+                  color: var(--color-graytxt);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .more {
+        text-align: right;
+        font-size: 14px;
+        color: #aaa;
+        margin-top: 12px;
+        cursor: pointer;
       }
     }
   }

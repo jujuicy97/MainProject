@@ -3,35 +3,35 @@ import { useNavigate } from "react-router-dom";
 
 import { FaCar, FaMapMarkerAlt, FaRedoAlt } from "react-icons/fa";
 import { HiTicket, HiInformationCircle } from "react-icons/hi";
-import { FaCaretRight } from "react-icons/fa";
 import { BsStars } from "react-icons/bs";
+import { GoClockFill } from "react-icons/go";
+import { PiMicrophoneStageFill } from "react-icons/pi";
+import { MdAttractions } from "react-icons/md";
+import { ImSpoonKnife } from "react-icons/im";
+import { FaGift } from "react-icons/fa6";
+
+import { ReactComponent as Parking } from "../icons/Parking.svg";
+import { ReactComponent as CarBody } from "../icons/Car_ani.svg";
+import { ReactComponent as CarSmoke } from "../icons/Smoke_ani.svg";
+import { ReactComponent as CarShadow } from "../icons/Shadow_ani.svg";
+
+import attractionsData from "../data/attractions.json";
 
 import { getAllseatsByDate } from "../utils/ParkingAPI";
-
-// 잔여석에 따른 혼잡도 상태 반환
-const getParkingStatus = (remaining) => {
-  if (remaining >= 10) {
-    return { dotClass: "status-green", textClass: "text-green", label: "여유" };
-  } else if (remaining >= 4) {
-    return {
-      dotClass: "status-yellow",
-      textClass: "text-yellow",
-      label: "보통",
-    };
-  } else if (remaining >= 0) {
-    return { dotClass: "status-red", textClass: "text-red", label: "혼잡" };
-  }
-  return {
-    dotClass: "status-gray",
-    textClass: "text-gray",
-    label: "정보 없음",
-  };
-};
 
 const MainPageD = () => {
   const navigate = useNavigate();
   const [zoneData, setZoneData] = useState({}); // A,B,C,D 데이터 저장
   const [isSpinning, setIsSpinning] = useState(false); // 아이콘 회전 상태
+  const [activeCategory, setActiveCategory] = useState("attraction");
+  const [items, setItems] = useState([]);
+
+  const categories = [
+    { id: "attraction", label: "어트랙션", icon: <MdAttractions /> },
+    { id: "show", label: "공연", icon: <PiMicrophoneStageFill /> },
+    { id: "restaurant", label: "레스토랑", icon: <ImSpoonKnife /> },
+    { id: "gift", label: "기프트샵", icon: <FaGift/> },
+  ];
 
   const now = new Date();
   const formatted = now.toLocaleString("ko-KR", {
@@ -43,6 +43,30 @@ const MainPageD = () => {
     hour12: true,
   });
 
+  // 잔여석에 따른 혼잡도 상태 반환
+  const getParkingStatus = (remaining) => {
+    if (remaining >= 10) {
+      return {
+        dotClass: "status-green",
+        textClass: "text-green",
+        label: "여유",
+      };
+    } else if (remaining >= 4) {
+      return {
+        dotClass: "status-yellow",
+        textClass: "text-yellow",
+        label: "보통",
+      };
+    } else if (remaining >= 0) {
+      return { dotClass: "status-red", textClass: "text-red", label: "혼잡" };
+    }
+    return {
+      dotClass: "status-gray",
+      textClass: "text-gray",
+      label: "정보 없음",
+    };
+  };
+
   const fetchData = async () => {
     const today = new Date().toISOString().split("T")[0];
     const result = await getAllseatsByDate(today);
@@ -52,6 +76,14 @@ const MainPageD = () => {
       console.error(result.error);
     }
   };
+
+  useEffect(() => {
+    // 카테고리 필터링 (현재는 어트랙션만)
+    const filtered = attractionsData.filter(
+      (item) => activeCategory === "attraction"
+    );
+    setItems(filtered);
+  }, [activeCategory]);
 
   const handleRedo = () => {
     // 새로고침 데이터
@@ -66,16 +98,15 @@ const MainPageD = () => {
     fetchData();
   }, []);
 
+  // ************** //
+
   return (
     <div id="main-pageD">
       <div className="zone-map">
         {/* 상단 날짜 및 새로고침 */}
         <div className="top-info">
           <div className="left">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/Parking.svg`}
-              alt="icon"
-            />
+            <Parking className="parking-icon" />
             <div className="date-info">
               <p>{formatted}</p>
               <h3>드림랜드 실시간 주차 현황</h3>
@@ -181,42 +212,60 @@ const MainPageD = () => {
       {/* 드림랜드 파크가 처음이신가요?  */}
       <div className="welcome-section">
         <div className="welcome-wrap">
-          <div className="welcome-text">
+          <div className="text-area">
             <div className="top">
-              <h2>드림랜드 파크가<br/>처음이신가요?</h2>
+              <h2>
+                드림랜드 파크가
+                <br />
+                처음이신가요?
+              </h2>
               <p>처음 방문자를 위한 가이드를 확인하세요!</p>
             </div>
-
             <p className="btn">가이드 보기</p>
+          </div>
+          <div className="car-wrapper">
+            <CarShadow className="shadow" />
+            <CarSmoke className="smoke" />
+            <CarBody className="car" />
           </div>
         </div>
       </div>
 
       {/* 운영시설 안내 */}
       <div className="facility-section">
-        <div className="facility-wrap">
-          <div className="facility-title">
-            <BsStars className="icon" />
-            <h2>운영시설 안내</h2>
+        <div className="facilities">
+          <h2 className="title"><BsStars/>운영 시설</h2>
+          <div className="categories">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`category-btn ${
+                  activeCategory === cat.id ? "active" : ""
+                }`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {cat.icon}
+                {cat.label}
+              </button>
+            ))}
           </div>
-          <ul className="facility-btn-list">
-            <li className="facility-item">
 
-              <p>어트랙션</p>
-            </li>
-            <li className="facility-item">
+          <div className="attraction-list">
+            {items.map((item) => (
+              <div key={item.id} className="attraction-item">
+                <div className="img-wrap">
+                  <img src={item.img} alt={item.title} />
+                </div>
+                <div className="info">
+                  <span className="tag">{item.category}</span>
+                  <p>{item.title}</p>
+                  <div className="time"><GoClockFill/> <p>{item.time}</p></div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-              <p>공연</p>
-            </li>
-            <li className="facility-item">
-
-              <p>레스토랑</p>
-            </li>
-            <li className="facility-item">
-
-              <p>기프트샵</p>
-            </li>
-          </ul>
+          <div className="more">더보기</div>
         </div>
       </div>
     </div>

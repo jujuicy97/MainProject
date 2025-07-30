@@ -44,7 +44,7 @@ const MyPageHome = () => {
       </div>
 
 
-      <div className="reservation" onClick={()=>{navigate("/reservation")}}>
+      <div className="reservation" onClick={()=>{navigate("reservation")}}>
         <p className="box-title">내 이용 내역</p>
         <div className="reservation-box">
           <div>

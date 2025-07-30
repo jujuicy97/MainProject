@@ -131,8 +131,8 @@ export const cancelReserve = async (reserveID,parkareaZone,parkareaNum)=>{
     const { error:parkareaError } = await supabase
         .from('parkarea')
         .update({is_reserved:false})
-        .eq('zone',parkareaZone)
-        .eq('num',parkareaNum);
+        .eq('num',parkareaNum)
+        .eq('zone',parkareaZone);
     if( parkareaError ){
         return {data:false,error:parkareaError}
     }

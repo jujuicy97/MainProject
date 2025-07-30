@@ -14,7 +14,6 @@ const MyPageHome = () => {
   useEffect(()=>{  
       const user_info = getUserInfo();  // 로그인된 정보 가져오기
       setUser(user_info) 
-
       if( user_info.id ){
         const fetchData = async () => {  // 내 예약 정보 가져오기
           const {data, error} = await fetchMyReserve(user_info.id);

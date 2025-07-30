@@ -164,9 +164,6 @@ const FloorSelect = ({ userID }) => {
     navigate("/MobileReservation/parking");
   };
 
-  //팝업
-  const [errorMsg, setErrorMsg] = useState("");
-  const [showMsg, setShowMsg] = useState(false);
 
 
   return (

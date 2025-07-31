@@ -23,6 +23,7 @@
   .state {
     @include flex-layout(row, space-around);
     width: 100%;
+    max-width: 400px;
     li {
       @include font-body;
       @include flex-layout();

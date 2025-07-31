@@ -85,7 +85,6 @@ const ScheduleSelect = () => {
       </ul>
       <button className="reserve-btn" onClick={handleReserve}>
         예약하기
-      </button>
       {
         popUp && (
           <div className="no-date-selected">
@@ -99,6 +98,7 @@ const ScheduleSelect = () => {
         )
       }
       <BottomNavBarMobile />
+
     </div>
   );
 };

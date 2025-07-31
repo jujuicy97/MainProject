@@ -212,7 +212,7 @@ const MainPageMobile = () => {
           </button>
         </div>
 
-        <div className="more-info" onClick={() => navigate("/information")}>
+        <div className="more-info" onClick={() => navigate("/intro")}>
           더 많은 정보 보기
           <FaCaretRight className="icon" />
         </div>

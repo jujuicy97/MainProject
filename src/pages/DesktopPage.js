@@ -13,6 +13,7 @@ import FindID from "../mobile/FindID";
 import SignUpComplete from "../mobile/SignUpComplete";
 import AgreeMent from "../mobile/AgreeMent";
 import IntroMobile from "../mobile/IntroMobile";
+import Information from "../mobile/Information";
 
 const DesktopPage = () => {
   const [userID, setUserID] = useState("");
@@ -34,6 +35,7 @@ const DesktopPage = () => {
           <Route path="/findpw/changedpw" element={<ChangedPw />} />
           <Route path="MobileReservation/*" element={<MobileReservation />} />
           <Route path="/intro" element={<IntroMobile />} />
+          <Route path="/information" element={<Information />} />
         </Route>
       </Routes>
     </div>

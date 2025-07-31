@@ -44,9 +44,12 @@ const MobilePage = () => {
       if(path.includes("/membership")){
         setNameOfPage('연간회원권 등록');
       }
+      if(path.includes("/reservation")){
+        setNameOfPage('내 예약 내역');
+      }
     } else if(path.includes("/MobileReservation")){
       setNameOfPage('예약하기')
-    }else if(path.includes("/information")){
+    }else if(path === "/information"){
       setNameOfPage('사이트 정보')
     }
   },[location.pathname])

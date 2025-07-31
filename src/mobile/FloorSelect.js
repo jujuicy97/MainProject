@@ -153,10 +153,9 @@ const FloorSelect = ({ userID }) => {
 
   //7. ParkingSelect 페이지로 넘어가는 버튼 함수
   const nextbtn = () => {
-    console.log("selectedZone:", selectedZone);
+    // console.log("selectedZone:", selectedZone);
   // console.log("selectedZone at nextbtn:", selectedZone, typeof selectedZone);    
     if ( !selectedZone || !zones.includes(selectedZone) ) {
-      setErrorMsg("구역을 선택하세요");
       setShowMsg(true)
       return;
     }

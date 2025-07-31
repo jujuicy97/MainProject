@@ -232,16 +232,18 @@ const FloorSelect = ({ userID }) => {
         </button>
       </div>
 
-      <div className={`pop ${showMsg ? "active" : ''}`}>
-        <div className="pop-up">
-          <p className="pop-icon"><PiWarningCircleFill size={48} color="#DCD5E8"/></p>
-          <p>{errorMsg}</p>
-          <h4>다른 구역을 선택해주세요</h4>
-          <button onClick={() => setShowMsg(false)}>확인</button>
-        </div>
-      </div>
-      
-
+      {
+        showMsg && (
+          <div className="no-zone-selected">
+            <div className="no-zone-box">
+              <PiWarningCircleFill />
+              <p>구역이 선택되지 않았습니다</p>
+              <p className="no-zone-bot">구역 선택 후 이용해 주세요 </p>
+              <button onClick={() => setShowMsg(false)}>확인</button>
+            </div>
+          </div>
+        )
+      }
     </div>
   );
 };

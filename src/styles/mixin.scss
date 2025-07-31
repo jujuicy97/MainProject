@@ -8,6 +8,11 @@
     @content;
   }
 }
+@mixin pop-max {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
 
 //플렉스
 @mixin flex-layout($direction: row, $justify: center, $align: center) {
@@ -112,6 +117,7 @@
   @media (min-width: 1024px) {
     @content;
   }
+}
 
 //팝업 버튼
 @mixin pop-btn {

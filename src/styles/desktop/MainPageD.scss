@@ -242,7 +242,7 @@
   // 아래 버튼
   .reservation-section {
     padding: 0 16px;
-    @include flex-layout(row);
+    @include flex-layout(row,stretch);
     gap: 15px;
     margin: 1rem auto;
     .icon {
@@ -260,7 +260,7 @@
       margin: 0;
       gap: 10px;
       width: 100%;
-      padding: 3rem 0;
+      padding: 4.25rem 0;
       cursor: pointer;
       box-shadow: 0px 0px 15px rgba(220, 213, 232, 0.5);
 

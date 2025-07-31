@@ -7,7 +7,8 @@ const BottomNavBarMobile = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => location.pathname === path; //정확할때
+  const isIncludeActive = (path) => location.pathname.includes(path); //포함일때
 
   return (
     <nav id="bottom-navbar">
@@ -19,7 +20,7 @@ const BottomNavBarMobile = () => {
           <TiHome />
         </div>
         <div
-          className={`icon ${isActive('/MobileReservation/schedule') ? 'active' : ''}`}
+          className={`icon ${isIncludeActive('/MobileReservation') ? 'active' : ''}`}
           onClick={() => navigate('/MobileReservation/schedule')}
         >
           <FaCar />
@@ -27,8 +28,6 @@ const BottomNavBarMobile = () => {
         <div
           className={`icon ${isActive('/mypage/reservation') ? 'active' : ''}`}
           onClick={() => navigate('/mypage/reservation')}
-          className={`icon ${isActive('mypage/reservation') ? 'active' : ''}`}
-          onClick={() => navigate('mypage/reservation')}
         >
           <HiTicket />
         </div>

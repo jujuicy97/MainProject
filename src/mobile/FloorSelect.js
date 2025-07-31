@@ -41,13 +41,12 @@ const FloorSelect = ({ userID }) => {
   };
 
   //2. 저장된 날짜가 없으면 alert창 띄우고, 날짜 선택 페이지로 이동
-  useEffect(() => {
-    if (!selectedDate) {
-      setErrorMsg("잔여석 정보를 불러오는데 실패했습니다");
-      setShowMsg(true);
-    navigate("/MobileReservation/schedule");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!selectedDate) {
+  //     setErrorMsg("잔여석 정보를 불러오는데 실패했습니다");
+  //     setShowMsg(true);
+  //   }
+  // }, []);
 
 
   //3. 상태와 로컬스토리지 연결(선택한 구역, 구역 자리 정보)

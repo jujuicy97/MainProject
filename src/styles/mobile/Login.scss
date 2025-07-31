@@ -57,9 +57,48 @@ button, input{
         @include btn2();
         // width: 90%;
     }
-    p{
+    .dream-com{
         margin-top: 2rem;
         @include font-caption()
+    }
+    .no-data{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        .no-data-box{
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
+            }
+            p {
+                @include font-body-bold;
+                text-align: center;
+            }
+            button {
+                @include pop-btn();
+            }
+            .no-data-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
+            }
+        }
     }
 }
 
@@ -180,35 +219,41 @@ button, input{
         }
     }
     .agree-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
+        position: fixed;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
         .center-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
             }
-            p{
-                color: var(--color-graytxt);
+            p {
+                @include font-body-bold;
+                text-align: center;
             }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
+            button {
+                @include pop-btn();
+            }
+            .agree-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
             }
         }
     }
@@ -247,6 +292,32 @@ button, input{
                 @include font-caption();
                 padding: 1rem;
             }
+            .label-id{
+                @include flex-layout($justify:space-between);
+                .pos-id{
+                    padding-right: 1rem;
+                    @include font-caption();
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red
+                    }
+                }
+            }
+            .label-pw{
+                @include flex-layout($justify:space-between);
+                .pos-pass{
+                    padding-right: 1rem;
+                    @include font-caption();
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red
+                    }
+                }
+            }
             input{
                 padding: 1.6rem;
                 width: 100%;
@@ -263,30 +334,43 @@ button, input{
             margin-bottom: 0;
         }
     }
-    .pos-id{
-        @include font-caption();
-        position: absolute;
-        top: 34%;
-        right: 10%;
-        transform: translate(13%,-40%);
-        &.is-correct{
-            color: var(--color-primary);
-        }
-        &.is-incorrect{
-            color: red
-        }
-    }
-    .pos-pass{
-        @include font-caption();
-        position: absolute;
-        bottom: 42%;
-        right: 10%;
-        transform: translateX(10%);
-        &.is-correct{
-            color: var(--color-primary);
-        }
-        &.is-incorrect{
-            color: red
+    .needinfo-popup{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        .info-pop{
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
+            }
+            p {
+                @include font-body-bold;
+                text-align: center;
+            }
+            button {
+                @include pop-btn();
+            }
+            .info-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
+            }
         }
     }
 }
@@ -369,68 +453,80 @@ button, input{
         }
     }
     .noid-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
+        position: fixed;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
         .id-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
             }
-            p{
-                color: var(--color-graytxt);
+            p {
+                @include font-body-bold;
+                text-align: center;
             }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
+            button {
+                @include pop-btn();
+            }
+            .noid-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
             }
         }
     }
     .empty-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
+        position: fixed;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
         .empty-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
             }
-            p{
-                color: var(--color-graytxt);
+            p {
+                @include font-body-bold;
+                text-align: center;
             }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
+            button {
+                @include pop-btn();
+            }
+            .empty-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
             }
         }
     }
@@ -444,7 +540,7 @@ button, input{
     padding: 130px 16px;
     padding-bottom: 70px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     @include font-body();
     @include flex-layout(column,flex-start,flex-start);
     gap: 4rem;
@@ -511,68 +607,80 @@ button, input{
         }
     }
     .noid-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
+        position: fixed;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
         .id-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
             }
-            p{
-                color: var(--color-graytxt);
+            p {
+                @include font-body-bold;
+                text-align: center;
             }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
+            button {
+                @include pop-btn();
+            }
+            .noid-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
             }
         }
     }
     .empty-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
+        position: fixed;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
         .empty-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
             }
-            p{
-                color: var(--color-graytxt);
+            p {
+                @include font-body-bold;
+                text-align: center;
             }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
+            button {
+                @include pop-btn();
+            }
+            .empty-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
             }
         }
     }

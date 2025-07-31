@@ -39,17 +39,11 @@
       text-align: center;
     }
     button {
-      width: 100%;
-      height: 4rem;
-      margin-top: 1rem;
-      border: none;
-      background-color: var(--color-primary);
-      color: var(--color-white);
-      border-radius: 1rem;
-      cursor: pointer;
-      &:hover {
-        filter: brightness(80%);
-      }
+      @include pop-btn();
+    }
+    .bot-alert{
+        @include font-caption();
+        color: var(--color-graytxt);
     }
   }
 

@@ -72,8 +72,8 @@ const FindPW = ({setID}) => {
                     <div className="empty-popup">
                         <div className="empty-pop">
                             <PiWarningCircleFill className="warning-sign"/>
-                            <h3>정보가 입력되지 않았습니다</h3>
-                            <p>정보를 전부 입력해 주세요</p>
+                            <p>정보가 입력되지 않았습니다</p>
+                            <p className="empty-bot">정보를 전부 입력해 주세요</p>
                             <button onClick={()=>{setShowPopEmpty(false)}}>확인</button>
                         </div>
                     </div>
@@ -84,8 +84,8 @@ const FindPW = ({setID}) => {
                     <div className="noid-popup">
                         <div className="id-pop">
                             <PiWarningCircleFill className="warning-sign"/>
-                            <h3>정보가 존재하지 않습니다</h3>
-                            <p>이용하시려면 회원가입을 해주세요</p>
+                            <p>정보가 존재하지 않습니다</p>
+                            <p className="noid-bot">이용하시려면 회원가입을 해주세요</p>
                             <button onClick={()=>{setShowPopID(false)}}>확인</button>
                         </div>
                     </div>

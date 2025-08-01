@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchAllUserId, fetchSignUp } from "../utils/ParkingAPI";
+import { fetchAllUserId, fetchSignUp } from "../../utils/ParkingAPI";
 import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
 

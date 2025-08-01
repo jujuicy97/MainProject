@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { fetchLogin } from '../utils/ParkingAPI';
-import { saveUserInfo } from '../utils/LocalStorage';
+import { fetchLogin } from '../../utils/ParkingAPI';
+import { saveUserInfo } from '../../utils/LocalStorage';
 import { Link, useNavigate } from 'react-router-dom';
 import { PiWarningCircleFill } from 'react-icons/pi';
 
@@ -25,7 +25,7 @@ const Login = () => {
         <div id="login-page">
             <div className='login-all-include'>
                 <div className='login-logo'>
-                    <img className='logo' src={`${process.env.PUBLIC_URL}/images/dreamland_logo1.png`}/>
+                    <img className='logo' src={`${process.env.PUBLIC_URL}/images/dreamland_logo1.png`} alt='logo'/>
                 </div>
                 <form onSubmit={handleLogin}>
                     <input

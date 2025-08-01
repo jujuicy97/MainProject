@@ -131,15 +131,5 @@
 
 //팝업 버튼
 @mixin pop-btn {
-  width: 100%;
-    height: 4rem;
-    margin-top: 1rem;
-    border: none;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius: 1rem;
-    cursor: pointer;
-    &:hover {
-      filter: brightness(80%);
-    }
+
 }

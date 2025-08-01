@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { findPassword } from "../utils/ParkingAPI";
+import { findPassword } from "../../utils/ParkingAPI";
 import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
 
@@ -13,7 +13,7 @@ const ResetPw = ({ID}) => {
     const [shortPass,setShortPass] = useState(false);
     const [lessInfo,setLessInfo] = useState(false);
     const changePass = async ()=>{
-        const { data, error } = await findPassword(ID,password);
+        const { error } = await findPassword(ID,password);
         if(!error){
             navigate("/findpw/changedpw");
         }

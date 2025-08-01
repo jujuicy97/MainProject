@@ -2,9 +2,10 @@
   max-width: $small-size;
   margin: 0 auto;
   padding: 70px 16px;
+  min-height: 100vh;
   @include flex-layout(column, space-between, center);
   @include desktop {
-    padding: 0;
+    padding-bottom: 0;
   }
   .input-wrap {
     // margin-bottom: 8rem;
@@ -47,6 +48,9 @@
   button {
     @include btn1();
     margin-top: 50px;
+    @include desktop {
+
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { findInfo } from "../utils/ParkingAPI";
+import { findInfo } from "../../utils/ParkingAPI";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 

@@ -4,7 +4,7 @@
   @include flex-layout(column, space-between, center);
   gap: 2rem;
   @include desktop {
-    padding: 7rem;
+    padding: 0;
   }
   .cancel-top {
     width: 100%;

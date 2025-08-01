@@ -159,27 +159,31 @@ const ReservesTime = ({reservation}) => {
       {/* 팝업창1 */}
       {
         popUp1 && (
-          <div className="no-time-pop">
-            <div className="no-time-box">
-              <PiWarningCircleFill />
-              <p>시간이 선택되지 않았습니다</p>
-              <p className="no-time-bot">시간선택 후 이용해 주세요</p>
-              <button onClick={() => setPopUp1(false)}>확인</button>
+        <div className="popup-wrap">
+          <div className="popup">
+            <div className="popup-top">
+              <PiWarningCircleFill className="warning-sign" />
+              <p className="popup-ment1">시간이 선택되지 않았습니다</p>
+              <p className="popup-ment2">시간 선택 후 이용해 주세요</p>
             </div>
+            <button onClick={()=>{setPopUp1(false)}}>확인</button>
           </div>
+        </div>
         )
       }
       {/* 팝업창2 */}
       {
         popUp2 && (
-          <div className="wrong-time-pop">
-            <div className="wrong-time-box">
-              <PiWarningCircleFill />
-              <p>종료시간이 시작시간보다 이릅니다</p>
-              <p className="wrong-time-bot">시간을 재선택 해 주세요 </p>
-              <button onClick={() => setPopUp2(false)}>확인</button>
+        <div className="popup-wrap">
+          <div className="popup">
+            <div className="popup-top">
+              <PiWarningCircleFill className="warning-sign" />
+              <p className="popup-ment1">종료 시간이 시작 시간보다 빠릅니다</p>
+              <p className="popup-ment2">시간을 다시 선택해 주세요</p>
             </div>
+            <button onClick={()=>{setPopUp2(false)}}>확인</button>
           </div>
+        </div>
         )
       }
       <div className="time-title">

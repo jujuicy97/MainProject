@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PiWarningCircleFill } from "react-icons/pi";
-import { findUserId } from "../utils/ParkingAPI";
+import { findUserId } from "../../utils/ParkingAPI";
 import { useNavigate } from "react-router-dom";
 
 const FindID = ({setUserID}) => {

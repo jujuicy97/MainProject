@@ -24,7 +24,7 @@
     width: 100%;
     .btn-1 {
       @include btn2();
-      margin-bottom: 24px;
+      margin-bottom: 12px;
     }
     .btn-2 {
       @include btn1();

@@ -36,7 +36,7 @@
   // ----- price -----
   .info-price {
     .price-content {
-      padding: 35px 25px;
+      padding: 35px 28px;
       padding-bottom: 0;
       @include flex-layout(column, center, flex-start);
       gap: 20px;
@@ -110,11 +110,19 @@
 .info-map,
 .info-price,
 .info-how {
-  height: fit-content;
-  max-height: calc(100vh - 70px);
+  height: calc(100vh - 220px);
   background-color: #f8f7fa;
   @include flex-layout(column, space-between, center);
   img {
     width: 100%;
+  }
+  @include desktop {
+    height: 100%;
+    height: calc(100vh - 70px);
+    background-color: #f8f7fa;
+    @include flex-layout(column, space-between, center);
+    img {
+      width: 100%;
+    }
   }
 }

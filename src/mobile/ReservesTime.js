@@ -172,7 +172,6 @@ const ReservesTime = ({ reservation }) => {
     saveHourAndMinutes(hourAndMinutes); // 총 시간 로컬에 저장
     navigate("/MobileReservation/payment"); //다음페이지로 넘겨주기
   };
-  console.log(popUp1);
   return (
     <div className="reserves-time">
       {/* 팝업창1 */}
@@ -210,13 +209,13 @@ const ReservesTime = ({ reservation }) => {
       </div>
       <div className="time-seat">
         <p>선택한 자리</p>
-        {/* <h1>{selectArea}</h1>   // 정보 받아오면 적용해보기  */}
         <h1>
           {selectedZone} -{" "}
-          {selectedSeatID ? `${selectedSeatID}` : "선택된 좌석이 없습니다"}
+          {selectedSeatID ? `${selectedSeatID}` : "null"}
         </h1>
       </div>
-      <div className="time-btn">
+      <div className="bottom-wrap">
+        <div className="time-btn">
         <button>
           <GoClockFill /> 시간제
         </button>
@@ -228,7 +227,8 @@ const ReservesTime = ({ reservation }) => {
           <FaRegCalendarAlt /> 일일권
         </button>
       </div>
-      <h3>주차 시간 선택</h3>
+      <div className="time-selcete">
+          <h3>주차 시간 선택</h3>
       <div className="time-time">
         <label>
           시작시간
@@ -295,14 +295,17 @@ const ReservesTime = ({ reservation }) => {
       <h4>
         총 이용시간 <span>{hourAndMinutes}</span>
       </h4>
-      <div className="time-info">
+      </div>
+      
+      <div className="btn-wrap">
+        <div className="time-info">
         <h5>
           <PiWarningFill /> 주차장 이용 안내
         </h5>
         <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
         <p>최초 1시간 2,000원 이후 30분당 1,000원이 부과돼요</p>
       </div>
-      <div className="time-price">
+        <div className="time-price">
         <p>
           <span>{hourAndMinutes}</span> 이용 금액
         </p>
@@ -311,11 +314,12 @@ const ReservesTime = ({ reservation }) => {
       {total === maxPrice && (
         <p className="time-max">일 최대 요금이 적용되었습니다.</p>
       )}
-      <div className="btn-wrap">
         <button onClick={handleClick} className="nextBtn">
           다음으로
         </button>
       </div>
+      </div>
+      
     </div>
   );
 };

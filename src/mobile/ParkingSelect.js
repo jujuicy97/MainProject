@@ -182,42 +182,45 @@ const handleSeatClick = (seat) => {
         </div>
       </div>
 
-      <div className="reserve-notice">
-        {noticeItems.map(({ label, backgroundColor, color, border }, idx) => {
-          return (
-            <div key={idx} className="notice-icon-wrap">
-              <div className="notice-icon" style={{ backgroundColor, border }}>
-                <FaCarSide style={{ color }} />
+      <div className="parking-wrap">
+        <div className="reserve-notice">
+          {noticeItems.map(({ label, backgroundColor, color, border }, idx) => {
+            return (
+              <div key={idx} className="notice-icon-wrap">
+                <div className="notice-icon" style={{ backgroundColor, border }}>
+                  <FaCarSide style={{ color }} />
+                </div>
+                <span>{label}</span>
               </div>
-              <span>{label}</span>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+
+        {/* 3개 구간 나눈 변수를 map으로 뿌려주기 */}
+        <div className="seat-wrapper">
+          {[oneRow, twoRow, threeRow].map((row, idx) => {
+            return (
+              <div className="seat-grid" key={idx}>
+                {row.map((seat) => {
+                  // console.log(seat.num, getSeatBackgroundColor(seat));
+                  return (
+                    <div
+                      key={seat.id}
+                      className={`seat ${getSeatBackgroundColor(seat)}`}
+                      onClick={() => {
+                        handleSeatClick(seat);
+                      }}
+                    >
+                      <SeatIcon color={getSeatColor(seat)} />
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      {/* 3개 구간 나눈 변수를 map으로 뿌려주기 */}
-      <div className="seat-wrapper">
-        {[oneRow, twoRow, threeRow].map((row, idx) => {
-          return (
-            <div className="seat-grid" key={idx}>
-              {row.map((seat) => {
-                // console.log(seat.num, getSeatBackgroundColor(seat));
-                return (
-                  <div
-                    key={seat.id}
-                    className={`seat ${getSeatBackgroundColor(seat)}`}
-                    onClick={() => {
-                      handleSeatClick(seat);
-                    }}
-                  >
-                    <SeatIcon color={getSeatColor(seat)} />
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
       <div className="btn-wrap">
         <button className="select-btn">
           <span>선택한 자리</span> {selectedZone}-{displayNum}
@@ -229,12 +232,14 @@ const handleSeatClick = (seat) => {
 
       {/* 팝업 메시지 창 */}
       {showMsg && (
-        <div className="no-seat-selected">
-          <div className="no-seat-box">
-            <PiWarningCircleFill />
-            <p>좌석이 선택되지 않았습니다</p>
-            <p className="no-seat-bot">좌석 선택 후 이용해 주세요</p>
-            <button onClick={() => setShowMsg(false)}>확인</button>
+        <div className="popup-wrap">
+          <div className="popup">
+            <div className="popup-top">
+              <PiWarningCircleFill className="warning-sign" />
+              <p className="popup-ment1">자리가 선택되지 않았습니다</p>
+              <p className="popup-ment2">자리 선택 후 이용해 주세요</p>
+            </div>
+            <button onClick={()=>{setShowMsg(false)}}>확인</button>
           </div>
         </div>
       )}

@@ -146,60 +146,68 @@ const ReservesAllDay = ({ reservation }) => {
         <p>선택한 자리</p>
         <h1>
           {selectedZone} -{" "}
-          {selectedSeatID ? `${selectedSeatID}` : "선택된 좌석이 없습니다"}
+          {selectedSeatID ? `${selectedSeatID}` : "null"}
         </h1>
       </div>
-      <div className="day-btn">
-        <button
-          onClick={() => {
-            navigate("/MobileReservation/Time");
-          }}
-        >
-          <GoClockFill /> 시간제
-        </button>
-        <button
-          onClick={() => {
-            navigate("/MobileReservation/AllDay");
-          }}
-        >
-          <FaRegCalendarAlt /> 일일권
-        </button>
-      </div>
-      <div className="day-day">
-        <p>선택한 날짜</p>
-        <p>
-          {selectedDate
-            ? selectedDate.toLocaleDateString("ko-KR", {
-                month: "long",
-                day: "numeric",
-                weekday: "long",
-              })
-            : ""}
-        </p>
-      </div>
-      <div className="day-time">
-        <p>이용시간</p>
-        <p>
-          {selectDay()} {startTime} - {selectDay()} {endTime}
-        </p>
-      </div>
-      <div className="day-info">
-        <h5>
-          <PiWarningFill /> 주차장 이용 안내
-        </h5>
-        <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
-        <p>최초 1시간 2,000원 이후 30분당 1,000원이 부과돼요</p>
-      </div>
-      <div className="day-price">
-        <p>
-          <span>일일권</span> 이용 금액
-        </p>
-        <h5>{total.toLocaleString("ko-KR")}원</h5>
-      </div>
-      <div className="btn-wrap">
-        <button onClick={handleClick} className="nextBtn">
-          다음으로
-        </button>
+      <div className="bottom-wrap">
+        <div className="day-btn">
+          <button
+            onClick={() => {
+              navigate("/MobileReservation/Time");
+            }}
+          >
+            <GoClockFill /> 시간제
+          </button>
+          <button
+            onClick={() => {
+              navigate("/MobileReservation/AllDay");
+            }}
+          >
+            <FaRegCalendarAlt /> 일일권
+          </button>
+        </div>
+        <div className="day-wrap">
+          <div className="day-day">
+          <p>선택한 날짜</p>
+          <p>
+            {selectedDate
+              ? selectedDate.toLocaleDateString("ko-KR", {
+                  month: "long",
+                  day: "numeric",
+                  weekday: "long",
+                })
+              : ""}
+          </p>
+        </div>
+        <div className="day-time">
+          <p>이용시간</p>
+          <p>
+            {selectDay()} {startTime} - {selectDay()} {endTime}
+          </p>
+        </div>
+        </div>
+        
+        
+  
+        <div className="btn-wrap">
+          <div className="day-info">
+          <h5>
+            <PiWarningFill /> 주차장 이용 안내
+          </h5>
+          <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
+          <p>최초 1시간 2,000원 이후 30분당 1,000원이 부과돼요</p>
+          <p>한 번 출차 시 다시 입차할 수 없어요</p>
+        </div>
+          <div className="day-price">
+          <p>
+            <span>일일권</span> 이용 금액
+          </p>
+          <h5>{total.toLocaleString("ko-KR")}원</h5>
+        </div>
+          <button onClick={handleClick} className="nextBtn">
+            다음으로
+          </button>
+        </div>
       </div>
     </div>
   );

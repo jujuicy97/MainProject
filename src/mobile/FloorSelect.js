@@ -256,12 +256,14 @@ const FloorSelect = ({ userID }) => {
       </div>
 
       {showMsg && (
-        <div className="no-zone-selected">
-          <div className="no-zone-box">
-            <PiWarningCircleFill />
-            <p>구역이 선택되지 않았습니다</p>
-            <p className="no-zone-bot">구역 선택 후 이용해 주세요 </p>
-            <button onClick={() => setShowMsg(false)}>확인</button>
+        <div className="popup-wrap">
+          <div className="popup">
+            <div className="popup-top">
+              <PiWarningCircleFill className="warning-sign" />
+              <p className="popup-ment1">구역이 선택되지 않았습니다</p>
+              <p className="popup-ment2">구역 선택 후 이용해 주세요</p>
+            </div>
+            <button onClick={()=>{setShowMsg(false)}}>확인</button>
           </div>
         </div>
       )}

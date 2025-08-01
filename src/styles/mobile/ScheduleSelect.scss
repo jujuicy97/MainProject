@@ -22,12 +22,24 @@
       }
     }
   }
+  .calendar-wrap {
+    @include flex-layout(column, center, center);
+    gap: 40px;
+  }
   // 달력 설정
   .react-calendar{
-    @include font-body;
-@include desktop{
-  width: 80%;
-}
+    width: 85%;
+    min-width: 350px;
+    padding: 10px;
+    @include font-h3;
+    .react-calendar__month-view__days {
+      button {
+        height: 60px;
+        @include mobile {
+          height: 55px;
+        }
+      }
+    }
   }
   .state {
     @include flex-layout(row, space-around);

@@ -56,12 +56,15 @@ const Login = () => {
                 <p className='dream-com'>드림랜드와 함께 편리한 주차를 경험하세요!</p>
                 {
                     popUp && (
-                        <div className="no-data">
-                            <div className="no-data-box">
-                                <PiWarningCircleFill />
-                                <p>일치하는 회원정보가 없습니다</p>
-                                <p className="no-data-bot">회원가입 후 이용해 주세요</p>                          <button onClick={() => setPopUp(false)}>확인</button>
+                        <div className="popup-wrap">
+                        <div className="popup">
+                            <div className="popup-top">
+                            <PiWarningCircleFill className="warning-sign" />
+                            <p className="popup-ment1">일치하는 회원 정보가 없습니다</p>
+                            <p className="popup-ment2">회원가입 후 이용해 주세요</p>
                             </div>
+                            <button onClick={()=>{setPopUp(false)}}>확인</button>
+                        </div>
                         </div>
                     )
                 }

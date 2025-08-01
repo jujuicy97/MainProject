@@ -1,0 +1,972 @@
+button, input{
+    font-family: inherit;
+}
+
+
+//로그인페이지
+#login-page{
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 70px 26px;
+    width: 100%;
+    height: 100vh;
+    @include font-body();
+    @include flex-layout(column);
+    gap: 1rem;
+    @media screen and (min-width:1024px){
+        padding: 7rem 12rem;
+    }
+    .login-all-include{
+        width: 100%;
+        @include flex-layout(column);
+        gap: 1rem;
+        @media screen and (min-width:1024px){
+            gap: 0.8rem;
+        }
+        .login-logo{
+            margin-bottom: 4rem;
+        }
+        form{
+            width: 100%;
+            @include flex-layout(column);
+            gap: 2rem;
+            @media screen and (min-width:1024px){
+                gap: 1rem;
+            }
+            input{
+                width: 100%;
+                padding: 2rem;
+                border: 1px solid var(--color-graytxt);
+                outline-color: var(--color-primary);
+                border-radius: 1.8rem;
+                @media screen and (min-width:1024px){
+                    padding: 1.5rem;
+                    border-radius: 1.6rem;
+                }
+            }
+            .auto-find{
+                @include font-caption();
+                @include flex-layout(row,space-between);
+                width: 100%;
+                padding: 0 10px;
+                .auto{
+                    @include flex-layout($justify:flex-start);
+                    gap: 0.5rem;
+                    input{
+                        width: auto;
+                    }
+                }
+                .find{
+                    @include flex-layout($justify:flex-end);
+                    gap: 1.2rem;
+                    @media screen and (max-width:445px){
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+            .login-btn{
+                @include btn1();
+                margin-top: 2rem;
+                margin-bottom: 0;
+                @media screen and (min-width:1024px){
+                    margin-top: 5rem;
+                }
+            }
+        }
+        .signup-btn{
+            @include btn2();
+            // width: 90%;
+        }
+        .dream-com{
+            margin-top: 2rem;
+            @include font-caption()
+        }
+        .no-data{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            .no-data-box{
+                @include flex-layout(column, space-between, center);
+                background-color: var(--color-lightgraytxt);
+                color: var(--color-maintxt);
+                width: 60%;
+                height: 20rem;
+                padding: 24px 32px;
+                border-radius: 1rem;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                min-width: 260px;
+                max-width: 400px;
+                svg {
+                    font-size: 5rem;
+                    color: var(--color-sub);
+                }
+                p {
+                    @include font-body-bold;
+                    text-align: center;
+                }
+                button {
+                    @include pop-btn();
+                }
+                .no-data-bot{
+                    @include font-caption();
+                    color: var(--color-graytxt);
+                }
+            }
+        }
+    }
+}
+
+//약관동의페이지
+#agree-ment{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 130px 16px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout(column,flex-start,flex-start);
+    gap: 3rem;
+    // overflow: scroll;
+    h2{
+        @include font-h2();
+        margin-left: 1.6rem;
+    }
+    .list-all{
+        width: 100%;
+        padding: 2rem 0;
+        margin: 0 auto;
+        @include flex-layout(column);
+        gap: 2rem;
+        .list-allwrap{
+            width: 100%;
+            .agree-list{
+                padding: 2rem;
+                width: 100%;
+                @include flex-layout($justify:space-between);
+                box-shadow: 0 0 0 1px var(--color-graytxt);
+                border-radius: 1.6rem;
+                .agree{
+                    width: 80%;
+                    @include font-body();
+                    @include flex-layout($justify:flex-start);
+                    gap: 1rem;
+                    input{
+                        width: 15px;
+                        height: 15px;
+                        accent-color: var(--color-primary);
+                        &:checked{
+                            background-color: var(--color-primary);
+                        }
+                    }
+                }
+                button{
+                    height: 24px;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    @include font-h2();
+                    .arrow-icon{
+                        *{
+                            color: var(--color-graytxt);
+                        }
+                    }
+                }
+                &.isClicked{
+                    box-shadow: 0 0 0 2px var(--color-primary);
+                    .agree{
+                        color: var(--color-primary);
+                        label{
+                            font-weight: bold;
+                        }
+                    }
+                    .button{
+                        *{
+                            color: var(--color-primary);
+                        }
+                    }
+                }
+            }
+            .agree-desc{
+                word-break: keep-all;
+                width: 100%;
+                padding: 2rem;
+                border-right: 1px solid var(--color-graytxt);
+                border-left: 1px solid var(--color-graytxt);
+                border-bottom: 1px solid var(--color-graytxt);
+                border-bottom-left-radius: 1.6rem;
+                border-bottom-right-radius: 1.6rem;
+                @include font-caption();
+            }
+        }
+    }
+    .all-check{
+        margin-top: 12rem;
+        padding: 2rem;
+        width: 100%;
+        @include flex-layout($justify:flex-start);
+        gap: 2rem;
+        @include font-h3();
+        box-shadow: 0 0 0 1px var(--color-graytxt);
+        border-radius: 1.6rem;
+        color: var(--color-primary);
+        &.isChecked{
+            box-shadow: 0 0 0 2px var(--color-primary);
+            .agree{
+                color: var(--color-primary);
+                label{
+                    font-weight: bold;
+                }
+            }
+            .button{
+                *{
+                    color: var(--color-primary);
+                }
+            }
+        }
+        input{
+            width: 15px;
+            height: 15px;
+            border: 1px solid var(--color-primary);
+            accent-color: var(--color-primary);
+        }
+    }
+    .agree-popup{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        .center-pop{
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            max-width: 400px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
+            }
+            p {
+                @include font-body-bold;
+                text-align: center;
+            }
+            button {
+                @include pop-btn();
+            }
+            .agree-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
+            }
+        }
+    }
+    .agree-to-next{
+        @include btn1();
+        margin-bottom: 0;
+    }
+}
+
+//회원가입 페이지
+#sign-up{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 100px 16px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout(column,flex-start,flex-start);
+    gap: 2rem;
+    // overflow: scroll;
+    @media screen and (min-width:1024px){
+        padding: 6rem 5rem;
+    }
+    h2{
+        margin-bottom: 5rem;
+        @media screen and (min-width:1024px){
+            margin-bottom: 2rem;
+        }
+    }
+    form{
+        width: 100%;
+        .sign-input-wrap{
+            margin-bottom: 8rem;
+            @include flex-layout(column);
+            gap: 2rem;
+            width: 100%;
+            > div{
+                width: 100%
+            }
+            label{
+                @include font-caption();
+                padding: 1rem;
+            }
+            .label-id{
+                @include flex-layout($justify:space-between);
+                .pos-id{
+                    padding-right: 1rem;
+                    @include font-caption();
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red
+                    }
+                }
+            }
+            .label-pw{
+                @include flex-layout($justify:space-between);
+                .pos-pass{
+                    padding-right: 1rem;
+                    @include font-caption();
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red
+                    }
+                }
+            }
+            input{
+                padding: 1.6rem;
+                width: 100%;
+                border: 1px solid var(--color-graytxt);
+                border-radius: 1.6rem;
+                outline-color: var(--color-primary);
+                &::placeholder{
+                    @include font-caption();
+                }
+            }
+        }
+        button{
+            @include btn1();
+            margin-bottom: 0;
+        }
+    }
+    .needinfo-popup{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        .info-pop{
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            max-width: 400px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
+            }
+            p {
+                @include font-body-bold;
+                text-align: center;
+            }
+            button {
+                @include pop-btn();
+            }
+            .info-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
+            }
+        }
+    }
+    .too-short{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        .too-short-pass{
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            @include pop-max{
+                width: 400px;
+            }
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
+            }
+            p {
+                @include font-body-bold;
+                text-align: center;
+            }
+            button {
+                @include pop-btn();
+            }
+            .too-short-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
+            }
+        }
+    }
+}
+
+//회원가입 완료페이지
+#complete-signup{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 100px 16px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout(column,flex-end);
+    @media screen and (min-width:1024px){
+        padding: 7rem 5rem;
+        justify-content: space-between;
+    }
+    .complete-ment{
+        text-align: center;
+        margin-bottom: 18rem;
+        @media screen and (min-width:1024px){
+            margin-top: 20rem;
+        }
+        .check-sign{
+            font-size: 7.2rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+    }
+    p{
+        @include font-caption();
+        margin-bottom: 7rem;
+        @media screen and (min-width:1024px){
+            margin-bottom: 0;
+            margin-top: 7rem;
+        }
+    }
+    .btn-home-login{
+        width: 100%;
+        .home-b{
+            @include btn2();
+            margin-bottom: 1.6rem;
+        }
+        .log-b{
+            @include btn1();
+            margin-bottom: 0;
+        }
+    }
+}
+
+//아이디찾기
+#find-id{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 130px 16px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout();
+    // overflow: scroll;
+    @media screen and (min-width:1024px){
+        padding: 7rem 5rem;
+    }
+    .find-id-wrap{
+        width: 100%;
+        @include flex-layout(column,flex-start,flex-start);
+        gap: 4rem;
+        .find-id-input{
+        height: 100%;
+        width: 100%;
+        @include flex-layout(column,flex-start);
+        gap: 2rem;
+        .finding-name, .finding-phone{
+            width: 100%;
+        }
+        label{
+            @include font-caption();
+            padding: 1rem;
+        }
+        input{
+            padding: 1.6rem;
+            width: 100%;
+            border: 1px solid var(--color-graytxt);
+            border-radius: 1.6rem;
+            outline-color: var(--color-primary);
+            &::placeholder{
+                @include font-caption();
+            }
+        }
+        button{
+            @include btn1();
+            margin-top: 28rem;
+            margin-bottom: 0;
+        }
+    }
+    .noid-popup{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        .id-pop{
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            max-width: 400px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
+            }
+            p {
+                @include font-body-bold;
+                text-align: center;
+            }
+            button {
+                @include pop-btn();
+            }
+            .noid-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
+            }
+        }
+    }
+    .empty-popup{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        .empty-pop{
+            @include flex-layout(column, space-between, center);
+            background-color: var(--color-lightgraytxt);
+            color: var(--color-maintxt);
+            width: 60%;
+            height: 20rem;
+            padding: 24px 32px;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 260px;
+            max-width: 400px;
+            svg {
+                font-size: 5rem;
+                color: var(--color-sub);
+            }
+            p {
+                @include font-body-bold;
+                text-align: center;
+            }
+            button {
+                @include pop-btn();
+            }
+            .empty-bot{
+                @include font-caption();
+                color: var(--color-graytxt);
+            }
+        }
+    }
+    }
+}
+
+//찾은 ID 페이지
+#find-id-no1{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 130px 16px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout();
+    // overflow: scroll;
+    @media screen and (min-width:1024px){
+        padding: 7rem 5rem;
+    }
+    .found-id-wrap{
+        width: 100%;
+        @include flex-layout(column,flex-start,flex-start);
+        gap: 4rem;
+        .found-id{
+            width: 100%;
+            label{
+                @include font-caption();
+                padding: 1rem;
+            }
+            p{
+                @include font-h3();
+                margin-top: 1rem;
+                width: 100%;
+                background-color: var(--color-lightgraytxt);
+                padding: 2rem;
+                font-weight: bold;
+                border-radius: 1.6rem;
+            }
+        }
+        button{
+            @include btn1();
+            margin-top: 42rem;
+            margin-bottom: 0;
+        }
+    }
+}
+
+//비밀번호 개인정보확인 페이지
+#find-pw{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 130px 16px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout();
+    // overflow-y: scroll;
+    @media screen and (min-width:1024px){
+        padding: 7rem 5rem;
+    }
+    .find-pw-wrap{
+        width: 100%;
+        @include flex-layout(column,flex-start,flex-start);
+        gap: 4rem;
+        form{
+            width: 100%;
+            > div{
+                
+                label{
+                    @include font-caption();
+                    padding: 1rem;
+                }
+                input{
+                    padding: 1.6rem;
+                    width: 100%;
+                    border: 1px solid var(--color-graytxt);
+                    border-radius: 1.6rem;
+                    outline-color: var(--color-primary);
+                    &::placeholder{
+                        @include font-caption();
+                    }
+                }
+            }
+            button{
+                @include btn1();
+                margin-bottom: 0;
+                margin-top: 25rem;
+            }
+        }
+        .noid-popup{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            .id-pop{
+                @include flex-layout(column, space-between, center);
+                background-color: var(--color-lightgraytxt);
+                color: var(--color-maintxt);
+                width: 60%;
+                height: 20rem;
+                padding: 24px 32px;
+                border-radius: 1rem;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                min-width: 260px;
+                max-width: 400px;
+                svg {
+                    font-size: 5rem;
+                    color: var(--color-sub);
+                }
+                p {
+                    @include font-body-bold;
+                    text-align: center;
+                }
+                button {
+                    @include pop-btn();
+                }
+                .noid-bot{
+                    @include font-caption();
+                    color: var(--color-graytxt);
+                }
+            }
+        }
+        .empty-popup{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            .empty-pop{
+                @include flex-layout(column, space-between, center);
+                background-color: var(--color-lightgraytxt);
+                color: var(--color-maintxt);
+                width: 60%;
+                height: 20rem;
+                padding: 24px 32px;
+                border-radius: 1rem;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                min-width: 260px;
+                max-width: 400px;
+                svg {
+                    font-size: 5rem;
+                    color: var(--color-sub);
+                }
+                p {
+                    @include font-body-bold;
+                    text-align: center;
+                }
+                button {
+                    @include pop-btn();
+                }
+                .empty-bot{
+                    @include font-caption();
+                    color: var(--color-graytxt);
+                }
+            }
+        }
+    }
+    
+}
+
+//비밀번호 변경 페이지
+#reset-pw{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 130px 16px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout();
+    // overflow: scroll;
+    @media screen and (min-width:1024px){
+        padding: 7rem 5rem;
+    }
+    .reset-pw-wrap{
+        width: 100%;
+        @include flex-layout(column,flex-start,flex-start);
+    gap: 4rem;
+        form{
+            width: 100%;
+            > div{
+                width: 100%
+            }
+            label{
+                @include font-caption();
+                padding: 1rem;
+            }
+            input{
+                padding: 1.6rem;
+                width: 100%;
+                border: 1px solid var(--color-graytxt);
+                border-radius: 1.6rem;
+                outline-color: var(--color-primary);
+                &::placeholder{
+                    @include font-caption();
+                }
+            }
+            .label-correct{
+                @include flex-layout($justify:space-between);
+                .reset-pass{
+                    @include font-caption();
+                    padding-right: 1rem;
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red;
+                    }
+                }
+            }
+            button{
+                @include btn1();
+                margin-bottom: 0;
+                margin-top: 35rem;
+            }
+        }
+        .too-short{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            .too-short-pass{
+                @include flex-layout(column, space-between, center);
+                background-color: var(--color-lightgraytxt);
+                color: var(--color-maintxt);
+                width: 60%;
+                height: 20rem;
+                padding: 24px 32px;
+                border-radius: 1rem;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                min-width: 260px;
+                @include pop-max{
+                    width: 400px;
+                }
+                svg {
+                    font-size: 5rem;
+                    color: var(--color-sub);
+                }
+                p {
+                    @include font-body-bold;
+                    text-align: center;
+                }
+                button {
+                    @include pop-btn();
+                }
+                .too-short-bot{
+                    @include font-caption();
+                    color: var(--color-graytxt);
+                }
+            }
+        }
+        .less-info{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            .less-info-pass{
+                @include flex-layout(column, space-between, center);
+                background-color: var(--color-lightgraytxt);
+                color: var(--color-maintxt);
+                width: 60%;
+                height: 20rem;
+                padding: 24px 32px;
+                border-radius: 1rem;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                min-width: 260px;
+                @include pop-max{
+                    width: 400px;
+                }
+                svg {
+                    font-size: 5rem;
+                    color: var(--color-sub);
+                }
+                p {
+                    @include font-body-bold;
+                    text-align: center;
+                }
+                button {
+                    @include pop-btn();
+                }
+                .less-info-bot{
+                    @include font-caption();
+                    color: var(--color-graytxt);
+                }
+            }
+        }
+    }
+    
+}
+
+//비밀번호 변경 완료 페이지
+#changed-pw{
+    position: relative;
+    max-width: $small-size;
+    margin: 0 auto;
+    padding: 100px 16px;
+    width: 100%;
+    height: 100%;
+    @include font-body();
+    @include flex-layout(column,flex-end);
+    @media screen and (min-width:1024px){
+        padding: 7rem 5rem;
+    }
+    .complete-change{
+        text-align: center;
+        margin-bottom: 35rem;
+        .check-sign{
+            font-size: 7.2rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+    }
+    .btn-login{
+        width: 100%;
+        .log-b{
+            @include btn1();
+            margin-bottom: 0;
+        }
+    }
+}

@@ -2,10 +2,16 @@
   max-width: $small-size;
   margin: 0 auto;
   padding: 70px 16px;
+<<<<<<< HEAD
+  @include flex-layout(column, space-between, center);
+  @include desktop {
+    padding: 0;
+=======
   min-height: 100vh;
   @include flex-layout(column, space-between, center);
   @include desktop {
     padding-bottom: 0;
+>>>>>>> upstream/master
   }
   .input-wrap {
     // margin-bottom: 8rem;
@@ -48,9 +54,12 @@
   button {
     @include btn1();
     margin-top: 50px;
+<<<<<<< HEAD
+=======
     @include desktop {
 
     }
+>>>>>>> upstream/master
   }
 }
 

@@ -2,6 +2,21 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import MainPageD from "../desktop/MainPageD";
 import Layout from "../desktop/Layout";
+<<<<<<< HEAD
+import MyPage from "../components/MyPage/MyPage";
+import Login from "../mobile/Login";
+import MobileReservation from "../mobile/MobileReservation";
+import ChangedPw from "../mobile/ChangedPw";
+import ResetPw from "../mobile/ResetPw";
+import FindPW from "../mobile/FindPW";
+import FindIDNo1 from "../mobile/FindIDNo1";
+import FindID from "../mobile/FindID";
+import SignUpComplete from "../mobile/SignUpComplete";
+import AgreeMent from "../mobile/AgreeMent";
+import IntroMobile from "../mobile/IntroMobile";
+import Information from "../mobile/Information";
+import SignUp from "../mobile/SignUp";
+=======
 import MyPage from "../mobile/MyPage/MyPage";
 import MobileReservation from "../mobile/MobileReservation";
 import ChangedPw from "../mobile/Login&SignUp/ChangedPw";
@@ -15,6 +30,7 @@ import Information from "../mobile/Information/Information";
 import Login from "../mobile/Login&SignUp/Login";
 import SignUp from "../mobile/Login&SignUp/SignUp";
 import SignUpComplete from "../mobile/Login&SignUp/SignUpComplete";
+>>>>>>> upstream/master
 
 const DesktopPage = () => {
   const [userID, setUserID] = useState("");

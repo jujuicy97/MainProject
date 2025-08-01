@@ -6,6 +6,7 @@ import "react-calendar/dist/Calendar.css";
 import BottomNavBarMobile from "./BottomNavBarMobile";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import "../styles//mobile/CalendarStyle.scss";
+import { PiWarningCircleFill } from "react-icons/pi";
 
 const ScheduleSelect = () => {
   const navigate = useNavigate();
@@ -16,14 +17,24 @@ const ScheduleSelect = () => {
   const initialDate = storedDate ? new Date(storedDate) : today;
   const [selectedDate, setSelectedDate] = useState(initialDate);
 
+  const [popUp,setPopUp] = useState(false);
+
+
   const maxDate = moment(today).add(30, "days").toDate();
 
   const handleDateChange = (date) => {
+    const newDate = new Date(date.getTime()+ 9* 60 * 60 * 1000)
+      .toISOString()
+      .slice(0,10);
     setSelectedDate(date);
-    localStorage.setItem("selectedDate", date.toISOString());
+    localStorage.setItem("selectedDate", newDate);
   };
 
   const handleReserve = () => {
+    if(!localStorage.getItem("selectedDate")){
+      setPopUp(true);
+      return;
+    }
     navigate("/MobileReservation/floor");
   };
 
@@ -73,9 +84,19 @@ const ScheduleSelect = () => {
         </li>
       </ul>
       <button className="reserve-btn" onClick={handleReserve}>
-        예약하기
-      </button>
-      <BottomNavBarMobile />
+        예약하기</button>
+      {
+        popUp && (
+          <div className="no-date-selected">
+            <div className="no-date-box">
+              <PiWarningCircleFill />
+              <p>날짜가 선택되지 않았습니다</p>
+              <p className="no-date-bot">날짜 선택 후 이용해 주세요 </p>
+              <button onClick={() => setPopUp(false)}>확인</button>
+            </div>
+          </div>
+        )
+      }
     </div>
   );
 };

@@ -4,6 +4,9 @@
   margin: 0 auto;
   padding: 70px 16px;
   @include flex-layout(column, space-between, center);
+  @include desktop {
+    padding: 0 16px;
+  }
   .title{
     @include flex-layout();
     @include font-h2;
@@ -15,35 +18,51 @@
       }
     }
   }
-  // 달력 설정
-  .react-calendar{
-    @include font-body;
-
-  }
-  .state {
-    @include flex-layout(row, space-around);
-    width: 100%;
-    li {
-      @include font-body;
-      @include flex-layout();
-      gap: 4px;
-      &:nth-child(1){
-        color: var(--color-primary);
+  .calendar-wrap {
+    @include flex-layout(column, center, center);
+    gap: 50px;
+    // 달력 설정
+    .react-calendar{
+      width: 85%;
+      padding: 15px;
+      // height: 480px;
+      @include font-h3();
+      .react-calendar__navigation {
+        height: 70px;
       }
-      &:nth-child(2){
-        color: var(--color-maintxt);
-      }
-      &:nth-child(3){
-        color: var(--color-graytxt);
-      }
-      span {
-        width: 14px;
-        height: 14px;
-        border: 2px solid;
-        border-radius: 50%; /* 원 모양 */
-        display: inline-block;
+      .react-calendar__month-view__days {
+        button {
+        height: 60px;
+        }
       }
     }
+    .state {
+      @include flex-layout(row, space-around);
+      width: 100%;
+      max-width: 400px;
+      li {
+        @include font-body;
+        @include flex-layout();
+        gap: 4px;
+        &:nth-child(1){
+          color: var(--color-primary);
+        }
+        &:nth-child(2){
+          color: var(--color-maintxt);
+        }
+        &:nth-child(3){
+          color: var(--color-graytxt);
+        }
+        span {
+          width: 14px;
+          height: 14px;
+          border: 2px solid;
+          border-radius: 50%; /* 원 모양 */
+          display: inline-block;
+        }
+      }
+    }
+
   }
   .reserve-btn{
     @include btn1;

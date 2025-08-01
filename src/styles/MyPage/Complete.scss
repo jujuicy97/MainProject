@@ -2,6 +2,7 @@
   max-width: $small-size;
   height: 100vh;
   padding: 70px 16px;
+<<<<<<< HEAD
   padding-top: 60%;
   @include flex-layout(column, space-between, center);
   @include desktop {
@@ -10,6 +11,15 @@
   .complete-contents {
     @include flex-layout(column);
     height: 100%;
+=======
+  @include flex-layout(column, space-between, center);
+  @include desktop {
+    padding-bottom: 0;
+  }
+  .complete-contents {
+    @include flex-layout(column);
+    height: 60%;
+>>>>>>> upstream/master
     svg {
       margin-bottom: 20px;
       font-size: 7rem;

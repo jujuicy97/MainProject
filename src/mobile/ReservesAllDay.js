@@ -5,6 +5,7 @@ import { PiWarningFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
 
+<<<<<<< HEAD
 // localStorage 저장 "시작시간"
 const saveStartTime = (startTime) => {
   localStorage.setItem("start_time", JSON.stringify(startTime));
@@ -26,11 +27,37 @@ const ReservesAllDay = ({ reservation }) => {
   const [startTime, setStartTime] = useState("00:00"); // 시작 시간관리
   const [endTime, setEndTime] = useState("23:59"); // 종료 시간관리
   const [hourAndMinutes, setHourAndMinutes] = useState("24시간");
+=======
+
+  // localStorage 저장 "시작시간"  
+    const saveStartTime = (startTime) => {
+    localStorage.setItem("start_time", JSON.stringify(startTime));
+    }
+  // localStorage 저장 "종료시간"
+    export const saveEndTime = (endTime) => {
+    localStorage.setItem("end_time", JSON.stringify(endTime));
+    }
+  // localStorage 저장 "총 금액"
+    export const saveTotal = (total) => {
+    localStorage.setItem("total", JSON.stringify(total));
+    }
+  // localStorage 저장 "총 시간"
+    export const saveHourAndMinutes = (hourAndMinutes) => {
+    localStorage.setItem("hourAndMinutes", JSON.stringify(hourAndMinutes));
+    }
+
+
+const ReservesAllDay = ({reservation}) => {
+  const [startTime, setStartTime] = useState('00:00'); // 시작 시간관리
+  const [endTime, setEndTime] = useState('23:59'); // 종료 시간관리
+  const [hourAndMinutes, setHourAndMinutes] = useState("24시간")
+>>>>>>> upstream/master
   const [total, setTotal] = useState(15000); // 일 최대 요금
   const [popUp, setPopUp] = useState(false); // 팝업 상태 관리
 
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const getDate = (date) => {
     if (!date) return "";
     const year = date.getFullYear();
@@ -41,6 +68,9 @@ const ReservesAllDay = ({ reservation }) => {
   };
 
   // 로컬 스토리지에 저장된 날짜 불러오기 (없으면 오늘 날짜)
+=======
+    // 로컬 스토리지에 저장된 날짜 불러오기 (없으면 오늘 날짜)
+>>>>>>> upstream/master
   const today = new Date();
   const storedDate = localStorage.getItem("selectedDate");
   const initialDate = storedDate ? new Date(storedDate) : today;
@@ -57,11 +87,17 @@ const ReservesAllDay = ({ reservation }) => {
   // 좌석 데이터 가져오기
   const storedZoneSeatsString = localStorage.getItem("selectedZoneSeats");
   const storedSeatID = localStorage.getItem("selectedSeatID");
+<<<<<<< HEAD
 
   // JSON 파싱
   const parsedZoneSeats = storedZoneSeatsString
     ? JSON.parse(storedZoneSeatsString)
     : null;
+=======
+  
+  // JSON 파싱
+  const parsedZoneSeats = storedZoneSeatsString ? JSON.parse(storedZoneSeatsString) : null;
+>>>>>>> upstream/master
   const parsedSeatID = storedSeatID ? JSON.parse(storedSeatID) : null;
 
   // 상태 설정
@@ -73,7 +109,11 @@ const ReservesAllDay = ({ reservation }) => {
   if (parsedZoneSeats && parsedZoneSeats.allSeatsData) {
     allSeatsData = parsedZoneSeats.allSeatsData;
   }
+<<<<<<< HEAD
   // 컴포넌트 마운트 시 좌석 번호 찾기
+=======
+ // 컴포넌트 마운트 시 좌석 번호 찾기
+>>>>>>> upstream/master
   useEffect(() => {
     // if (selectedSeatID && allSeatsData.length > 0) {
     //   const foundSeat = allSeatsData.find(seat => seat.id === selectedSeatID);
@@ -81,10 +121,17 @@ const ReservesAllDay = ({ reservation }) => {
     //     setSelectedSeatNum(foundSeat.num);
     //   }
     // }
+<<<<<<< HEAD
     if (localStorage.getItem("selectedSeatID")) {
       setselectedSeatID(localStorage.getItem("selectedSeatID"));
     }
     window.scrollTo(0, 0);
+=======
+    if(localStorage.getItem("selectedSeatID")){
+      setselectedSeatID(localStorage.getItem("selectedSeatID"));
+    }
+    window.scrollTo(0,0);
+>>>>>>> upstream/master
   }, []);
 
   // 좌석 선택 함수
@@ -168,6 +215,7 @@ const ReservesAllDay = ({ reservation }) => {
       <div className="day-day">
         <p>선택한 날짜</p>
         <p>
+<<<<<<< HEAD
           {selectedDate
             ? selectedDate.toLocaleDateString("ko-KR", {
                 month: "long",
@@ -175,10 +223,20 @@ const ReservesAllDay = ({ reservation }) => {
                 weekday: "long",
               })
             : ""}
+=======
+          {selectedDate ? 
+          selectedDate.toLocaleDateString("ko-KR",{
+            month: 'long', 
+            day: 'numeric',
+            weekday: 'long'
+            })
+          : ""} 
+>>>>>>> upstream/master
         </p>
       </div>
       <div className="day-time">
         <p>이용시간</p>
+<<<<<<< HEAD
         <p>
           {selectDay()} {startTime} - {selectDay()} {endTime}
         </p>
@@ -187,10 +245,17 @@ const ReservesAllDay = ({ reservation }) => {
         <h5>
           <PiWarningFill /> 주차장 이용 안내
         </h5>
+=======
+        <p>{selectDay()} {startTime} - {selectDay()} {endTime}</p>
+      </div>
+      <div className="day-info">
+        <h5><PiWarningFill /> 주차장 이용 안내</h5>
+>>>>>>> upstream/master
         <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
         <p>최초 1시간 2,000원 이후 30분당 1,000원이 부과돼요</p>
       </div>
       <div className="day-price">
+<<<<<<< HEAD
         <p>
           <span>일일권</span> 이용 금액
         </p>
@@ -201,6 +266,15 @@ const ReservesAllDay = ({ reservation }) => {
           다음으로
         </button>
       </div>
+=======
+        <p><span>일일권</span> 이용 금액</p>
+        <h5>{total.toLocaleString("ko-KR")}원</h5>
+      </div>
+      <button
+        onClick={handleClick}
+        className="day-nextBtn"
+      >다음으로</button>
+>>>>>>> upstream/master
     </div>
   );
 };

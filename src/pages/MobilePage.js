@@ -1,23 +1,4 @@
 
-<<<<<<< HEAD
-import MyPage from "../components/MyPage/MyPage";
-import { Route, Routes, useLocation } from "react-router-dom";
-import MainPageMobile from "../mobile/MainPageMobile";
-import MobileReservation from "../mobile/MobileReservation";
-import { useEffect, useState } from "react";
-import HeaderMobile from "../mobile/HeaderMobile";
-import BottomNavBarMobile from "../mobile/BottomNavBarMobile";
-import Login from "../mobile/Login";
-import AgreeMent from "../mobile/AgreeMent";
-import SignUp from "../mobile/SignUp";
-import SignUpComplete from "../mobile/SignUpComplete";
-import FindID from "../mobile/FindID";
-import FindIDNo1 from "../mobile/FindIDNo1";
-import FindPW from "../mobile/FindPW";
-import ResetPw from "../mobile/ResetPw";
-import ChangedPw from "../mobile/ChangedPw";
-import Information from "../mobile/Information";
-=======
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MyPage from "../mobile/MyPage/MyPage";
@@ -35,7 +16,6 @@ import MobileReservation from "../mobile/MobileReservation";
 import HeaderMobile from "../mobile/HeaderMobile";
 import BottomNavBarMobile from "../mobile/BottomNavBarMobile";
 import Information from "../mobile/Information/Information";
->>>>>>> upstream/master
 import IntroMobile from "../mobile/IntroMobile";
 
 
@@ -88,11 +68,7 @@ const MobilePage = () => {
         <Route path="/findpw" element={<FindPW setID={setId}/>}/>
         <Route path="/findpw/resetpw" element={<ResetPw ID={id}/>}/>
         <Route path="/findpw/changedpw" element={<ChangedPw/>}/>
-<<<<<<< HEAD
-        <Route path="/information" element={<Information/>}/>
-=======
         <Route path="/information/*" element={<Information/>}/>
->>>>>>> upstream/master
         <Route path="/intro" element={<IntroMobile/>}/>
         <Route path="MobileReservation/*" element={<MobileReservation />}/>
       </Routes>

@@ -10,13 +10,10 @@
     align-items: center;
     gap: 1.5rem;
     position: relative;
-<<<<<<< HEAD
     @include desktop {
     padding: 0;
     @include flex-layout(column, space-between, center);
   }
-=======
->>>>>>> upstream/master
     .pop{
         width: 100%;
         height: 100%;
@@ -193,7 +190,6 @@
             @include font-h2;
         }
     }
-<<<<<<< HEAD
     .btn-wrap {
     padding: 0 16px;
     .nextBtn {
@@ -201,10 +197,4 @@
       width: 100%;
     }
   }
-=======
-    .day-nextBtn{
-        @include btn1;
-        width: 100%;
-    }
->>>>>>> upstream/master
 }

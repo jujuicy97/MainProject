@@ -1,25 +1,13 @@
-// -------- 마이페이지 홈 --------
-
-#mypage {
-  max-width: $small-size;
-  margin: 0 auto;
-  height: 100%;
-
-}
-
-
 #mypage-home {
-  height: 100vh;
-  padding: 70px 0;
-  @include desktop {
-    padding: 0;
-  }
+  min-height: calc(100vh - 140px) ;
   .mypage-home-wrap {
-    height: 100%;
     padding: 0 16px;
     background-color: #F8F7FA;
-    @include flex-layout(column, space-between, flex-start);
+    @include flex-layout(column, center,  flex-start);
     gap: 3rem;
+    @include desktop {
+      min-height: 100vh;
+    }
     .mypage-content-wrap {
       width: 100%;
       @include flex-layout(column, center, flex-start);

@@ -1,11 +1,10 @@
 .parking-select {
-  max-width: $small-size;
-  height: 100%;
-  margin: 0 auto;
-  padding: 70px 16px;
+  @include flex-layout(column, space-between, center);
+  min-height: calc(100vh - 140px) ;
+  padding: 0 16px;
+  width: 100%;
   @include desktop {
-    padding: 0;
-    @include flex-layout(column, space-between, center);
+    min-height: 100vh;
   }
   .reserve-notice {
     @include flex-layout();
@@ -45,10 +44,9 @@
   margin: 1.5rem;
   @include flex-layout(column);
   .seat-grid {
-    width: fit-content;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    padding: 1rem;
+    padding: 1rem 0;
     .seat {
       &.my-reserve {
         background-color: var(--color-sub);
@@ -65,9 +63,12 @@
       }
       border: 1px solid #d3c9e4;
       text-align: center;
-      width: 70px;
+      min-width: 70px;
       height: 90px;
       @include flex-layout(column, center, center);
+      @include desktop {
+        min-width: 90px;
+      }
     }
   }
 }

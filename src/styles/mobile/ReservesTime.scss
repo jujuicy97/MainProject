@@ -1,18 +1,15 @@
 .reserves-time {
-  max-width: $small-size;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 70px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  min-height: calc(100vh - 140px) ;
+  padding: 0 16px;
   gap: 1.5rem;
   position: relative;
   @include flex-layout(column, space-between, center);
   @include desktop {
     padding: 0;
     @include flex-layout(column, space-between, center);
+  }
+  @include desktop {
+    min-height: 100vh;
   }
   .wrong-time-pop,
   .no-time-pop {

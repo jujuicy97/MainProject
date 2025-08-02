@@ -1,19 +1,19 @@
 .ScheduleSelect {
-  max-width: $small-size;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 70px 16px;
   @include flex-layout(column, space-between, center);
-
+  gap: 30px;
+  min-height: calc(100vh - 140px) ;
+  padding: 0 16px;
   @include desktop {
-    padding: 0;
-    @include flex-layout(column, space-between, center);
+    min-height: 100vh;
   }
   .title{
     @include flex-layout();
     @include font-h2;
-    padding-top: 60px;
-    gap: 5px;
+    padding-top: 80px;
+    gap: 10px;
+    @include mobile {
+      padding-top: 30px;
+    }
     svg{
       font-size: 20px;
       path{
@@ -24,22 +24,39 @@
   }
   .calendar-wrap {
     @include flex-layout(column, center, center);
-    gap: 40px;
+    gap: 35px;
   }
   // 달력 설정
   .react-calendar{
-    width: 85%;
+    width: 90%;
     min-width: 350px;
+    min-height: 350px;
     padding: 10px;
     @include font-h3;
+    @include mobile {
+      min-height: 300px;
+    }
     .react-calendar__month-view__days {
       button {
-        height: 60px;
+        width: 100%;
+        height: 100%;
+        min-height: 40px;
         @include mobile {
-          height: 55px;
+          min-height: 45px;
+        }
+      }
+      .today-text {
+        @include mobile {
+          display: none;
         }
       }
     }
+      .react-calendar__navigation__arrow {
+        font-size: 30px;
+        color: var(--color-graytxt);
+        padding-bottom: 15px;
+      }
+
   }
   .state {
     @include flex-layout(row, space-around);

@@ -191,11 +191,9 @@ const FloorSelect = ({ userID }) => {
           </div>
       <div className="floor-wrap-top">
         <div className="top-zone">
-
-          <p className="zone-name">사전 결제 ZONE</p>
-
           {/* //zones 배열 abcd를 순회하며 list로 받아옴*/}
           <div className="zone-wrap">
+          <p className="zone-name">사전 결제 ZONE</p>
             <ul>
               {zones.map((list) => {
                 const status = zoneStatus[list] || {
@@ -232,7 +230,7 @@ const FloorSelect = ({ userID }) => {
           </div>
         </div>
       </div>
-      <div className="price-info">
+      {/* <div className="price-info">
             <p className="price-title">요금 안내</p>
             <ul className="price-detail">
               <li>
@@ -248,7 +246,7 @@ const FloorSelect = ({ userID }) => {
                 <span>15,000원</span>
               </li>
             </ul>
-          </div>
+          </div> */}
       <div className="floor-wrap-bottom">
         <button className="next-btn" onClick={nextbtn}>
           다음으로

@@ -85,7 +85,7 @@ const ScheduleSelect = () => {
         </ul>
       </div>
       <button className="reserve-btn" onClick={handleReserve}>
-        예약하기</button>
+        다음으로</button>
       {
         popUp && (
         <div className="popup-wrap">

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { LuListCheck } from "react-icons/lu";
 
-
 // localStorage 저장 "시작시간"
 const saveStartTime = (startTime) => {
   localStorage.setItem("start_time", JSON.stringify(startTime));
@@ -137,29 +136,32 @@ const ReservesAllDay = ({ reservation }) => {
       <div className="top-wrapper">
         <div className="top1">
           <LuListCheck className="calendar-icon" />
-          <p>{getDate(selectedDate)} {selectedZone}-{selectedSeatID ? `${selectedSeatID}` : "null"}</p>
+          <p>
+            {getDate(selectedDate)} {selectedZone}-
+            {selectedSeatID ? `${selectedSeatID}` : "null"}
+          </p>
         </div>
         <div className="top2">
           <GoClockFill className="map-icon" />
           <h2>이용 시간 선택</h2>
         </div>
       </div>
-                  <div className="price-info">
-            <ul className="price-detail">
-              <li>
-                <span>최소 1시간</span>
-                <span>2,000원</span>
-              </li>
-              <li>
-                <span>이후 30분당</span>
-                <span>1,000원</span>
-              </li>
-              <li>
-                <span>일 최대 요금</span>
-                <span>15,000원</span>
-              </li>
-            </ul>
-          </div>
+      <div className="price-info">
+        <ul className="price-detail">
+          <li>
+            <span>최소 1시간</span>
+            <span>2,000원</span>
+          </li>
+          <li>
+            <span>이후 30분당</span>
+            <span>1,000원</span>
+          </li>
+          <li>
+            <span>일 최대 요금</span>
+            <span>15,000원</span>
+          </li>
+        </ul>
+      </div>
       <div className="bottom-wrap">
         <div className="day-btn">
           <button
@@ -180,38 +182,38 @@ const ReservesAllDay = ({ reservation }) => {
         <div className="day-content-wrap">
           <div className="day-wrap">
             <div className="day-day">
-            <p>선택한 날짜 및 시간</p>
-            <p>
-              {selectedDate
-                ? selectedDate.toLocaleDateString("ko-KR", {
-                    month: "long",
-                    day: "numeric",
-                    weekday: "long",
-                  })
-                : ""}
+              <p>선택한 날짜 및 시간</p>
+              <p>
+                {selectedDate
+                  ? selectedDate.toLocaleDateString("ko-KR", {
+                      month: "long",
+                      day: "numeric",
+                      weekday: "long",
+                    })
+                  : ""}
                 {selectDay()} {startTime} - {selectDay()} {endTime}
-            </p>
-          </div>
+              </p>
+            </div>
           </div>
           <div className="btn-wrap">
             <div className="day-info">
-            <h5>
-              <PiWarningFill /> 주차장 이용 안내
-            </h5>
-            <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
-            <p>한 번 출차 시 다시 입차할 수 없어요</p>
-          </div>
+              <h5>
+                <PiWarningFill /> 주차장 이용 안내
+              </h5>
+              <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
+              <p>한 번 출차 시 다시 입차할 수 없어요</p>
+            </div>
             <div className="day-price">
-            <p>
-              <span>일일권</span> 이용 금액
-            </p>
-            <h5>{total.toLocaleString("ko-KR")}원</h5>
+              <p>
+                <span>일일권</span> 이용 금액
+              </p>
+              <h5>{total.toLocaleString("ko-KR")}원</h5>
+            </div>
           </div>
         </div>
-        </div>
-          <button onClick={handleClick} className="nextBtn">
-            다음으로
-          </button>
+        <button onClick={handleClick} className="nextBtn">
+          다음으로
+        </button>
       </div>
     </div>
   );

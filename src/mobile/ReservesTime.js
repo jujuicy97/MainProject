@@ -183,7 +183,13 @@ const ReservesTime = ({ reservation }) => {
               <p className="popup-ment1">시간이 선택되지 않았습니다</p>
               <p className="popup-ment2">시간 선택 후 이용해 주세요</p>
             </div>
-            <button onClick={()=>{setPopUp1(false)}}>확인</button>
+            <button
+              onClick={() => {
+                setPopUp1(false);
+              }}
+            >
+              확인
+            </button>
           </div>
         </div>
       )}
@@ -196,7 +202,13 @@ const ReservesTime = ({ reservation }) => {
               <p className="popup-ment1">시작 시간이 종료 시간보다 빠릅니다</p>
               <p className="popup-ment2">시간을 다시 선택해 주세요</p>
             </div>
-            <button onClick={()=>{setPopUp2(false)}}>확인</button>
+            <button
+              onClick={() => {
+                setPopUp2(false);
+              }}
+            >
+              확인
+            </button>
           </div>
         </div>
       )}
@@ -204,134 +216,136 @@ const ReservesTime = ({ reservation }) => {
       <div className="top-wrapper">
         <div className="top1">
           <LuListCheck className="calendar-icon" />
-          <p>{getDate(selectedDate)} {selectedZone}-{selectedSeatID ? `${selectedSeatID}` : "null"}</p>
+          <p>
+            {getDate(selectedDate)} {selectedZone}-
+            {selectedSeatID ? `${selectedSeatID}` : "null"}
+          </p>
         </div>
         <div className="top2">
           <GoClockFill className="map-icon" />
           <h2>이용 시간 선택</h2>
         </div>
       </div>
-            <div className="price-info">
-            <ul className="price-detail">
-              <li>
-                <span>최소 1시간</span>
-                <span>2,000원</span>
-              </li>
-              <li>
-                <span>이후 30분당</span>
-                <span>1,000원</span>
-              </li>
-              <li>
-                <span>일 최대 요금</span>
-                <span>15,000원</span>
-              </li>
-            </ul>
-          </div>
+      <div className="price-info">
+        <ul className="price-detail">
+          <li>
+            <span>최소 1시간</span>
+            <span>2,000원</span>
+          </li>
+          <li>
+            <span>이후 30분당</span>
+            <span>1,000원</span>
+          </li>
+          <li>
+            <span>일 최대 요금</span>
+            <span>15,000원</span>
+          </li>
+        </ul>
+      </div>
       <div className="bottom-wrap">
         <div className="time-btn">
-        <button>
-          <GoClockFill /> 시간제
-        </button>
-        <button
-          onClick={() => {
-            navigate("/MobileReservation/AllDay");
-          }}
-        >
-          <FaRegCalendarAlt /> 일일권
-        </button>
-      </div>
-      <div className="time-selcete">
-          <h3>주차 시간 선택</h3>
-      <div className="time-time">
-        <label>
-          시작시간
-          <select
-            value={startTime}
-            onChange={(e) => {
-              setStartTime(e.target.value);
+          <button>
+            <GoClockFill /> 시간제
+          </button>
+          <button
+            onClick={() => {
+              navigate("/MobileReservation/AllDay");
             }}
           >
-            {
-              // 5시부터 24시까지의 시간은 00:00형식으로 만들고 30분 형식까지 추가한 옵션
-              Array.from({ length: 20 }, (_, i) => {
-                // 새 배열을 구성 length가 20인 객체를 넘겨주면 빈요소를 20개 가진 배열을 만들어줌 /코드 20번 반복실행
-                const Hour = String(i + 5).padStart(2, "0"); //5시부터 24시의 시간을 만드는 것
-                const options = [
-                  <option
-                    key={`${Hour}:00`}
-                    value={`${Hour}:00`}
-                  >{`${Hour}:00`}</option>,
-                ];
-                if (i + 5 < 24) {
-                  //24:30분을 만들지 않기 위해 작성
-                  options.push(
-                    <option
-                      key={`${Hour}:30`}
-                      value={`${Hour}:30`}
-                    >{`${Hour}:30`}</option>
-                  );
-                }
-                return options;
-              }).flat()
-            }
-          </select>
-        </label>
-        <label>
-          종료시간
-          <select
-            value={endTime}
-            onChange={(e) => {
-              setEndTime(e.target.value);
-            }}
-          >
-            {Array.from({ length: 20 }, (_, i) => {
-              const Hour = String(i + 5).padStart(2, "0");
-              const options = [
-                <option
-                  key={`${Hour}:00`}
-                  value={`${Hour}:00`}
-                >{`${Hour}:00`}</option>,
-              ];
-              if (i + 5 < 24) {
-                options.push(
-                  <option
-                    key={`${Hour}:30`}
-                    value={`${Hour}:30`}
-                  >{`${Hour}:30`}</option>
-                );
-              }
-              return options;
-            }).flat()}
-          </select>
-        </label>
-      </div>
-      {/* <h4>
-        총 이용시간 <span>{hourAndMinutes}</span>
-      </h4> */}
-      </div>
-      
-      <div className="btn-wrap">
-        <div className="time-info">
-        <h5>
-          <PiWarningFill /> 주차장 이용 안내
-        </h5>
-        <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
-      </div>
-        <div className="time-price">
-        <p>
-          <span>{hourAndMinutes}</span> 이용 금액
-        </p>
-        <h5>{total.toLocaleString("ko-KR")}원</h5>
-      </div>
-      {total === maxPrice && (
-        <p className="time-max">일 최대 요금이 적용되었습니다.</p>
-      )}
+            <FaRegCalendarAlt /> 일일권
+          </button>
+        </div>
+        <div className="time-content-wrap">
+          <div className="time-selcete">
+            <h3>주차 시간 선택</h3>
+            <div className="time-time">
+              <label>
+                시작시간
+                <select
+                  value={startTime}
+                  onChange={(e) => {
+                    setStartTime(e.target.value);
+                  }}
+                >
+                  {
+                    // 5시부터 24시까지의 시간은 00:00형식으로 만들고 30분 형식까지 추가한 옵션
+                    Array.from({ length: 20 }, (_, i) => {
+                      // 새 배열을 구성 length가 20인 객체를 넘겨주면 빈요소를 20개 가진 배열을 만들어줌 /코드 20번 반복실행
+                      const Hour = String(i + 5).padStart(2, "0"); //5시부터 24시의 시간을 만드는 것
+                      const options = [
+                        <option
+                          key={`${Hour}:00`}
+                          value={`${Hour}:00`}
+                        >{`${Hour}:00`}</option>,
+                      ];
+                      if (i + 5 < 24) {
+                        //24:30분을 만들지 않기 위해 작성
+                        options.push(
+                          <option
+                            key={`${Hour}:30`}
+                            value={`${Hour}:30`}
+                          >{`${Hour}:30`}</option>
+                        );
+                      }
+                      return options;
+                    }).flat()
+                  }
+                </select>
+              </label>
+              <label>
+                종료시간
+                <select
+                  value={endTime}
+                  onChange={(e) => {
+                    setEndTime(e.target.value);
+                  }}
+                >
+                  {Array.from({ length: 20 }, (_, i) => {
+                    const Hour = String(i + 5).padStart(2, "0");
+                    const options = [
+                      <option
+                        key={`${Hour}:00`}
+                        value={`${Hour}:00`}
+                      >{`${Hour}:00`}</option>,
+                    ];
+                    if (i + 5 < 24) {
+                      options.push(
+                        <option
+                          key={`${Hour}:30`}
+                          value={`${Hour}:30`}
+                        >{`${Hour}:30`}</option>
+                      );
+                    }
+                    return options;
+                  }).flat()}
+                </select>
+              </label>
+            </div>
+          </div>
+          <div className="btn-wrap">
+            <div className="btn-wrap-top">
+              <div className="time-info">
+                <h5>
+                  <PiWarningFill /> 주차장 이용 안내
+                </h5>
+                <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
+              </div>
+              <div className="time-price">
+                <p>
+                  <span>{hourAndMinutes}</span> 이용 금액
+                </p>
+                <h5>{total.toLocaleString("ko-KR")}원</h5>
+              </div>
+              {total === maxPrice && (
+                <p className="time-max">일 최대 요금이 적용되었습니다.</p>
+              )}
+            </div>
+          </div>
+        </div>
         <button onClick={handleClick} className="nextBtn">
           다음으로
         </button>
       </div>
-      </div>
-      
     </div>
   );
 };

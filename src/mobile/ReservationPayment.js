@@ -11,13 +11,13 @@ import {
 import {
   FaCreditCard,
   FaDotCircle,
-  FaRegCalendarAlt,
   FaRegCircle,
 } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { IoIosArrowForward } from "react-icons/io";
 import { WiStars } from "react-icons/wi";
 import { useNavigate } from "react-router-dom";
+import { LuListCheck } from "react-icons/lu";
 
 const ReservationPayment = ({ setFinalAmount }) => {
   const navigate = useNavigate();
@@ -159,95 +159,103 @@ const ReservationPayment = ({ setFinalAmount }) => {
   };
   return (
     <div id="reservation-payment">
-      <div className="top-wrapper">
-        <div className="top1">
-          <FaRegCalendarAlt className="calendar-icon" />
-          <p>{date}</p>
-        </div>
-        <div className="top2">
-          <FaCreditCard className="map-icon" />
-          <h2>결제 수단 선택</h2>
-        </div>
-      </div>
-
-      <div className="payment-way">
-        <div className="how-to-pay">
-          <div
-            className={`credit-check ${selected === "card" ? "selected" : ""}`}
-            onClick={() => {
-              handleSelect("card");
-            }}
-          >
-            {selected === "card" ? (
-              <FaDotCircle className="color-i" />
-            ) : (
-              <FaRegCircle className="color-i" />
-            )}
-            <FaCreditCard className="credit-i" />
-            <p>신용/체크 카드</p>
+      <div className="payment-top-wrap">
+        <div className="top-wrapper">
+          <div className="top1">
+            <LuListCheck className="calendar-icon" />
+            <p>{date} {zone}-{num} {startTime}-{endTime}</p>
           </div>
-          <div
-            className={`kakao-pay ${selected === "kakao" ? "selected" : ""}`}
-            onClick={() => {
-              handleSelect("kakao");
-            }}
-          >
-            {selected === "kakao" ? (
-              <FaDotCircle className="color-i" />
-            ) : (
-              <FaRegCircle className="color-i" />
-            )}
-            <RiKakaoTalkFill className="kakao-i" />
-            <p>카카오페이</p>
-          </div>
-          <div
-            className={`toss-pay ${selected === "toss" ? "selected" : ""}`}
-            onClick={() => {
-              handleSelect("toss");
-            }}
-          >
-            {selected === "toss" ? (
-              <FaDotCircle className="color-i" />
-            ) : (
-              <FaRegCircle className="color-i" />
-            )}
-            <p>토스페이</p>
+          <div className="top2">
+            <FaCreditCard className="map-icon" />
+            <h2>결제 수단 선택</h2>
           </div>
         </div>
-      </div>
+        <div className="payment-way">
+          <div className="how-to-pay">
+            <div
+              className={`credit-check ${
+                selected === "card" ? "selected" : ""
+              }`}
+              onClick={() => {
+                handleSelect("card");
+              }}
+            >
+              {selected === "card" ? (
+                <FaDotCircle className="color-i" />
+              ) : (
+                <FaRegCircle className="color-i" />
+              )}
+              <FaCreditCard className="credit-i" />
+              <p>신용/체크 카드</p>
+            </div>
+            <div
+              className={`kakao-pay ${selected === "kakao" ? "selected" : ""}`}
+              onClick={() => {
+                handleSelect("kakao");
+              }}
+            >
+              {selected === "kakao" ? (
+                <FaDotCircle className="color-i" />
+              ) : (
+                <FaRegCircle className="color-i" />
+              )}
+              <RiKakaoTalkFill className="kakao-i" />
+              <p>카카오페이</p>
+            </div>
+            <div
+              className={`toss-pay ${selected === "toss" ? "selected" : ""}`}
+              onClick={() => {
+                handleSelect("toss");
+              }}
+            >
+              {selected === "toss" ? (
+                <FaDotCircle className="color-i" />
+              ) : (
+                <FaRegCircle className="color-i" />
+              )}
+              <p>토스페이</p>
+            </div>
+          </div>
+        </div>
 
         <ul className="reserve-aware">
-            <li>
+          <li>
             <p>예약 시 주의사항</p>
-        <IoIosArrowForward />
-            </li>
-            <li>
-                <p>서비스 이용약관</p>
-        <IoIosArrowForward />
-            </li>
+            <IoIosArrowForward />
+          </li>
+          <li>
+            <p>서비스 이용약관</p>
+            <IoIosArrowForward />
+          </li>
         </ul>
-      <p className="agree-check">위 내용을 확인했으며 결제에 동의합니다</p>
-      {yearlyPass && (
-        <div className="year-true">
-          <WiStars />
-          <p>
-            회원님은 연간회원권으로 <span>20%</span> 할인되었어요!
-          </p>
-          <WiStars />
-        </div>
-      )}
-      {!yearlyPass && (
-        // 빈칸용
-        <div className="year-false"></div>
-      )}
-      <div className="total-amount">
-        <p>총 결제 금액</p>
-        <h2>{total.toLocaleString()}원</h2>
+        <p className="agree-check">위 내용을 확인했으며 결제에 동의합니다</p>
       </div>
-      <div className="btn-wrap">
-      <button className="amount-pay" onClick={handlePayment}>
-        {total.toLocaleString()}원 결제하기
-      </button>
+
+      <div className="payment-bottom-wrap">
+        <div className="amount-wrap">
+          {yearlyPass && (
+            <div className="year-true">
+              <WiStars />
+              <p>
+                회원님은 연간회원권으로 <span>20%</span> 할인되었어요!
+              </p>
+              <WiStars />
+            </div>
+          )}
+          {!yearlyPass && (
+            // 빈칸용
+            <div className="year-false"></div>
+          )}
+          <div className="total-amount">
+            <p>총 결제 금액</p>
+            <h2>{total.toLocaleString()}원</h2>
+          </div>
+        </div>
+        <div className="btn-wrap">
+          <button className="amount-pay" onClick={handlePayment}>
+            {total.toLocaleString()}원 결제하기
+          </button>
+      </div>
       </div>
     </div>
   );

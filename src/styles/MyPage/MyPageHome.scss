@@ -1,9 +1,9 @@
 #mypage-home {
-  min-height: calc(100vh - 140px) ;
   .mypage-home-wrap {
+    min-height: calc(100vh - 140px) ;
     padding: 0 16px;
     background-color: #F8F7FA;
-    @include flex-layout(column, center,  flex-start);
+    @include flex-layout(column, flex-start, center);
     gap: 3rem;
     @include desktop {
       min-height: 100vh;
@@ -12,6 +12,9 @@
       width: 100%;
       @include flex-layout(column, center, flex-start);
       gap: 3rem;
+      @include desktop {
+        padding-top: 2rem;
+      }
       .user {
         width: 100%;
         margin-top: 10px;
@@ -67,11 +70,12 @@
           @include flex-layout();
           gap: 15px;
           .edit-card {
-            padding: 20px 10px;
+            padding: 20px 15px;
             background-color: var(--color-white);
             border: 1px solid var(--color-sub);
             border-radius: 16px;
             flex: 1;
+            box-shadow: 0 0 20px #dcd5e8c7;
             cursor: pointer;
             svg {
               font-size: 50px;
@@ -82,8 +86,10 @@
             }
             .card-txt {
               text-align: right;
+              padding: 2px 0;
               h3 {
                 @include font-body-bold();
+                margin-bottom: 3px;
               }
               p {
                 @include font-overline();
@@ -113,6 +119,7 @@
   @include flex-layout(row, space-between, center);
   background-color: var(--color-primary);
   border-radius: 16px;
+  box-shadow: 0 0 20px #dcd5e8c7;
   padding: 25px;
   cursor: pointer;
   div {
@@ -136,6 +143,7 @@
 
 // recently 예약 상태에 따른 classname style
 .recently-box {
+  box-shadow: 0 0 20px #dcd5e8c7;
   > .reserved {
     p {
       &:nth-child(2) {

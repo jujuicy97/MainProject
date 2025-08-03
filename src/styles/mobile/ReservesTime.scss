@@ -1,110 +1,39 @@
 .reserves-time {
   min-height: calc(100vh - 140px) ;
-  padding: 0 16px;
-  gap: 1.5rem;
   position: relative;
   @include flex-layout(column, space-between, center);
-  @include desktop {
-    padding: 0;
-    @include flex-layout(column, space-between, center);
-  }
+  gap: 20px;
   @include desktop {
     min-height: 100vh;
   }
-  .wrong-time-pop,
-  .no-time-pop {
-    word-break: keep-all;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    .wrong-time-box,
-    .no-time-box {
-      @include flex-layout(column, space-between, center);
-      background-color: var(--color-lightgraytxt);
-      color: var(--color-maintxt);
-      width: 60%;
-      height: 20rem;
-      padding: 24px 32px;
-      border-radius: 1rem;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      min-width: 260px;
-      max-width: 400px;
-      svg {
-        font-size: 5rem;
-        color: var(--color-sub);
-      }
-      p {
-        @include font-body-bold;
-        text-align: center;
-      }
-      button {
-        @include pop-btn();
-      }
-      .wrong-time-bot,
-      .no-time-bot {
-        @include font-caption();
-        color: var(--color-graytxt);
-      }
-    }
-  }
   .bottom-wrap {
     width: 100%;
-    height: 100%;
-    min-height: 550px;
+    height: 500px;
+    // min-height: 450px;
+    padding: 0 16px;
     @include flex-layout(column, space-between);
     background-color: #f8f7fa;
     @include desktop {
-      min-height: calc(100vh - 350px);
+      // min-height: 300px;
     }
   }
 
-  .time-seat {
-    width: 100%;
-    height: 6rem;
-    background-color: var(--color-lightgraytxt);
-    color: var(--color-maintxt);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    border-radius: 1rem;
-    @include desktop{
-      width: 400px;
-      height: 100px
-    }
-    P {
-      @include font-body-bold();
-    }
-    h1 {
-      @include font-h1();
-    }
-  }
   .time-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 95%;
+    @include flex-layout();
+    background-color: var(--color-white);
+    border-radius: 16px;
+    box-shadow: 0 0 20px #dcd5e8c4;
     button {
       @include flex-layout();
       gap: 1rem;
       width: 100%;
       height: 6rem;
       border: none;
-      border-radius: 1rem;
-      background-color: var(--color-lightgraytxt);
+      border-radius: 16px;
+      background-color: var(--color-white);
       color: var(--color-maintxt);
       @include font-h3;
-      &:hover {
-        filter: brightness(80%);
-      }
       &:nth-child(1) {
         background-color: var(--color-primary);
         color: var(--color-white);
@@ -153,27 +82,11 @@
         }
       }
     }
-    h4 {
-      width: 90%;
-      height: 6rem;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: var(--color-maintxt);
-      background-color: var(--color-secondary);
-      border-radius: 1rem;
-      @include font-body();
-      span {
-        @include font-h3;
-      }
-    }
   }
 
   .btn-wrap {
     @include flex-layout(column);
-    padding: 0 16px;
+    // padding: 0 16px;
   
     .time-info {
     width: 90%;

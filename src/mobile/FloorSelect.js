@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllseatsByDate, loadZoneSeats } from "../utils/ParkingAPI";
 import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
-import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { LuListCheck } from "react-icons/lu";
 
 // 전체 구성 순서 요약
 // - 선택한 날짜 selectedDate 가져오기 (localStorage)
@@ -179,9 +180,10 @@ const FloorSelect = ({ userID }) => {
     <div className="floor-select">
       <div className="top-wrapper">
             <div className="top1">
-              <FaRegCalendarAlt className="calendar-icon" />
+              <LuListCheck className="calendar-icon" />
+              {/* <FaRegCalendarAlt className="calendar-icon" /> */}
               <p>
-                {selectedDate ? getDate(selectedDate) : "날짜를 선택해주세요"}
+                {getDate(selectedDate)}
               </p>
             </div>
             <div className="top2">
@@ -193,7 +195,10 @@ const FloorSelect = ({ userID }) => {
         <div className="top-zone">
           {/* //zones 배열 abcd를 순회하며 list로 받아옴*/}
           <div className="zone-wrap">
-          <p className="zone-name">사전 결제 ZONE</p>
+            <div className="zone-name">
+              <p>↑ DREAMLAND 정문 방향 ↑</p>
+              <p className="zone-name">사전 결제 ZONE</p>
+            </div>
             <ul>
               {zones.map((list) => {
                 const status = zoneStatus[list] || {

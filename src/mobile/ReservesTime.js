@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { GoClockFill } from "react-icons/go";
 import { PiWarningFill } from "react-icons/pi";
-import { getUserInfo } from "../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
+import { LuListCheck } from "react-icons/lu";
 
 // localStorage 저장 "시작시간"
 const saveStartTime = (startTime) => {
@@ -176,44 +176,57 @@ const ReservesTime = ({ reservation }) => {
     <div className="reserves-time">
       {/* 팝업창1 */}
       {popUp1 && (
-        <div className="no-time-pop">
-          <div className="no-time-box">
-            <PiWarningCircleFill />
-            <p>시간이 선택되지 않았습니다</p>
-            <p className="no-time-bot">시간선택 후 이용해 주세요</p>
-            <button onClick={() => setPopUp1(false)}>확인</button>
+        <div className="popup-wrap">
+          <div className="popup">
+            <div className="popup-top">
+              <PiWarningCircleFill className="warning-sign" />
+              <p className="popup-ment1">시간이 선택되지 않았습니다</p>
+              <p className="popup-ment2">시간 선택 후 이용해 주세요</p>
+            </div>
+            <button onClick={()=>{setPopUp1(false)}}>확인</button>
           </div>
         </div>
       )}
       {/* 팝업창2 */}
       {popUp2 && (
-        <div className="wrong-time-pop">
-          <div className="wrong-time-box">
-            <PiWarningCircleFill />
-            <p>종료시간이 시작시간보다 이릅니다</p>
-            <p className="wrong-time-bot">시간을 재선택 해 주세요 </p>
-            <button onClick={() => setPopUp2(false)}>확인</button>
+        <div className="popup-wrap">
+          <div className="popup">
+            <div className="popup-top">
+              <PiWarningCircleFill className="warning-sign" />
+              <p className="popup-ment1">시작 시간이 종료 시간보다 빠릅니다</p>
+              <p className="popup-ment2">시간을 다시 선택해 주세요</p>
+            </div>
+            <button onClick={()=>{setPopUp2(false)}}>확인</button>
           </div>
         </div>
       )}
 
       <div className="top-wrapper">
         <div className="top1">
-          <FaRegCalendarAlt className="calendar-icon" />
-          <p>{getDate(selectedDate)}</p>
+          <LuListCheck className="calendar-icon" />
+          <p>{getDate(selectedDate)} {selectedZone}-{selectedSeatID ? `${selectedSeatID}` : "null"}</p>
         </div>
         <div className="top2">
           <GoClockFill className="map-icon" />
-          <h2>이용시간 선택</h2>
+          <h2>이용 시간 선택</h2>
         </div>
       </div>
-      <div className="time-seat">
-        <p>선택한 자리</p>
-        <h1>
-          {selectedZone} -{" "}
-          {selectedSeatID ? `${selectedSeatID}` : "null"}
-        </h1>
-      </div>
+            <div className="price-info">
+            <ul className="price-detail">
+              <li>
+                <span>최소 1시간</span>
+                <span>2,000원</span>
+              </li>
+              <li>
+                <span>이후 30분당</span>
+                <span>1,000원</span>
+              </li>
+              <li>
+                <span>일 최대 요금</span>
+                <span>15,000원</span>
+              </li>
+            </ul>
+          </div>
       <div className="bottom-wrap">
         <div className="time-btn">
         <button>
@@ -292,9 +305,9 @@ const ReservesTime = ({ reservation }) => {
           </select>
         </label>
       </div>
-      <h4>
+      {/* <h4>
         총 이용시간 <span>{hourAndMinutes}</span>
-      </h4>
+      </h4> */}
       </div>
       
       <div className="btn-wrap">
@@ -303,7 +316,6 @@ const ReservesTime = ({ reservation }) => {
           <PiWarningFill /> 주차장 이용 안내
         </h5>
         <p>예약 시간 이후 출차 시 추가 요금은 현장 결제해야 해요</p>
-        <p>최초 1시간 2,000원 이후 30분당 1,000원이 부과돼요</p>
       </div>
         <div className="time-price">
         <p>

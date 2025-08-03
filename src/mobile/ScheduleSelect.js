@@ -45,6 +45,20 @@ const ScheduleSelect = () => {
         예약 날짜 선택
       </h2>
       <div className="calendar-wrap">
+              <ul className="state">
+          <li>
+            <span></span>오늘
+          </li>
+          <li>
+            <span></span>예약 가능
+          </li> 
+          <li>
+            <span></span>잔여 수량 없음
+          </li>
+          <li>
+            <span></span>미운영/준비중
+          </li>
+        </ul>
         <Calendar
           onChange={handleDateChange}
           value={selectedDate}          // 기본값: 세이브 데이터 or 오늘 날짜
@@ -59,30 +73,20 @@ const ScheduleSelect = () => {
           calendarType="gregory"
           showNeighboringMonth={false}
           formatDay={(locale, date) => moment(date).format("DD")}
-          tileContent={({ date, view }) => {
-            if (
-              view === "month" &&
-              date.getFullYear() === today.getFullYear() &&
-              date.getMonth() === today.getMonth() &&
-              date.getDate() === today.getDate()
-            ) {
-              return <div className="today-text">오늘</div>;
-            }
-            return null;
-          }}
+          // tileContent={({ date, view }) => {
+          //   if (
+          //     view === "month" &&
+          //     date.getFullYear() === today.getFullYear() &&
+          //     date.getMonth() === today.getMonth() &&
+          //     date.getDate() === today.getDate()
+          //   ) {
+          //     return <div className="today-text">오늘</div>;
+          //   }
+          //   return null;
+          // }}
         />
 
-        <ul className="state">
-          <li>
-            <span></span>예약 가능
-          </li>
-          <li>
-            <span></span>잔여 수량 없음
-          </li>
-          <li>
-            <span></span>미운영/준비중
-          </li>
-        </ul>
+
       </div>
       <button className="reserve-btn" onClick={handleReserve}>
         다음으로</button>

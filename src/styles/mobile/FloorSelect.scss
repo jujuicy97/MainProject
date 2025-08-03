@@ -1,6 +1,6 @@
 .floor-select {
   @include flex-layout(column, space-between, center);
-  gap: 50px;
+  gap: 2  0px;
   min-height: calc(100vh - 140px) ;
   @include desktop {
     min-height: 100vh;
@@ -8,51 +8,25 @@
   .floor-wrap-top {
     width: 100%;
   }
-  .price-info {
-    width: 100%;
-    .price-title {
-      text-align: center;
-      @include font-body-bold;
-      color: var(--color-graytxt);
-      padding: 1rem;
-      padding-top: 2rem;
-    }
-    .price-detail {
-      border: 1px solid #ccc;
-      border-radius: 1rem;
-      margin: 0 2rem;
-      @include font-body();
-      li {
-        @include flex-layout(space-between);
-        // padding: 0.75rem 0;
-        border-bottom: 1px solid #ccc;
-        // gap: 2rem;
-
-        &:last-child {
-          border-bottom: none;
-        }
-        span {
-          flex: 1;
-          padding: 1rem;
-          text-align: center;
-
-          &:first-child {
-            border-right: 1px solid #ccc;
-            background-color: #f8f7fa;
-            @include font-body-bold();
-          }
-        }
-      }
-    }
-  }
   .top-zone {
     .zone-wrap {
-      padding: 0 16px;
+      padding: 30px 16px;
+      padding-bottom: 60px;
+      // background-color: #F8F7FA;
       .zone-name {
         text-align: center;
-        @include font-h3();
-        color: var(--color-graytxt);
-        padding-bottom: 30px;
+        margin-bottom: 17px;
+        p {
+          color: var(--color-sub);
+          &:nth-child(1){
+            @include font-overline();
+            margin-bottom: 10px;
+          }
+          &:nth-child(2){
+            @include font-h3();
+            color: ver 
+          }
+        }
       }
       ul {
         height: 40vh;
@@ -73,7 +47,8 @@
           cursor: pointer;
           transition: 0.3s;
           &:hover {
-            background-color: #F8F7FA;
+            background-color: var(--color-sub);
+            filter: brightness(110%);
           }
 
           &.on {

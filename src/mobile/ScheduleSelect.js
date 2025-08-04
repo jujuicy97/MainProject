@@ -86,7 +86,6 @@ const ScheduleSelect = () => {
           // }}
         />
 
-
       </div>
       <button className="reserve-btn" onClick={handleReserve}>
         다음으로</button>

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCarSide } from "react-icons/fa6";
 import SeatIcon from "./SeatIcon";
-import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { LuListCheck } from "react-icons/lu";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { loadZoneSeats } from "../utils/ParkingAPI";
 
@@ -170,8 +171,8 @@ const handleSeatClick = (seat) => {
     <div className="parking-select">
       <div className="top-wrapper">
         <div className="top1">
-          <FaRegCalendarAlt className="calendar-icon" />
-          <p>{getDate(selectedDate)}</p>
+          <LuListCheck className="calendar-icon" />
+          <p>{getDate(selectedDate)} {selectedZone}구역</p>
         </div>
         <div className="top2">
           <FaMapMarkerAlt className="map-icon" />
@@ -223,7 +224,7 @@ const handleSeatClick = (seat) => {
 
       <div className="btn-wrap">
         <button className="select-btn">
-          <span>선택한 자리</span> {selectedZone}-{displayNum}
+          <span>현재 선택</span> {selectedZone}-{displayNum}
         </button>
         <button className="next-btn" onClick={nextbtn}>
           다음으로{" "}

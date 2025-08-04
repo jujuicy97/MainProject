@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllseatsByDate, loadZoneSeats } from "../utils/ParkingAPI";
 import { useNavigate } from "react-router-dom";
 import { PiWarningCircleFill } from "react-icons/pi";
-import { FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { LuListCheck } from "react-icons/lu";
 
 // 전체 구성 순서 요약
 // - 선택한 날짜 selectedDate 가져오기 (localStorage)
@@ -99,7 +100,6 @@ const FloorSelect = ({ userID }) => {
   //4. 구역별 정보를 가져오는 함수(자리보여주기)_성공시 로컬스토리지에 저장
   const listArea = async (selectZone, selectDate, userID) => {
     setSelectedZone(selectZone);
-    console.log("setSelectedZone to", selectZone);
     const { data, error } = await loadZoneSeats(selectZone, selectDate, userID);
     if (error) {
       setErrorMsg("주차 자리 정보 불러오기 실패");
@@ -121,7 +121,6 @@ const FloorSelect = ({ userID }) => {
   // 페이지 로드 시 전체 구역의 잔여석 상태를 가져옴
   useEffect(() => {
     //값이 바뀔때마다 코드를 자동으로 실행
-    // console.log("realDate:", realDate);
     if (!selectedDate) return;
 
     //함수 정의 : api 불러오기
@@ -179,9 +178,10 @@ const FloorSelect = ({ userID }) => {
     <div className="floor-select">
       <div className="top-wrapper">
             <div className="top1">
-              <FaRegCalendarAlt className="calendar-icon" />
+              <LuListCheck className="calendar-icon" />
+              {/* <FaRegCalendarAlt className="calendar-icon" /> */}
               <p>
-                {selectedDate ? getDate(selectedDate) : "날짜를 선택해주세요"}
+                {getDate(selectedDate)}
               </p>
             </div>
             <div className="top2">
@@ -191,11 +191,12 @@ const FloorSelect = ({ userID }) => {
           </div>
       <div className="floor-wrap-top">
         <div className="top-zone">
-
-          <p className="zone-name">사전 결제 ZONE</p>
-
           {/* //zones 배열 abcd를 순회하며 list로 받아옴*/}
           <div className="zone-wrap">
+            <div className="zone-name">
+              <p>↑ DREAMLAND 정문 방향 ↑</p>
+              <p className="zone-name">사전 결제 ZONE</p>
+            </div>
             <ul>
               {zones.map((list) => {
                 const status = zoneStatus[list] || {
@@ -232,7 +233,7 @@ const FloorSelect = ({ userID }) => {
           </div>
         </div>
       </div>
-      <div className="price-info">
+      {/* <div className="price-info">
             <p className="price-title">요금 안내</p>
             <ul className="price-detail">
               <li>
@@ -248,7 +249,7 @@ const FloorSelect = ({ userID }) => {
                 <span>15,000원</span>
               </li>
             </ul>
-          </div>
+          </div> */}
       <div className="floor-wrap-bottom">
         <button className="next-btn" onClick={nextbtn}>
           다음으로

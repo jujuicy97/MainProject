@@ -56,22 +56,24 @@ const MobilePage = () => {
   return (
     <div className="mobile-page">
       <HeaderMobile pageName={nameOfPage}/>
-      <Routes>
-        <Route path="/" element={<MainPageMobile />}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/mypage/*" element={<MyPage/>}/>
-        <Route path="/agreement" element={<AgreeMent/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/signupComplete" element={<SignUpComplete/>}/>
-        <Route path="/findid" element={<FindID setUserID={setUserID}/>}/>
-        <Route path="/findidno1" element={<FindIDNo1 userID={userID}/>}/>
-        <Route path="/findpw" element={<FindPW setID={setId}/>}/>
-        <Route path="/findpw/resetpw" element={<ResetPw ID={id}/>}/>
-        <Route path="/findpw/changedpw" element={<ChangedPw/>}/>
-        <Route path="/information/*" element={<Information/>}/>
-        <Route path="/intro" element={<IntroMobile/>}/>
-        <Route path="MobileReservation/*" element={<MobileReservation />}/>
-      </Routes>
+      <div className="mobile-page-contents">
+        <Routes>
+          <Route path="/" element={<MainPageMobile />}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/mypage/*" element={<MyPage/>}/>
+          <Route path="/agreement" element={<AgreeMent/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/signupComplete" element={<SignUpComplete/>}/>
+          <Route path="/findid" element={<FindID setUserID={setUserID}/>}/>
+          <Route path="/findidno1" element={<FindIDNo1 userID={userID}/>}/>
+          <Route path="/findpw" element={<FindPW setID={setId}/>}/>
+          <Route path="/findpw/resetpw" element={<ResetPw ID={id}/>}/>
+          <Route path="/findpw/changedpw" element={<ChangedPw/>}/>
+          <Route path="/information/*" element={<Information/>}/>
+          <Route path="/intro" element={<IntroMobile/>}/>
+          <Route path="MobileReservation/*" element={<MobileReservation />}/>
+        </Routes>
+      </div>
       <BottomNavBarMobile/>
     </div>
   );

@@ -52,8 +52,8 @@ const ResetPw = ({ID}) => {
     return (
         <div id="reset-pw">
             <div className="reset-pw-wrap">
+                <form>
                 <h2>변경할 비밀번호를 입력해 주세요</h2>
-                <form onSubmit={handleChangePw}>
                     <div className="re-set-pass">
                         <label>비밀번호</label>
                         <input 
@@ -81,8 +81,8 @@ const ResetPw = ({ID}) => {
                             placeholder="비밀번호를 한 번 더 입력해 주세요"
                         />
                     </div>
-                    <button type="submit" onClick={handleChangePw}>다음</button>
                 </form>
+                    <button onClick={handleChangePw}>다음</button>
                 {
                     shortPass && (
                         <div className="popup-wrap">

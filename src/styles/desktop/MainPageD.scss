@@ -67,7 +67,7 @@
     background-color: rgba($color: #dcd5e8, $alpha: 0.1);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     @keyframes spin {
       from {
         transform: rotate(0deg);
@@ -145,7 +145,7 @@
         gap: 10px;
         margin-top: 10px;
         .zone {
-          padding: 16px;
+          padding: 20px;
           background-color: var(--color-white);
           border-radius: 16px;
           .top {
@@ -308,7 +308,7 @@
     .welcome-wrap {
       background-color: #c6acff;
       border-radius: 16px;
-      padding: 16px;
+      padding: 25px;
       width: 100%;
       height: 200px;
       position: relative;
@@ -332,6 +332,7 @@
           h2 {
             @include font-h2;
             color: var(--color-white);
+            margin-bottom: 10px;
           }
           p {
             @include font-body-bold;
@@ -339,12 +340,17 @@
           }
         }
         .btn {
-          @include font-body-bold;
+          @include font-body;
           width: fit-content;
-          background-color: var(--color-primary);
+          background-color: #c6acff;
           color: var(--color-white);
-          padding: 10px 16px;
+          padding: 10px 30px;
           border-radius: 20px;
+          border: 1px solid var(--color-white);
+          &:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+          }
         }
       }
       @keyframes carDrive {
@@ -436,7 +442,7 @@
         .category-btn {
           @include font-body;
           flex: 1;
-          padding: 8px 16px;
+          padding: 12px 13px;
           border: 1px solid var(--color-sub);
           border-radius: 30px;
           background: var(--color-white);

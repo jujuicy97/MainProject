@@ -22,24 +22,26 @@ const DesktopPage = () => {
 
   return (
     <div className="desktop-page">
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainPageD />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/mypage/*" element={<MyPage />} />
-          <Route path="/agreement" element={<AgreeMent />} />
-          <Route path="/signup" element={<SignUp/>}/>
-          <Route path="/signupComplete" element={<SignUpComplete />} />
-          <Route path="/findid" element={<FindID setUserID={setUserID} />} />
-          <Route path="/findidno1" element={<FindIDNo1 userID={userID} />} />
-          <Route path="/findpw" element={<FindPW setID={setId} />} />
-          <Route path="/findpw/resetpw" element={<ResetPw ID={id} />} />
-          <Route path="/findpw/changedpw" element={<ChangedPw />} />
-          <Route path="MobileReservation/*" element={<MobileReservation />} />
-          <Route path="/intro" element={<IntroMobile />} />
-          <Route path="/information" element={<Information />} />
-        </Route>
-      </Routes>
+      <div className="desktop-page-contents">
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<MainPageD />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/mypage/*" element={<MyPage />} />
+            <Route path="/agreement" element={<AgreeMent />} />
+            <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/signupComplete" element={<SignUpComplete />} />
+            <Route path="/findid" element={<FindID setUserID={setUserID} />} />
+            <Route path="/findidno1" element={<FindIDNo1 userID={userID} />} />
+            <Route path="/findpw" element={<FindPW setID={setId} />} />
+            <Route path="/findpw/resetpw" element={<ResetPw ID={id} />} />
+            <Route path="/findpw/changedpw" element={<ChangedPw />} />
+            <Route path="MobileReservation/*" element={<MobileReservation />} />
+            <Route path="/intro" element={<IntroMobile />} />
+            <Route path="/information" element={<Information />} />
+          </Route>
+        </Routes>
+      </div>
     </div>
   );
 };

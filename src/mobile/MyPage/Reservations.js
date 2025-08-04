@@ -41,22 +41,20 @@ const Reservations = ({ onCancel }) => {
     const dateObj = new Date(dayString);
     const day = dayNames[dateObj.getDay()];
     return `(${day})`;
-  }
+  };
 
-// 내 예약 정보 중 예약 id 받아서 '전체 결제 내역 중 id' == '내 예약 id'가 일치하면 예약 정보 반환
-// 가격 숫자 그대로 반환
-const getReserveAmountValue = (reserveID) => {
-  const matched = price.find((item) => item.reserve_id === reserveID);
-  return matched ? matched.amount : 0;
-};
-// 가격 문자열로 반환
-const formatAmount = (amount) => amount.toLocaleString();
+  // 내 예약 정보 중 예약 id 받아서 '전체 결제 내역 중 id' == '내 예약 id'가 일치하면 예약 정보 반환
+  // 가격 숫자 그대로 반환
+  const getReserveAmountValue = (reserveID) => {
+    const matched = price.find((item) => item.reserve_id === reserveID);
+    return matched ? matched.amount : 0;
+  };
+  // 가격 문자열로 반환
+  const formatAmount = (amount) => amount.toLocaleString();
 
-
-// 현재 시간 불러오기
-const now = new Date();
-const sortedReserve = [...myreserve]
-  .sort((a, b) => {
+  // 현재 시간 불러오기
+  const now = new Date();
+  const sortedReserve = [...myreserve].sort((a, b) => {
     // 취소된 예약은 가장 마지막에 오도록 정렬 우선순위 설정
     if (a.status === "canceled" && b.status !== "canceled") return 1;
     if (a.status !== "canceled" && b.status === "canceled") return -1;
@@ -73,81 +71,83 @@ const sortedReserve = [...myreserve]
   return (
     <>
       <div id="reservation">
-        <div className="reservation-wrap">
-          <div className="reservation-box">
-            <div>
-              <p>이용 중</p>
-              <h1 className="use">
-                {myreserve.filter((r) => r.status === "").length}
-              </h1>
-            </div>
-            <div>
-              <p>예약</p>
-              <h1 className="reserved">
-                {myreserve.filter((r) => r.status === "active").length}
-              </h1>
-            </div>
-            <div>
-              <p>취소</p>
-              <h1 className="canceled">
-                {myreserve.filter((r) => r.status === "canceled").length}
-              </h1>
-            </div>
+        <div className="reservation-box">
+          <div>
+            <p>이용 중</p>
+            <h1 className="use">
+              {myreserve.filter((r) => r.status === "").length}
+            </h1>
           </div>
+          <div>
+            <p>예약</p>
+            <h1 className="reserved">
+              {myreserve.filter((r) => r.status === "active").length}
+            </h1>
+          </div>
+          <div>
+            <p>취소</p>
+            <h1 className="canceled">
+              {myreserve.filter((r) => r.status === "canceled").length}
+            </h1>
+          </div>
+        </div>
 
-          <div className="reserve-wrap">
-
-            {sortedReserve.map((item,idx) => {
-              const amountValue = getReserveAmountValue(item.id);
-              return (
-                <div
-                  key={idx}
-                  className={
-                    item.status === "canceled"
-                      ? "card reservation-canceled"
-                      : "card reservation-reserved"
-                  }
-                >
-                  <div className="card-left">
-                    <h1>
-                      {item.parkarea.zone}-{item.parkarea.num}
-                    </h1>
+        <div className="reserve-wrap">
+          {sortedReserve.map((item, idx) => {
+            const amountValue = getReserveAmountValue(item.id);
+            return (
+              <div
+                key={idx}
+                className={
+                  item.status === "canceled"
+                    ? "card reservation-canceled"
+                    : "card reservation-reserved"
+                }
+              >
+                <div className="card-left">
+                  <h1>
+                    {item.parkarea.zone}-{item.parkarea.num}
+                  </h1>
+                  <p>
+                    {item.status === "canceled" ? "● 취소 완료" : "● 예약 중"}
+                  </p>
+                </div>
+                <div className="card-right">
+                  <div className="right-top">
                     <p>
-                      {item.status === "canceled" ? "● 취소 완료" : "● 예약 중"}
+                      예약 번호 : {item.selected_date.replaceAll("-", "")}
+                      {item.id}
+                      {item.parkarea.zone}
+                      {item.parkarea.num}
                     </p>
+                    <h2>
+                      {new Date(item.selected_date).toLocaleString("ko-KR", {
+                        month: "long",
+                        day: "numeric",
+                      })}{" "}
+                      {getDay(item.selected_date)} &nbsp;
+                      {item.start_time.slice(0, 5)}~{item.end_time.slice(0, 5)}
+                    </h2>
                   </div>
-                  <div className="card-right">
-                    <div className="right-top">
-                      <p>예약 번호 : {item.selected_date.replaceAll("-", "")}{item.id}{item.parkarea.zone}{item.parkarea.num}</p>
-                      <h2>
-                        {new Date(item.selected_date).toLocaleString("ko-KR", {
-                          month: "long",
-                          day: "numeric",
-                        })}{" "}
-                        {getDay(item.selected_date)} &nbsp;
-                        {item.start_time.slice(0, 5)}~{item.end_time.slice(0, 5)}
-                      </h2>
-                    </div>
-                    <div className="right-bottom">
-                      <h3>{formatAmount(amountValue)}원 결제 완료</h3>
-                      {item.status === "active" && (
-                        <button
-                          onClick={() =>
-                            onCancel({
-                              item,
-                              amount: amountValue,
-                            })
-                          }
-                        >
-                          예약 취소
-                        </button>
-                      )}
-                    </div>
+                  <div className="right-bottom">
+                    <h3>{formatAmount(amountValue)}원 결제 완료</h3>
+                    {item.status === "active" && (
+                      <button
+                        onClick={() =>
+                          onCancel({
+                            item,
+                            amount: amountValue,
+                          })
+                        }
+                      >
+                        예약 취소
+                      </button>
+                    )}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

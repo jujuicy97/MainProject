@@ -100,7 +100,6 @@ const FloorSelect = ({ userID }) => {
   //4. 구역별 정보를 가져오는 함수(자리보여주기)_성공시 로컬스토리지에 저장
   const listArea = async (selectZone, selectDate, userID) => {
     setSelectedZone(selectZone);
-    console.log("setSelectedZone to", selectZone);
     const { data, error } = await loadZoneSeats(selectZone, selectDate, userID);
     if (error) {
       setErrorMsg("주차 자리 정보 불러오기 실패");
@@ -122,7 +121,6 @@ const FloorSelect = ({ userID }) => {
   // 페이지 로드 시 전체 구역의 잔여석 상태를 가져옴
   useEffect(() => {
     //값이 바뀔때마다 코드를 자동으로 실행
-    // console.log("realDate:", realDate);
     if (!selectedDate) return;
 
     //함수 정의 : api 불러오기

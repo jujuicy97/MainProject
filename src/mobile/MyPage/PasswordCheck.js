@@ -3,7 +3,7 @@ import { getUserInfo } from "../../utils/LocalStorage";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { useState } from "react";
 
-const PasswordCheck = () => {
+const PasswordCheck = ({setUuid}) => {
   const navigate = useNavigate();
   const user = getUserInfo();
   const [password, setPassword] = useState("");
@@ -11,6 +11,7 @@ const PasswordCheck = () => {
 
   const handlePasswordCheck = () => {
     if (password === user.password) {
+      setUuid(user.id);
       navigate("/mypage/profile-edit");
     } else {
       setShowPopup(true);

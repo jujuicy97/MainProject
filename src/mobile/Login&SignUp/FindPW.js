@@ -31,8 +31,8 @@ const FindPW = ({setID}) => {
     return (
         <div id="find-pw">
             <div className="find-pw-wrap">
+                <form>
                 <h2>비밀번호를 재설정하기 위해<br/>개인정보가 필요해요</h2>
-                <form onSubmit={handleFindPw}>
                     <div className="pass-name">
                         <label>이름</label>
                             <input 
@@ -66,8 +66,8 @@ const FindPW = ({setID}) => {
                                 placeholder="휴대폰 번호를 입력해 주세요"
                             />
                         </div>
-                        <button type="submit">다음</button>
                     </form>
+                    <button onClick={handleFindPw}>다음</button>
                     {
                     showPopEmpty && (
                             <div className="popup-wrap">

@@ -44,14 +44,20 @@
       .recently {
         width: 100%;
         .recently-box {
-          height: 107px;
-          @include flex-layout(column);
+          height: 105px;
+          @include flex-layout(column, flex-start, flex-start);
           gap: 15px;
-          padding: 15px 23px;
+          padding: 25px 23px;
           background-color: var(--color-white);
           border: 1px solid var(--color-sub);
           border-radius: 16px;
           cursor: pointer;
+          &.empty {
+            text-align: center;
+            color: var(--color-graytxt);
+            @include font-body();
+            @include flex-layout();
+          }
           div {
             width: 100%;
             @include flex-layout(row, space-between, center);

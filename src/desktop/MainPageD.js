@@ -16,7 +16,7 @@ import { ReactComponent as CarBody } from "../icons/Car_ani.svg";
 import { ReactComponent as CarSmoke } from "../icons/Smoke_ani.svg";
 import { ReactComponent as CarShadow } from "../icons/Shadow_ani.svg";
 
-import attractionsData from "../data/attractions.json";
+import facilitiesData from "../data/facilities.json";
 
 import { getAllseatsByDate } from "../utils/ParkingAPI";
 import { getUserInfo } from "../utils/LocalStorage"; // 로그인 확인
@@ -48,28 +48,32 @@ const MainPageD = () => {
   });
 
   // 잔여석에 따른 혼잡도 상태 반환
-  const getParkingStatus = (remaining) => {
-    if (remaining >= 10) {
-      return {
-        dotClass: "status-green",
-        textClass: "text-green",
-        label: "여유",
-      };
-    } else if (remaining >= 4) {
-      return {
-        dotClass: "status-yellow",
-        textClass: "text-yellow",
-        label: "보통",
-      };
-    } else if (remaining >= 0) {
-      return { dotClass: "status-red", textClass: "text-red", label: "혼잡" };
-    }
+const getParkingStatus = (remaining) => {
+  if (remaining >= 18) {
     return {
-      dotClass: "status-gray",
-      textClass: "text-gray",
-      label: "정보 없음",
+      dotClass: "status-green",
+      textClass: "text-green",
+      label: "여유",
     };
+  } else if (remaining >= 8) {
+    return {
+      dotClass: "status-yellow",
+      textClass: "text-yellow",
+      label: "보통",
+    };
+  } else if (remaining >= 0) {
+    return {
+      dotClass: "status-red",
+      textClass: "text-red",
+      label: "혼잡",
+    };
+  }
+  return {
+    dotClass: "status-gray",
+    textClass: "text-gray",
+    label: "정보 없음",
   };
+};
 
   const fetchData = async () => {
     const today = new Date().toISOString().split("T")[0];
@@ -81,13 +85,18 @@ const MainPageD = () => {
     }
   };
 
-  useEffect(() => {
-    // 카테고리 필터링 (현재는 어트랙션만)
-    const filtered = attractionsData.filter(
-      (item) => activeCategory === "attraction"
-    );
-    setItems(filtered);
-  }, [activeCategory]);
+useEffect(() => {
+  const categoryMap = {
+    attraction: "어트랙션",
+    show: "공연",
+    restaurant: "레스토랑",
+    gift: "기프트샵",
+  };
+  const filtered = facilitiesData.filter(
+    (item) => item.category === categoryMap[activeCategory]
+  );
+  setItems(filtered);
+}, [activeCategory]);
 
   const handleRedo = () => {
     // 새로고침 데이터
@@ -122,7 +131,8 @@ const MainPageD = () => {
         <div className="alert-overlay">
           <div className="alert-box">
             <PiWarningCircleFill />
-            <p>로그인을 먼저 해주세요.</p>
+            <p>로그인 후 이용 가능합니다</p>
+            <p className="alert-bot">로그인 후 이용해 주세요</p>
             <button onClick={() => setShowAlert(false)}>확인</button>
           </div>
         </div>
@@ -220,14 +230,12 @@ const MainPageD = () => {
           className="reserve-btn"
           onClick={() => handleProtectedNav("MobileReservation/schedule")}
         >
-          <FaCar
-            className="car-icon"
-          />
+          <FaCar className="car-icon" />
           주차 예약하기
         </button>
 
         <div className="info-buttons">
-          <button className="info-btn" onClick={() => navigate("/")}>
+          <button className="info-btn" onClick={() => navigate("/information")}>
             <HiInformationCircle className="icon" />
             주차 안내
           </button>
@@ -242,7 +250,7 @@ const MainPageD = () => {
 
       {/* 드림랜드 파크가 처음이신가요?  */}
       <div className="welcome-section">
-        <div className="welcome-wrap">
+        <div className="welcome-wrap" onClick={() => navigate("/intro")}>
           <div className="text-area">
             <div className="top">
               <h2>
@@ -288,7 +296,7 @@ const MainPageD = () => {
             {items.map((item) => (
               <div key={item.id} className="attraction-item">
                 <div className="img-wrap">
-                  <img src={item.img} alt={item.title} />
+                  <img src={`${process.env.PUBLIC_URL}${item.img}`} alt={item.title} />
                 </div>
                 <div className="info">
                   <span className="tag">{item.category}</span>

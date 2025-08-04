@@ -82,7 +82,7 @@ const CompleteReservation = () => {
         localStorage.removeItem("start_time");
         localStorage.removeItem("end_time");
         localStorage.removeItem("total");
-        localStorage.removeItem("payment");
+        localStorage.removeItem("parkID");
         navigate("/");
     }
     const handleReservation = ()=>{
@@ -95,16 +95,19 @@ const CompleteReservation = () => {
         localStorage.removeItem("start_time");
         localStorage.removeItem("end_time");
         localStorage.removeItem("total");
-        localStorage.removeItem("payment");
+        localStorage.removeItem("parkID");
         navigate("/mypage/reservation");
     }
     return (
         <div id="complete-reservation">
             <div className="top-com-re">
+                <div>
                 <FaCheck />
                 <h2>예약이 완료되었어요!</h2>
+                </div>
+                
+                <p className="meet-dream">DreamLand에서 만나요!</p>
             </div>
-            <p className="meet-dream">DreamLand에서 만나요!</p>
             <div className="all-the-info">
                 <div className="reserve-total-info">
                     <ul className="names-reserve">

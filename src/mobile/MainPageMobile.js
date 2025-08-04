@@ -31,28 +31,32 @@ const MainPageMobile = () => {
   });
 
   // 잔여석에 따른 혼잡도 상태 반환
-  const getParkingStatus = (remaining) => {
-    if (remaining >= 10) {
-      return {
-        dotClass: "status-green",
-        textClass: "text-green",
-        label: "여유",
-      };
-    } else if (remaining >= 4) {
-      return {
-        dotClass: "status-yellow",
-        textClass: "text-yellow",
-        label: "보통",
-      };
-    } else if (remaining >= 0) {
-      return { dotClass: "status-red", textClass: "text-red", label: "혼잡" };
-    }
+const getParkingStatus = (remaining) => {
+  if (remaining >= 18) {
     return {
-      dotClass: "status-gray",
-      textClass: "text-gray",
-      label: "정보 없음",
+      dotClass: "status-green",
+      textClass: "text-green",
+      label: "여유",
     };
+  } else if (remaining >= 8) {
+    return {
+      dotClass: "status-yellow",
+      textClass: "text-yellow",
+      label: "보통",
+    };
+  } else if (remaining >= 0) {
+    return {
+      dotClass: "status-red",
+      textClass: "text-red",
+      label: "혼잡",
+    };
+  }
+  return {
+    dotClass: "status-gray",
+    textClass: "text-gray",
+    label: "정보 없음",
   };
+};
 
   const fetchData = async () => {
     const today = new Date().toISOString().split("T")[0];
@@ -97,7 +101,8 @@ const MainPageMobile = () => {
         <div className="alert-overlay">
           <div className="alert-box">
             <PiWarningCircleFill />
-            <p>로그인을 먼저 해주세요.</p>
+            <p>로그인이 되어 있지 않습니다</p>
+            <p className="alert-bot">로그인 후 이용해 주세요</p>
             <button onClick={() => setShowAlert(false)}>확인</button>
           </div>
         </div>
@@ -211,7 +216,7 @@ const MainPageMobile = () => {
           </button>
         </div>
 
-        <div className="more-info" onClick={() => navigate("/information")}>
+        <div className="more-info" onClick={() => navigate("/intro")}>
           더 많은 정보 보기
           <FaCaretRight className="icon" />
         </div>

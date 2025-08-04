@@ -9,7 +9,6 @@ const MainHeaderMobile = () => {
   useEffect(()=>{
     setLoginCheck(getUserInfo());
   },[])
-  console.log(loginCheck);
   return (
     <nav id="top-main-navbar">
       <div className="navbar-container">
@@ -23,7 +22,7 @@ const MainHeaderMobile = () => {
           {
             loginCheck ? 
             <>
-            <p>{loginCheck.name}<span>님</span></p>
+            <p>{loginCheck.name} <span>님</span></p>
             <div className="user-icon">
             <FaUserLarge />
             </div>

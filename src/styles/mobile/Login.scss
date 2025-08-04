@@ -5,233 +5,224 @@ button, input{
 
 //로그인페이지
 #login-page{
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 70px 26px;
-    width: 100%;
-    height: 100vh;
+    min-height: calc(100vh - 140px) ;
+    padding: 0 26px;
     @include font-body();
-    @include flex-layout(column);
+    @include flex-layout(column, center, center);
     gap: 1rem;
-    .login-logo{
-        margin-bottom: 4rem;
+    @include desktop {
+        min-height: 100vh;
     }
-    form{
+    .login-all-include{
         width: 100%;
         @include flex-layout(column);
-        gap: 2rem;
-        input{
-            width: 100%;
-            padding: 2rem;
-            border: 1px solid var(--color-graytxt);
-            outline-color: var(--color-primary);
-            border-radius: 1.8rem;
+        gap: 1rem;
+        @media screen and (min-width:1024px){
+            gap: 0.8rem;
         }
-        .auto-find{
-            @include font-caption();
-            @include flex-layout(row,space-between);
+        .login-logo{
+            margin-bottom: 4rem;
+        }
+        form{
             width: 100%;
-            padding: 0 10px;
-            .auto{
-                @include flex-layout($justify:flex-start);
-                gap: 0.5rem;
-                input{
-                    width: auto;
+            @include flex-layout(column);
+            gap: 2rem;
+            @media screen and (min-width:1024px){
+                gap: 1rem;
+            }
+            input{
+                width: 100%;
+                padding: 20px;
+                border: 1px solid var(--color-lightgraytxt);
+                outline-color: var(--color-primary);
+                border-radius: 16px;
+                @include font-body;
+                &::placeholder {
+                    color: var(--color-graytxt);
                 }
             }
-            .find{
-                @include flex-layout($justify:flex-end);
-                gap: 1.2rem;
-                @media screen and (max-width:445px){
-                    font-size: 1.1rem;
+            .auto-find{
+                @include font-caption();
+                @include flex-layout(row,space-between);
+                width: 100%;
+                padding: 0 10px;
+                .auto{
+                    @include flex-layout($justify:flex-start);
+                    gap: 0.5rem;
+                    input{
+                        width: auto;
+                    }
+                }
+                .find{
+                    @include flex-layout($justify:flex-end);
+                    gap: 1.2rem;
+                    @media screen and (max-width:445px){
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+            .login-btn{
+                @include btn1();
+                margin-top: 2rem;
+                margin-bottom: 0;
+                @media screen and (min-width:1024px){
+                    margin-top: 5rem;
                 }
             }
         }
-        .login-btn{
-            @include btn1();
+        .signup-btn{
+            @include btn2();
+            // width: 90%;
+        }
+        .dream-com{
             margin-top: 2rem;
-            margin-bottom: 0;
+            @include font-caption()
         }
-    }
-    .signup-btn{
-        @include btn2();
-        // width: 90%;
-    }
-    p{
-        margin-top: 2rem;
-        @include font-caption()
     }
 }
 
 //약관동의페이지
 #agree-ment{
     position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 130px 16px;
-    padding-bottom: 70px;
-    width: 100%;
-    height: 100%;
+    min-height: calc(100vh - 140px) ;
+    padding: 0 16px;
     @include font-body();
-    @include flex-layout(column,flex-start,flex-start);
+    @include flex-layout(column,space-between,center);
     gap: 3rem;
-    overflow: scroll;
-    h2{
-        @include font-h2();
-        margin-left: 1.6rem;
+    @include desktop {
+        min-height: 100vh;
     }
-    .list-all{
+    .agree-top-wrap {
+        margin-top: 35px;
         width: 100%;
-        padding: 2rem 0;
-        margin: 0 auto;
-        @include flex-layout(column);
-        gap: 2rem;
-        .list-allwrap{
+        h2{
+            @include font-h2();
+            margin-left: 1.6rem;
+        }
+        .list-all{
             width: 100%;
-            .agree-list{
-                padding: 2rem;
-                width: 100%;
-                @include flex-layout($justify:space-between);
-                box-shadow: 0 0 0 1px var(--color-graytxt);
-                border-radius: 1.6rem;
-                .agree{
-                    width: 80%;
-                    @include font-body();
-                    @include flex-layout($justify:flex-start);
-                    gap: 1rem;
-                    input{
-                        width: 15px;
-                        height: 15px;
-                        accent-color: var(--color-primary);
-                        &:checked{
-                            background-color: var(--color-primary);
-                        }
-                    }
-                }
-                button{
-                    height: 24px;
-                    background: transparent;
-                    border: none;
-                    outline: none;
-                    @include font-h2();
-                    .arrow-icon{
-                        *{
-                            color: var(--color-graytxt);
-                        }
-                    }
-                }
-                &.isClicked{
-                    box-shadow: 0 0 0 2px var(--color-primary);
-                    .agree{
-                        color: var(--color-primary);
-                        label{
-                            font-weight: bold;
-                        }
-                    }
-                    .button{
-                        *{
-                            color: var(--color-primary);
-                        }
-                    }
-                }
-            }
-            .agree-desc{
-                word-break: keep-all;
-                width: 100%;
-                padding: 2rem;
-                border-right: 1px solid var(--color-graytxt);
-                border-left: 1px solid var(--color-graytxt);
-                border-bottom: 1px solid var(--color-graytxt);
-                border-bottom-left-radius: 1.6rem;
-                border-bottom-right-radius: 1.6rem;
-                @include font-caption();
-            }
-        }
-    }
-    .all-check{
-        margin-top: 12rem;
-        padding: 2rem;
-        width: 100%;
-        @include flex-layout($justify:flex-start);
-        gap: 2rem;
-        @include font-h3();
-        box-shadow: 0 0 0 1px var(--color-graytxt);
-        border-radius: 1.6rem;
-        color: var(--color-primary);
-        &.isChecked{
-            box-shadow: 0 0 0 2px var(--color-primary);
-            .agree{
-                color: var(--color-primary);
-                label{
-                    font-weight: bold;
-                }
-            }
-            .button{
-                *{
-                    color: var(--color-primary);
-                }
-            }
-        }
-        input{
-            width: 15px;
-            height: 15px;
-            border: 1px solid var(--color-primary);
-            accent-color: var(--color-primary);
-        }
-    }
-    .agree-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
-        top: 0;
-        left: 0;
-        .center-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
+            padding: 2rem 0;
+            margin: 0 auto;
             @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
-            }
-            p{
-                color: var(--color-graytxt);
-            }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
+            gap: 2rem;
+            .list-allwrap{
+                width: 100%;
+                .agree-list{
+                    padding: 2rem;
+                    width: 100%;
+                    @include flex-layout($justify:space-between);
+                    border: 1px solid var(--color-lightgraytxt);
+                    border-radius: 1.6rem;
+                    .agree{
+                        width: 80%;
+                        @include font-body();
+                        @include flex-layout($justify:flex-start);
+                        gap: 1rem;
+                        input{
+                            width: 15px;
+                            height: 15px;
+                            accent-color: var(--color-primary);
+                            &:checked{
+                                background-color: var(--color-primary);
+                            }
+                        }
+                    }
+                    button{
+                        height: 24px;
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        @include font-h2();
+                        .arrow-icon{
+                            *{
+                                color: var(--color-graytxt);
+                            }
+                        }
+                    }
+                    &.isClicked{
+                        box-shadow: 0 0 0 2px var(--color-primary);
+                        .agree{
+                            color: var(--color-primary);
+                            label{
+                                font-weight: bold;
+                            }
+                        }
+                        .button{
+                            *{
+                                color: var(--color-primary);
+                            }
+                        }
+                    }
+                }
+                .agree-desc{
+                    word-break: keep-all;
+                    width: 100%;
+                    padding: 2rem;
+                    border-right: 1px solid var(--color-graytxt);
+                    border-left: 1px solid var(--color-graytxt);
+                    border-bottom: 1px solid var(--color-graytxt);
+                    border-bottom-left-radius: 1.6rem;
+                    border-bottom-right-radius: 1.6rem;
+                    @include font-caption();
+                }
             }
         }
     }
-    .agree-to-next{
-        @include btn1();
-        margin-bottom: 0;
+    .agree-bottom-wrap {
+        width: 100%;
+        .all-check{
+            padding: 2rem;
+            width: 100%;
+            @include flex-layout($justify:flex-start);
+            gap: 2rem;
+            @include font-h3();
+            border: 1px solid var(--color-lightgraytxt);
+            border-radius: 1.6rem;
+            color: var(--color-primary);
+            &.isChecked{
+                border: 1px solid var(--color-primary);
+                .agree{
+                    color: var(--color-primary);
+                    label{
+                        font-weight: bold;
+                    }
+                }
+                .button{
+                    *{
+                        color: var(--color-primary);
+                    }
+                }
+            }
+            input{
+                width: 15px;
+                height: 15px;
+                border: 1px solid var(--color-primary);
+                accent-color: var(--color-primary);
+            }
+        }
+        .agree-to-next{
+            margin-top: 12px;
+            @include btn1();
+        }
     }
 }
 
 //회원가입 페이지
 #sign-up{
-    position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 100px 16px;
+    min-height: calc(100vh - 140px) ;
+    padding: 0 16px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     @include font-body();
     @include flex-layout(column,flex-start,flex-start);
     gap: 2rem;
-    overflow: scroll;
+    // overflow: scroll;
+    @include desktop {
+        min-height: 100vh;
+    }
     h2{
-        margin-bottom: 5rem;
+        margin-top: 5rem;
+        margin-bottom: 1rem;
     }
     form{
         width: 100%;
@@ -240,6 +231,224 @@ button, input{
             @include flex-layout(column);
             gap: 2rem;
             width: 100%;
+            > div{
+                width: 100%
+            }
+            label{
+                @include font-caption();
+                padding: 1rem;
+            }
+            .label-id{
+                @include flex-layout($justify:space-between);
+                .pos-id{
+                    padding-right: 1rem;
+                    @include font-caption();
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red
+                    }
+                }
+            }
+            .label-pw{
+                @include flex-layout($justify:space-between);
+                .pos-pass{
+                    padding-right: 1rem;
+                    @include font-caption();
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red
+                    }
+                }
+            }
+            input{
+                padding: 1.6rem;
+                width: 100%;
+                border: 1px solid var(--color-graytxt);
+                border-radius: 1.6rem;
+                outline-color: var(--color-primary);
+                &::placeholder{
+                    @include font-caption();
+                }
+            }
+        }
+        button{
+            @include btn1();
+            margin-bottom: 0;
+        }
+    }
+}
+
+//회원가입 완료페이지
+.signup-complete {
+    min-height: calc(100vh - 140px) ;
+    padding: 0 16px;
+    @include desktop {
+        min-height: 100vh;
+    }
+    p {
+        text-align: center;
+        @include font-body();
+        margin-bottom: 60px;
+    }
+}
+
+//아이디찾기
+#find-id{
+    padding: 0 16px;
+    width: 100%;
+    @include flex-layout(column, space-between, center);
+    @include desktop {
+        min-height: 100vh;
+    }
+    .find-id-wrap {
+        width: 100%;
+        min-height: calc(100vh - 140px);
+        @include flex-layout(column,space-between,flex-start);
+        @include desktop {
+            min-height: 100vh;
+        }
+        .find-id-form-wrap{
+            width: 100%;
+            padding-top: 50px;
+            // gap: 4rem;
+            h2 {
+                @include font-h2();
+                margin-bottom: 40px;
+            }
+            .find-id-input{
+                width: 100%;
+                @include flex-layout(column,flex-start, flex-start);
+                gap: 2rem;
+                .finding-name, .finding-phone{
+                    width: 100%;
+                }
+                label{
+                    @include font-caption();
+                    padding: 1rem;
+                }
+                input{
+                    padding: 20px;
+                    width: 100%;
+                    border: 1px solid var(--color-lightgraytxt);
+                    border-radius: 1.6rem;
+                    outline-color: var(--color-primary);
+                    @include font-body();
+                    &::placeholder{
+                        @include font-caption();
+                        color: var(--color-graytxt);
+                    }
+                }
+            }
+    }
+        button{
+            @include btn1();
+        }
+    }
+}
+
+//찾은 ID 페이지
+#find-id-no1{
+    min-height: calc(100vh - 140px) ;
+    padding: 0 16px;
+    @include font-body();
+    @include flex-layout(column, space-between, center);
+    @include desktop {
+        min-height: 100vh;
+    }
+    .found-id-wrap{
+        width: 100%;
+        @include flex-layout(column,flex-start,flex-start);
+        gap: 4rem;
+        padding-top: 50px;
+        .found-id{
+            width: 100%;
+            label{
+                @include font-caption();
+                padding: 1rem;
+            }
+            p{
+                @include font-h3();
+                margin-top: 1rem;
+                width: 100%;
+                background-color: var(--color-lightgraytxt);
+                padding: 2rem;
+                font-weight: bold;
+                border-radius: 1.6rem;
+            }
+        }
+    }
+    button{
+        @include btn1();
+    }
+}
+
+//비밀번호 개인정보확인 페이지
+#find-pw{
+    @include font-body();
+    @include flex-layout();
+    .find-pw-wrap{
+        min-height: calc(100vh - 140px) ;
+        padding: 0 16px;
+        padding-top: 60px;
+        width: 100%;
+        @include flex-layout(column,space-between,flex-start);
+        gap: 4rem;
+        @include desktop {
+            min-height: 100vh;
+        }
+        form{
+            width: 100%;
+            h2 {
+                margin-bottom: 40px;
+            }
+            > div{
+                
+                label{
+                    @include font-caption();
+                    padding: 1rem;
+                }
+                input{
+                    padding: 1.6rem;
+                    width: 100%;
+                    border: 1px solid var(--color-graytxt);
+                    border-radius: 1.6rem;
+                    outline-color: var(--color-primary);
+                    &::placeholder{
+                        @include font-caption();
+                    }
+                }
+            }
+        }
+        button{
+            @include btn1();
+        }
+    }
+    
+}
+
+//비밀번호 변경 페이지
+#reset-pw{
+    .reset-pw-wrap{
+        min-height: calc(100vh - 140px) ;
+        padding: 0 16px;
+        @include font-body();
+        @include flex-layout(column, space-between, center);
+        @include desktop {
+            min-height: 100vh;
+        }
+        gap: 4rem;
+        form{
+            padding-top: 35px;
+            width: 100%;
+            @include flex-layout(column, flex-start, flex-start);
+            gap: 25px;
+            @include desktop {
+                padding-top: 80px;
+            }
             > div{
                 width: 100%
             }
@@ -257,390 +466,36 @@ button, input{
                     @include font-caption();
                 }
             }
-        }
-        button{
-            @include btn1();
-            margin-bottom: 0;
-        }
-    }
-    .pos-id{
-        @include font-caption();
-        position: absolute;
-        top: 34%;
-        right: 10%;
-        transform: translate(13%,-40%);
-        &.is-correct{
-            color: var(--color-primary);
-        }
-        &.is-incorrect{
-            color: red
-        }
-    }
-    .pos-pass{
-        @include font-caption();
-        position: absolute;
-        bottom: 42%;
-        right: 10%;
-        transform: translateX(10%);
-        &.is-correct{
-            color: var(--color-primary);
-        }
-        &.is-incorrect{
-            color: red
-        }
-    }
-}
-
-//회원가입 완료페이지
-#complete-signup{
-    position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 100px 16px;
-    width: 100%;
-    height: 100vh;
-    @include font-body();
-    @include flex-layout(column,flex-end);
-    .complete-ment{
-        text-align: center;
-        margin-bottom: 18rem;
-        .check-sign{
-            font-size: 7.2rem;
-            color: var(--color-primary);
-            margin-bottom: 2rem;
-        }
-    }
-    p{
-        @include font-caption();
-        margin-bottom: 7rem;
-    }
-    .btn-home-login{
-        width: 100%;
-        .home-b{
-            @include btn2();
-            margin-bottom: 1.6rem;
-        }
-        .log-b{
-            @include btn1();
-            margin-bottom: 0;
-        }
-    }
-}
-
-//아이디찾기
-#find-id{
-    position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 130px 16px;
-    padding-bottom: 70px;
-    width: 100%;
-    height: 100vh;
-    @include font-body();
-    @include flex-layout(column,flex-start,flex-start);
-    gap: 4rem;
-    overflow: scroll;
-    .find-id-input{
-        height: 100%;
-        width: 100%;
-        @include flex-layout(column,flex-start);
-        gap: 2rem;
-        .finding-name, .finding-phone{
-            width: 100%;
-        }
-        label{
-            @include font-caption();
-            padding: 1rem;
-        }
-        input{
-            padding: 1.6rem;
-            width: 100%;
-            border: 1px solid var(--color-graytxt);
-            border-radius: 1.6rem;
-            outline-color: var(--color-primary);
-            &::placeholder{
-                @include font-caption();
-            }
-        }
-        button{
-            @include btn1();
-            margin-top: 36rem;
-            margin-bottom: 0;
-        }
-    }
-    .noid-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
-        top: 0;
-        left: 0;
-        .id-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
-            }
-            p{
-                color: var(--color-graytxt);
-            }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
-            }
-        }
-    }
-    .empty-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
-        top: 0;
-        left: 0;
-        .empty-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
-            }
-            p{
-                color: var(--color-graytxt);
-            }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
-            }
-        }
-    }
-}
-
-//찾은 ID 페이지
-#find-id-no1{
-    position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 130px 16px;
-    padding-bottom: 70px;
-    width: 100%;
-    height: 100vh;
-    @include font-body();
-    @include flex-layout(column,flex-start,flex-start);
-    gap: 4rem;
-    overflow: scroll;
-    .found-id{
-        width: 100%;
-        label{
-            @include font-caption();
-            padding: 1rem;
-        }
-        p{
-            @include font-h3();
-            margin-top: 1rem;
-            width: 100%;
-            background-color: var(--color-lightgraytxt);
-            padding: 2rem;
-            font-weight: bold;
-            border-radius: 1.6rem;
-        }
-    }
-    button{
-        @include btn1();
-        margin-top: 42rem;
-        margin-bottom: 0;
-    }
-}
-
-//비밀번호 개인정보확인 페이지
-#find-pw{
-    position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 130px 16px;
-    padding-bottom: 70px;
-    width: 100%;
-    height: 100vh;
-    @include font-body();
-    @include flex-layout(column,flex-start,flex-start);
-    gap: 4rem;
-    overflow-y: scroll;
-    form{
-        width: 100%;
-        > div{
-            
-            label{
-                @include font-caption();
-                padding: 1rem;
-            }
-            input{
-                padding: 1.6rem;
-                width: 100%;
-                border: 1px solid var(--color-graytxt);
-                border-radius: 1.6rem;
-                outline-color: var(--color-primary);
-                &::placeholder{
+            .label-correct{
+                @include flex-layout($justify:space-between);
+                .reset-pass{
                     @include font-caption();
+                    padding-right: 1rem;
+                    &.is-correct{
+                        color: var(--color-primary);
+                    }
+                    &.is-incorrect{
+                        color: red;
+                    }
                 }
             }
         }
         button{
             @include btn1();
-            margin-bottom: 0;
-            margin-top: 30rem;
         }
     }
-    .noid-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
-        top: 0;
-        left: 0;
-        .id-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
-            }
-            p{
-                color: var(--color-graytxt);
-            }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
-            }
-        }
-    }
-    .empty-popup{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.3);
-        top: 0;
-        left: 0;
-        .empty-pop{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            width: 90%;
-            background-color: var(--color-white);
-            padding: 1rem 3rem;
-            @include flex-layout(column);
-            gap: 1rem;
-            border-radius: 1.6rem;
-            .warning-sign{
-                font-size: 7rem;
-                color: var(--color-graytxt);
-                margin-top: 2rem;
-            }
-            p{
-                color: var(--color-graytxt);
-            }
-            button{
-                @include btn1();
-                margin-bottom: 1rem;
-                margin-top: 1rem;
-            }
-        }
-    }
-}
-
-//비밀번호 변경 페이지
-#reset-pw{
-    position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 130px 16px;
-    padding-bottom: 70px;
-    width: 100%;
-    height: 100vh;
-    @include font-body();
-    @include flex-layout(column,flex-start,flex-start);
-    gap: 4rem;
-    overflow: scroll;
-    form{
-        width: 100%;
-        > div{
-            width: 100%
-        }
-        label{
-            @include font-caption();
-            padding: 1rem;
-        }
-        input{
-            padding: 1.6rem;
-            width: 100%;
-            border: 1px solid var(--color-graytxt);
-            border-radius: 1.6rem;
-            outline-color: var(--color-primary);
-            &::placeholder{
-                @include font-caption();
-            }
-        }
-        .label-correct{
-            @include flex-layout($justify:space-between);
-            .reset-pass{
-                @include font-caption();
-                padding-right: 1rem;
-                &.is-correct{
-                    color: var(--color-primary);
-                }
-                &.is-incorrect{
-                    color: red;
-                }
-            }
-        }
-        button{
-            @include btn1();
-            margin-bottom: 0;
-            margin-top: 43rem;
-        }
-    }
+    
 }
 
 //비밀번호 변경 완료 페이지
 #changed-pw{
-    position: relative;
-    max-width: $small-size;
-    margin: 0 auto;
-    padding: 100px 16px;
-    width: 100%;
-    height: 100vh;
+    min-height: calc(100vh - 140px) ;
+    padding: 0 16px;
     @include font-body();
     @include flex-layout(column,flex-end);
+    @include desktop {
+        min-height: 100vh;
+    }
     .complete-change{
         text-align: center;
         margin-bottom: 35rem;
@@ -654,7 +509,6 @@ button, input{
         width: 100%;
         .log-b{
             @include btn1();
-            margin-bottom: 0;
         }
     }
 }

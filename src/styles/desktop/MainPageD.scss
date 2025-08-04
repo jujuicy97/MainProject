@@ -1,11 +1,10 @@
-#main-page {
+#main-pageD {
   max-width: $small-size;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 70px 0;
-  padding-top: 70px;
+  // padding-top: 35px;
 
-  // 알림메세지
+    // 알림메세지
   .alert-overlay {
     position: fixed;
     top: 0;
@@ -24,6 +23,7 @@
     background-color: var(--color-lightgraytxt);
     color: var(--color-maintxt);
     width: 60%;
+    max-width: 500px;
     height: 20rem;
     padding: 24px 32px;
     border-radius: 1rem;
@@ -56,14 +56,11 @@
   // 지도 부분
   .zone-map {
     width: 100%;
-    padding: 37px 16px 20px 16px;
+    padding: 16px;
     background-color: rgba($color: #dcd5e8, $alpha: 0.1);
     display: flex;
-    @include flex-layout(column, center, center);
-    gap: 15px;
-    > * {
-      width: 100%;
-    }
+    flex-direction: column;
+    gap: 10px;
     @keyframes spin {
       from {
         transform: rotate(0deg);
@@ -74,7 +71,6 @@
     }
     .top-info {
       @include flex-layout(row, space-between);
-      padding: 0 10px;
       .left {
         @include flex-layout();
         gap: 7px;
@@ -82,7 +78,6 @@
           p {
             @include font-caption;
             color: var(--color-graytxt);
-            margin-bottom: 3px;
           }
           h3 {
             @include font-h3;
@@ -95,7 +90,6 @@
           .redo-btn {
             width: 30px;
             height: 30px;
-            margin-top: 5px;
             text-align: center;
             line-height: 30px;
             border-radius: 50%;
@@ -125,7 +119,7 @@
       padding: 16px;
       .zone-title {
         @include flex-layout(row, left);
-        gap: 3px;
+        gap: 8px;
         color: #6e3d84;
         svg {
           font-size: 2rem;
@@ -134,7 +128,6 @@
           @include font-body-bold;
         }
         span {
-          margin-left: 5px;
           color: rgba($color: #6e3d84, $alpha: 0.3);
           @include font-caption;
         }
@@ -145,13 +138,11 @@
         gap: 10px;
         margin-top: 10px;
         .zone {
-          @include flex-layout(column, center, flex-end);
-          padding: 12px 15px;
+          padding: 16px;
           background-color: var(--color-white);
           border-radius: 16px;
           .top {
-            width: 100%;
-            @include flex-layout(row, space-between, center);
+            @include flex-layout(row, space-between);
             h2 {
               @include flex-layout();
               @include font-h2;
@@ -177,9 +168,6 @@
               @include font-caption;
               color: var(--color-maintxt);
               margin-right: 5px;
-              &:nth-last-child(1) {
-                margin: 0;
-              }
             }
             .num {
               @include flex-layout();
@@ -199,7 +187,7 @@
     .normal-zone {
       @include flex-layout(row, space-between, center);
       background-color: rgba($color: #dcd5e8, $alpha: 0.2);
-      padding: 20px;
+      padding: 16px;
       border-radius: 16px;
       .zone-left {
         @include flex-layout(column, left, left);
@@ -228,9 +216,6 @@
             @include font-caption;
             color: var(--color-maintxt);
             margin-right: 5px;
-            &:nth-last-child(1) {
-              margin: 0;
-            }
           }
           .num {
             @include flex-layout();
@@ -251,7 +236,7 @@
   // 아래 버튼
   .reservation-section {
     padding: 0 16px;
-    @include flex-layout(column);
+    @include flex-layout(row);
     gap: 15px;
     margin: 1rem auto;
     .icon {
@@ -261,6 +246,7 @@
       }
     }
     .reserve-btn {
+      flex: 1;
       @include btn1();
       @include font-h2;
       @include flex-layout;
@@ -284,6 +270,7 @@
       display: flex;
       gap: 16px;
       width: 100%;
+      flex: 1;
 
       .info-btn {
         @include border;
@@ -291,6 +278,7 @@
         @include flex-layout;
         border-radius: 16px;
         height: 85px;
+        width: 100%;
         padding: 20px 0;
         background-color: var(--color-white);
         flex: 1;
@@ -313,7 +301,6 @@
       height: 70px;
       background-color: var(--color-white);
       width: 100%;
-      margin-bottom: 30px;
       cursor: pointer;
       box-shadow: 0px 0px 15px rgba(220, 213, 232, 0.5);
       &:hover {
@@ -321,7 +308,229 @@
       }
     }
   }
+  .welcome-section {
+    padding: 16px;
+    margin: 1rem auto;
+    width: 100%;
+    .welcome-wrap {
+      background-color: #c6acff;
+      border-radius: 16px;
+      padding: 16px;
+      width: 100%;
+      height: 200px;
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .shadow {
+          animation: shadowStretch 1s ease-in-out;
+        }
+        .smoke {
+          animation: smokeFade 1s ease-in-out;
+        }
+        .car {
+          animation: carDrive 1s ease-in-out;
+        }
+      }
+      .text-area {
+        @include flex-layout(column, space-between, flex-start);
+        width: 100%;
+        height: 100%;
+        .top {
+          h2 {
+            @include font-h2;
+            color: var(--color-white);
+          }
+          p {
+            @include font-body-bold;
+            color: var(--color-secondary);
+          }
+        }
+        .btn {
+          @include font-body-bold;
+          width: fit-content;
+          background-color: var(--color-primary);
+          color: var(--color-white);
+          padding: 10px 16px;
+          border-radius: 20px;
+        }
+      }
+      @keyframes carDrive {
+        0% {
+          transform: rotate(0) translateY(0) scale(1, 1);
+        }
+        50% {
+          transform: rotate(-10deg) translateY(-20px) scale(1, 1);
+        }
+
+        100% {
+          transform: rotate(0) translateY(0) scale(1, 1); /* 원래 상태로 복귀 */
+        }
+      }
+
+      /* 연기 효과 */
+      @keyframes smokeFade {
+        0% {
+          opacity: 0;
+          transform: translateX(0) scaleX(1);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-80px) scaleX(2);
+        }
+      }
+
+      /* 그림자 늘어남 */
+      @keyframes shadowStretch {
+        0% {
+          transform: scaleX(1.8);
+        }
+        50% {
+          transform: scaleX(1);
+        }
+        100% {
+          transform: scaleX(1.8);
+        }
+      }
+      // 차량 애니메이션
+      .car-wrapper {
+        position: absolute;
+        width: 270px;
+        height: 150px;
+        top: 30px;
+        right: -20px;
+        .shadow {
+          position: absolute;
+          bottom: 10px;
+          right: 120px;
+          transform: scaleX(1.8);
+        }
+        .smoke {
+          position: absolute;
+          bottom: 30px;
+          left: -100px;
+          opacity: 0;
+        }
+        .car {
+          position: absolute;
+        }
+      }
+    }
+  }
+  .facility-section {
+    padding: 16px;
+    margin: 1rem auto;
+    width: 100%;
+    .facilities {
+      .title {
+        @include font-h2;
+        color: var(--color-maintxt);
+        svg {
+          margin-right: 5px;
+          path {
+            color: var(--color-secondary);
+          }
+        }
+      }
+
+      .categories {
+        display: flex;
+        gap: 10px;
+        padding: 16px 0;
+
+        .category-btn {
+          @include font-body;
+          flex: 1;
+          padding: 8px 16px;
+          border: 1px solid var(--color-sub);
+          border-radius: 30px;
+          background: var(--color-white);
+          cursor: pointer;
+          @include flex-layout();
+          gap: 6px;
+          svg{
+            font-size: 2rem;
+            path{
+              color: var(--color-primary)
+            }
+          }
+          &.active {
+            @include font-body-bold;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            svg{
+            path{
+              color: var(--color-white)
+            }
+          }
+          }
+        }
+      }
+
+      .attraction-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+
+        .attraction-item {
+          @include flex-layout(row, flex-start);
+          border-radius: 10px;
+          overflow: hidden;
+          .img-wrap {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 70px;
+              object-fit: cover;
+            }
+          }
+
+          .info {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .tag {
+              @include font-overline;
+            }
+
+            p {
+              @include font-body-bold;
+            }
+
+            .time {
+              @include flex-layout(row, flex-start);
+              gap: 3px;
+              p {
+                @include font-overline;
+              }
+              svg {
+                path {
+                  color: var(--color-graytxt);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .more {
+        text-align: right;
+        font-size: 14px;
+        color: #aaa;
+        margin-top: 12px;
+        cursor: pointer;
+      }
+    }
+  }
 }
+
 .status-dot {
   width: 12px;
   height: 12px;

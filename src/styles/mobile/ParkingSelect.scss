@@ -1,26 +1,33 @@
-.parking-select {
-  max-width: $small-size;
-  // height: 100vh;
-  margin: 0 auto;
-  padding: 70px 16px;
-  .reserve-notice {
-    @include flex-layout();
-    gap: 0.5rem;
-    .notice-icon-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      .notice-icon {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.parking-select{
+    max-width: $small-size;
+    height: 100%;
+    margin: 0 auto;
+    padding: 70px 16px;
+    .reserve-notice{
+        @include flex-layout();
         gap: 0.5rem;
-        svg {
-          width: 17px;
-          height: 17px;
+        .notice-icon-wrap{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            .notice-icon{
+                width: 30px;           
+                height: 30px;
+                border-radius: 50%;     
+                display: flex; 
+                @include flex-layout();         
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                svg{
+                    width: 17px;
+                    height: 17px;
+                }
+            }
+            span{
+                @include font-overline();
+                color: var(--color-graytxt);
+            }
         }
       }
       span {
@@ -63,7 +70,7 @@
   .top-wrapper {
     @include flex-layout(column);
     height: 90px;
-    gap: 1rem;
+    gap: 6px;
     margin: 1.5rem 0;
     // border: 1px solid #222;
     .top1 {

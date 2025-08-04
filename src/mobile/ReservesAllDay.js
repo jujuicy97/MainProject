@@ -115,17 +115,19 @@ const ReservesAllDay = ({reservation}) => {
         <button onClick={()=>{setPopUp(false)}}>닫기</button>
          </div>
       </div>
-      <p className="day-date">
-        <FaRegCalendarAlt />  {selectedDate ? 
-        selectedDate.toLocaleDateString("ko-KR",{
-           year: 'numeric', 
-           month: 'long', 
-          day: 'numeric',
-          weekday: 'long'
-        })
-         : "날짜를 선택해주세요"}
-       </p>
-      <h2><span><GoClockFill /></span> 이용시간 선택</h2>
+      <div className="day-title">
+        <p className="day-date">
+          <FaRegCalendarAlt />  {selectedDate ? 
+          selectedDate.toLocaleDateString("ko-KR",{
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            weekday: 'long'
+          })
+          : "날짜를 선택해주세요"}
+        </p>
+        <h2><span><GoClockFill /></span> 이용시간 선택</h2>
+      </div>
       <div className="day-seat">
         <p>선택한자리</p>
         <h1>{selectedZone} - {selectedSeatID ? `${selectedSeatID}` : "선택된 좌석이 없습니다"}</h1>

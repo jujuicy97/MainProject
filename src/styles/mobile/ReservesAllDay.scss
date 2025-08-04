@@ -59,16 +59,20 @@
     p{
        @include font-caption();
     }
-    h2{
-        @include font-h2;
-        span{
-            svg{
-                color: var(--color-primary);
+    .day-title {
+        @include flex-layout(column, center, center);
+        gap: 6px;
+        .day-date{
+            color: var(--color-graytxt);
+        }
+        h2{
+            @include font-h2;
+            span{
+                svg{
+                    color: var(--color-primary);
+                }
             }
         }
-    }
-    .day-date{
-        color: var(--color-graytxt);
     }
     .day-seat{
         width: 100%;

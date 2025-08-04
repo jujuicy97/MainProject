@@ -27,6 +27,9 @@ const ScheduleSelect = () => {
   };
 
   const handleReserve = () => {
+    if( !localStorage.getItem("selectedDate") ) {
+      return alert("날짜가 선택되지 않았습니다")
+    }
     navigate("/MobileReservation/floor");
   };
 
@@ -75,7 +78,7 @@ const ScheduleSelect = () => {
           <span></span>미운영/준비중
         </li>
       </ul>
-      <button className="reserve-btn" onClick={handleReserve}>
+      <button className="reserve-btn" onClick={handleReserve }>
         예약하기
       </button>
       <BottomNavBarMobile />

@@ -45,7 +45,6 @@ const FloorSelect = ({ userID }) => {
     if (!selectedDate) {
       setErrorMsg("잔여석 정보를 불러오는데 실패했습니다");
       setShowMsg(true);
-    navigate("/MobileReservation/schedule");
     }
   }, []);
 

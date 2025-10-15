@@ -1,0 +1,27 @@
+.wrapper-cup{
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F0E7D9;
+  padding: 5rem 3rem;
+  margin-bottom: 5rem;
+  @include tablet{
+    width: 700px;
+  }
+  .product-detail-cup{
+    width: 100%;
+    text-align: center;
+    h2{
+      font-size: $font-h1;
+      padding: 2rem 0;
+    }
+    p{
+      font-size: 1.2rem;
+      padding: 1rem 0;
+      padding-top: 3rem;
+    }
+    img{
+      margin: 3rem 0;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "item001",
+    "image": "/images/new-items/new-item-01-1.jpg",
+    "title": "재생지 감성 노트",
+    "price": 8000,
+    "available": true,
+    "type": "UPCYCLE"
+  },
+  {
+    "id": "item002",
+    "image": "/images/new-items/new-item-02-1.jpeg",
+    "title": "플라스틱 꽃잎 키링",
+    "price": 12000,
+    "available": true,
+    "type": "UPCYCLE"
+  },
+  {
+    "id": "item003",
+    "image": "/images/new-items/new-item-03-1.jpg",
+    "title": "폐목재 컵받침 세트",
+    "price": 15000,
+    "available": true,
+    "type": "UPCYCLE"
+  },
+  {
+    "id": "item004",
+    "image": "/images/new-items/new-item-04-1.jpg",
+    "title": "숲속 비누 샴푸바",
+    "price": 15000,
+    "available": true,
+    "type": "ZERO"
+  },
+  {
+    "id": "item005",
+    "image": "/images/new-items/new-item-05-1.jpg",
+    "title": "늘 쓰는 스텐 빨대 세트",
+    "price": 11000,
+    "available": true,
+    "type": "REUSABLE"
+  },
+  {
+    "id": "item006",
+    "image": "/images/new-items/new-item-06-1.jpg",
+    "title": "숨 쉬는 대나무 칫솔",
+    "price": 6500,
+    "available": true,
+    "type": "ZERO"
+  },
+  {
+    "id": "item007",
+    "image": "/images/new-items/new-item-07-1.jpg",
+    "title": "빛조각 유리화병",
+    "price": 6500,
+    "available": true,
+    "type": "UPCYCLE"
+  },
+  {
+    "id": "item008",
+    "image": "/images/new-items/new-item-08-1.jpg",
+    "title": "타이어솔 플립플랍",
+    "price": 6500,
+    "available": true,
+    "type": "UPCYCLE"
+  }
+]

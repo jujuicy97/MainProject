@@ -1,0 +1,29 @@
+.menu {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid var(--gray-100);
+    @include h4-style();
+  }
+  
+  .menu-item {
+    flex: 1;
+    cursor: pointer;
+    padding: 15px 0;
+    text-align: center;
+    position: relative;
+    color:var(--gray-400);
+  }
+  
+  .menu-item.tap {
+    color: var(--primary-500); // 파란색 등 강조색
+  
+    .progress-bar {
+      height: 2px;
+      background-color: var(--primary-500);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 2px 2px 0 0;
+    }
+  }

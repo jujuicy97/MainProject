@@ -16,11 +16,12 @@ li {
 }
 
 button {
-  display: block;
   cursor: pointer;
+  outline: none;
+  border: none;
 }
 
-input, label {
+button, input, label {
   display: block;
   font-size: inherit;
   color: inherit;

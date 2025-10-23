@@ -1,0 +1,49 @@
+header {
+  background-color: #fff; //bg는 바꾸기
+  color: var(--color-maintxt);
+  //메모
+  //position:fixed 로 하니까 p 두줄 먹어버림
+  //position: absolute; 하면 스크롤시 안따라옴
+  position: sticky;
+  z-index: 15;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  .dimmed-bg {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    @include desktop {
+      display: none;
+    }
+  }
+  .head {
+    @include flex-layout(row, space-between, center);
+    font-size: $font-medium;
+    .left {
+      @include flex-layout(row, center, center);
+    }
+    .menu-btn {
+      @include flex-layout(row, center, center);
+      @include desktop {
+        display: none;
+        //최대크기 메뉴버튼 숨기기
+      }
+    }
+    img {
+      width: 130px;
+      cursor: pointer;
+    }
+    .cart {
+      @include flex-layout();
+      font-size: $font-small;
+      gap: 1rem;
+      cursor: pointer;
+    }
+  }
+}

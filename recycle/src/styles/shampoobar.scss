@@ -1,0 +1,193 @@
+* h2 {
+  font-size: $font-large;
+}
+
+
+.shampoobar {
+  // padding: 0 2rem;
+  margin-top: 5rem;
+  text-align: center;
+  width: 100%;
+  .title {
+    padding: 2rem 0;
+    @include tablet {
+      width: 800px;
+      margin: 0 auto;
+    }
+    hr {
+      border: 1px solid var(maintxt);
+    }
+    p {
+      padding-top: 1.5rem;
+    }
+    h1 {
+      padding: 1.5rem 0;
+      font-size: $font-h1;
+      color: var(--color-Secondary);
+    }
+  }
+
+  .hashtag {
+    margin: 1rem;
+    h2 {
+      word-break: keep-all;
+      margin: 5rem 0;
+      @include tablet {
+        width: 800px;
+        margin: 0 auto;
+        margin-top: 8rem;
+      }
+    }
+    button {
+      margin: 0.5rem 0.2rem;
+      text-wrap: wrap;
+      @include hashtag-style-2();
+      font-weight: bolder;
+      @include tablet {
+        margin: 5rem 0.5rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  // 상세페이지
+  .img-wrap {
+    @include tablet {
+      // padding: 0 12rem;
+      width: 800px;
+      margin: 0 auto;
+    }
+    img {
+      display: block;
+      width: 100%;
+    }
+    h2 {
+      margin-top: 5rem;
+      margin: 10rem 1.5rem 4rem 1.5rem;
+      word-break: keep-all;
+    }
+    p {
+      padding: 0 2rem;
+      @include tablet {
+        font-size: 1.3rem;
+      }
+    }
+    padding-top: 5rem;
+    .img-source-one {
+      .source-one-txt {
+        height: 250px;
+        background-color: var(--color-Secondary);
+        color: var(--color-subtxt);
+        @include flex-layout(column);
+        gap: 0.5rem;
+        h3 {
+          @include tablet {
+            font-size: $font-medium;
+          }
+        }
+        p {
+          padding: 1rem 3rem;
+          line-height: 1.5rem;
+          @include tablet {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+    .img-source-two {
+      margin-top: 8rem;
+      .icon-wrap {
+        padding: 6rem 0;
+      }
+      .thankyou-txt {
+        height: 400px;
+        font-size: $font-h1;
+        background-color: var(--color-Hover);
+        color: var(--color-subtxt);
+        @include flex-layout();
+      }
+      .forest {
+        position: relative;
+        .forest-txt {
+          position: absolute;
+          width: 80%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: var(--color-subtxt);
+          h3 {
+            padding: 3rem 0;
+            font-size: $font-medium;
+            @include tablet {
+              font-size: $font-large;
+              margin-bottom: 4rem;
+            }
+          }
+          p {
+            word-break: break-all;
+            padding: 0.5rem 0;
+            @include tablet {
+              padding: 1rem 3rem;
+              word-break: keep-all;
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // How to use
+  .how-to-use {
+    h4 {
+      margin-top: 8rem;
+      margin-bottom: 1rem;
+    }
+    img {
+      margin-top: 2rem;
+    }
+    .hair {
+      background-color: var(--color-Secondary);
+      color: var(--color-subtxt);
+      ul {
+        text-align: left;
+        word-break: break-all;
+        padding: 2rem;
+        margin-bottom: 8rem;
+      }
+      li {
+        margin: 4rem 0;
+                @include tablet{
+          padding: 0 5rem ;
+          word-break: keep-all;
+        }
+        h3 {
+          padding: 2rem 0;
+        }
+      }
+    }
+    .zeroflow-goods {
+      h3 {
+        display: inline-block;
+        padding: 0.5rem;
+        width: 60%;
+        background-color: rgb(196, 214, 153);
+      }
+      p {
+        padding: 2rem 0;
+        color: rgb(196, 214, 153);
+        font-size: $font-medium;
+        word-break: keep-all;
+      }
+    }
+    .icon-paper {
+      img {
+        margin-bottom: 8rem;
+        @include tablet{
+          width: 600px;
+          margin: 5rem auto;
+        }
+      }
+    }
+  }
+}

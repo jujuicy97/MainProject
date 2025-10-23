@@ -1,0 +1,50 @@
+.product-info{
+  width: 100%;
+  max-width: 700px;
+  .title-info{
+    font-family: 'GongGothicMedium';
+    font-weight: 200;
+    font-size: $font-h1;
+    padding-bottom: 3rem;
+    text-align: left;
+  }
+  .info-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+    .item{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      span{
+        padding: 0.5rem;
+        font-size: 0.95rem;
+        line-height: 1.5;  
+        word-break: keep-all; 
+        text-align: left; 
+      }
+    }
+    @include tablet{
+      grid-template-columns: 1fr 1fr; 
+    }
+    @include desktop{
+      grid-template-columns: 1fr 1fr; 
+  }
+}
+  .info-list{
+    margin: 1rem 0;
+    text-align: left;
+    h3{
+      font-family: 'GongGothicMedium';
+      font-weight: 200;
+    }
+    ul{
+      padding-top: 0.5rem;
+      // padding-bottom: 3rem;
+      li{
+        padding: 0.5rem;
+      }
+    }
+  }
+}

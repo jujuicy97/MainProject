@@ -1,0 +1,43 @@
+.brandintro{
+  width: 90%;
+  margin: 0 auto;
+  height: 400px;
+  padding: 1rem 0;
+  font-weight: 200;
+  @include flex-layout(column, center, center);
+  text-align: center;
+
+  .brand-wrap {
+    @include flex-layout(column, center, center);
+  }
+
+  img{
+    // width: 300px;
+    width: 80%;    
+    max-width: 300px;  
+  }
+  .bar {
+    width: 1px;
+    height: 30%;
+    background-color: var(--color-black); // 또는 원하는 색상
+    margin: 0 2rem;
+    display: none;
+  }
+  h3{
+    font-size: 1rem;
+    margin: 2rem;
+    font-weight: 200;
+    @include tablet{
+      margin: 1rem;
+      font-weight: 200;
+    }
+  }
+
+  // 데스크탑 스타일 (mixin 사용 가정)
+  @include tablet {
+    @include big-layout-style;
+  }
+  @include desktop {
+    @include big-layout-style;
+  }
+}

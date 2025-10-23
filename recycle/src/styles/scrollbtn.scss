@@ -1,0 +1,23 @@
+.btn-wrap{
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  @include flex-layout(row,flex-end,center);
+  z-index: 10;
+}
+
+.scrolltop-btn{
+  background-color: var(--color-subtxt);
+  color: var(--color-Secondary);
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  outline: none;
+  border-style: none;
+  font-size: $font-large;
+  box-shadow: 0 0 8px var(--color-black);
+  &:hover{
+    background-color: var(--color-Hover);
+    color: var(--color-subtxt);
+  }
+}

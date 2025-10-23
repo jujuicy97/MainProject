@@ -1,0 +1,223 @@
+.keyring{
+    width: 100%;
+    margin: 10rem 0;
+    padding: 10rem 1rem;
+    @include flex-layout(column);
+    background-color: rgb(255, 253, 239);
+    @include desktop{
+        width: 60%;
+        padding: 10rem;
+    }
+    .top-desc{
+        @include flex-layout(column);
+        gap: 1rem;
+        .new-icon{
+            display: inline-block;
+            color: var(--color-subtxt);
+            background-color: rgb(214, 151, 33);
+            padding: 0.5rem;
+            border-radius: 4rem;
+            font-size: 1.3rem;
+        }
+        h2{
+            font-size: 3rem;
+        }
+        p{
+            &:nth-of-type(2){
+                font-size: 1.2rem;
+            }
+            &:nth-of-type(3){
+                margin: 3rem 0;
+                font-size: 2rem;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+        img{
+            margin: 3rem 0;
+            width: 100%;
+        }
+        .recycle-icon{
+            font-size: 4rem;
+        }
+    }
+    .middle-desc{
+        margin: 10rem 0;
+        @include flex-layout(column);
+        gap: 2rem;
+        p{
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        img{
+            margin: 6rem 0;
+            width: 100%;
+        }
+    }
+    .bottom-desc{
+        margin: 7rem 0;
+        @include flex-layout(column);
+        gap: 2rem;
+        p{
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        img{
+            margin: 15rem 0;
+            width: 100%;
+        }
+    }
+    .fourth-desc{
+        width: 100%;
+        text-align: center;
+        h2{
+            font-size: 3rem;
+        }
+        p{
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+        .plastic-imgs{
+            width: 100%;
+            margin: 10rem 0;
+            margin-top: 5rem;
+            @include tablet{
+                @include flex-layout();
+            }
+            @include desktop{
+                @include flex-layout();
+            }
+            img{
+                width: 100%;
+                @include tablet{
+                    width: 50%;
+                }
+                @include desktop{
+                    width: 50%;
+                }
+            }
+        }
+        .last-desc{
+            margin: 10rem 0;
+            width: 100%;
+            img{
+                width: 100%;
+            }
+            .rec-explain{
+                margin: 10rem 0;
+            }
+        }
+    }
+    .warn{
+        width: 100%;
+        margin: 6rem 0;
+        h2{
+            font-size: 2rem;
+            padding-top: 1rem;
+        }
+        hr{
+            margin: 1rem 0;
+        }
+        p{
+            font-size: 1.1rem;
+            padding: 1rem 0;
+        }
+    }
+    .prod-info{
+        width: 100%;
+        margin: 3rem 0;
+        h2{
+            font-size: 2rem;
+            padding-top: 1rem;
+        }
+        hr{
+            margin: 1rem 0;
+        }
+        .specific-info{
+            padding: 1rem 0;
+            @include flex-layout();
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2rem;
+            .all-info{
+                @include flex-layout(column);
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+        .warning{
+            padding: 1rem 0;
+            @include flex-layout();
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2rem;
+            .warning-info{
+                @include flex-layout(column);
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    }
+    .refund{
+        width: 100%;
+        margin: 3rem 0;
+        h2{
+            font-size: 2rem;
+            padding-top: 1rem;
+        }
+        hr{
+            margin: 1rem 0;
+        }
+        .possible{
+            margin-bottom: 2rem;
+            h3{
+                font-size: 1.5rem;
+                padding: 1rem 0;
+            }
+            .poss-info{
+                p{
+                    padding: 0.5rem 0;
+                }
+                .poss-point{
+                    padding: 1rem 0;
+                    padding-left: 1rem;
+                }
+            }
+        }
+        .imposs{
+            margin-bottom: 2rem;
+            h3{
+                font-size: 1.5rem;
+                padding: 1rem 0;
+            }
+            .im-info{
+                p{
+                    padding: 0.5rem 0;
+                }
+                .im-point{
+                    padding: 1rem 0;
+                    padding-left: 1rem;
+                }
+            }
+        }
+        .method{
+            h3{
+                font-size: 1.5rem;
+                padding: 1rem 0;
+            }
+            .method-info{
+                padding: 1rem 0;
+                padding-left: 1rem;
+                p{
+                    padding: 0.5rem 0;
+                }
+                .meth-spec{
+                    padding-left: 1rem;
+                }
+                .addr{
+                    padding-left: 1rem;
+                }
+            }
+        }
+    }
+}

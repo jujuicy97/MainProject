@@ -1,4 +1,4 @@
-// localStorage 저장{
+// localStorage 저장{ 테스트용
 export const saveUserInfo = (obj)=>{
     const saved = JSON.stringify(obj);
     localStorage.setItem("park_user",saved);
